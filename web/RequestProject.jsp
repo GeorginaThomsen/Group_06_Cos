@@ -1,7 +1,7 @@
 <%-- 
     Document   : RequestProject
     Created on : 08-04-2015, 14:23:33
-    Author     : Cookie
+    Author     : Georgina Thomsen
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Request Project</h1>
-        <form action="">
+        <form action="RequestProjectServlet" method="post">
             Activity Description:<br><input type="text" name="ActivityDescription"><br>
             Comments:<br><input type="text" name="Comments"><br>
             Cost:<br><input type="text" name="Cost"><br>
@@ -24,8 +24,8 @@
             Objective & Result:<br><input type="text" name="ObjAndResult"><br>
             Required POE:<br><input type="text" name="RequiredPOE"><br>
             <input type="hidden" name="command" value="RequestProject">
+            
             <br><button name="RequestProjectButton" value="" >Request Project</Button>
-
-        </form>
+            </form>
     </body>
 </html>

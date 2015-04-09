@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package domain;
 
 import java.util.Date;
@@ -12,7 +7,9 @@ import java.util.Date;
  * @author Cookie
  */
 public class Project {
-    private int ProjectID;
+//    private int ProjectID;//Id have to be generated so I commented it out for now
+    
+    //Attributes:
     private String ActivityDescription;
     private String Comments;
     private float Cost;
@@ -23,8 +20,9 @@ public class Project {
     private String ObjAndResult;
     private String RequiredPOE;
 
-    public Project(int ProjectID, String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, Date StartDate, Date EndDate, String ObjAndResult, String RequiredPOE) {
-        this.ProjectID = ProjectID;
+    //Made a constructor:
+    public Project(/*int ProjectID, */String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, Date StartDate, Date EndDate, String ObjAndResult, String RequiredPOE) {
+//        this.ProjectID = ProjectID;
         this.ActivityDescription = ActivityDescription;
         this.Comments = Comments;
         this.Cost = Cost;
@@ -35,15 +33,15 @@ public class Project {
         this.ObjAndResult = ObjAndResult;
         this.RequiredPOE = RequiredPOE;
     }
+    //And getters and setters:
+    
+//    public int getProjectID() {
+//        return ProjectID;
+//    }
 
-    public int getProjectID() {
-        return ProjectID;
-    }
-
-    public void setProjectID(int ProjectID) {
-        this.ProjectID = ProjectID;
-    }
-
+//    public void setProjectID(int ProjectID) {
+//        this.ProjectID = ProjectID;
+//    }
     public String getActivityDescription() {
         return ActivityDescription;
     }
@@ -118,9 +116,7 @@ public class Project {
 
     @Override
     public String toString() {
-        return "Project{" + "ProjectID=" + ProjectID + ", ActivityDescription=" + ActivityDescription + ", Comments=" + Comments + ", Cost=" + Cost + ", MDFBudget=" + MDFBudget + ", ExecutionQuarter=" + ExecutionQuarter + ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", ObjAndResult=" + ObjAndResult + ", RequiredPOE=" + RequiredPOE + '}';
+        return "Project{" + "ProjectID=" + /*ProjectID +*/ ", ActivityDescription=" + ActivityDescription + ", Comments=" + Comments + ", Cost=" + Cost + ", MDFBudget=" + MDFBudget + ", ExecutionQuarter=" + ExecutionQuarter + ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", ObjAndResult=" + ObjAndResult + ", RequiredPOE=" + RequiredPOE + '}';
     }
-    
-    
-    
+
 }

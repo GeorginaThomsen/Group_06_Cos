@@ -1,12 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servletControl;
 
+import domain.Project;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Cookie
+ * @author Georgina Thomsen
  */
 @WebServlet(name = "RequestProjectServlet", urlPatterns = {"/RequestProjectServlet"})
 public class RequestProjectServlet extends HttpServlet {
@@ -31,19 +33,36 @@ public class RequestProjectServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RequestProjectServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RequestProjectServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+        SimpleDateFormat parserSDF = new SimpleDateFormat("yyyy");//Change at a later time to mm dd yyyy
+
+        //Get the info from the RequestProject form:
+//        int id = Integer.parseInt(request.getParameter("ProjectID"))
+        String act = request.getParameter("ActivityDescription");
+        String com = request.getParameter("Comments");
+        Float cost = Float.parseFloat(request.getParameter("Cost"));
+        String mdf = request.getParameter("MDFBudget");
+        String eQ = request.getParameter("ExecutionQuarter");
+        Date end = null;//Initialize
+        Date start = null;
+        //Added a try catch because of the Date format
+        try {
+            end = parserSDF.parse(request.getParameter("StartDate"));
+            start = parserSDF.parse(request.getParameter("EndDate"));
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
         }
+        String obj = request.getParameter("ObjAndResult");
+        String pOE = request.getParameter("RequiredPOE");
+
+        // Makes a new Project object:
+        Project p = new Project(/*id, */act, com, cost, mdf, eQ, end, start, obj, pOE);
+//        System.out.println(p);
+
+        //Forwards to view:
+        RequestDispatcher dispatcher = request.getRequestDispatcher("RequestProjectView.jsp");
+        dispatcher.forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,7 +77,9 @@ public class RequestProjectServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         processRequest(request, response);
+
     }
 
     /**
@@ -73,6 +94,7 @@ public class RequestProjectServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
     }
 
     /**
