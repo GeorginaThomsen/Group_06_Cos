@@ -16,7 +16,7 @@
         <form >
             Project id:  <br><input type="text" name="ProjectId"><br>
             <input type="submit" value="Search project"><br><br><br>
-            Fund allocation:   <br><input type="text" name="FundAllocation">€<br><!--Current balance - difference. Needs to be thought out--><br>
+            Fund allocation:   <br><input type="text" name="FundAllocation">€<!--Current balance - difference. Needs to be thought out--><br>
             <input type="submit" value="Edit">     
             <input type="submit" value="Delete"><br><br>
             <h4>Claim: </h4><br>
