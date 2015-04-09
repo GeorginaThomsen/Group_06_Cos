@@ -10,5 +10,4 @@ package domain;
  * @author Cookie
  */
 public class DellFinance {
-    
 }
