@@ -58,8 +58,12 @@ public class RequestProjectServlet extends HttpServlet {
         // Makes a new Project object:
         Project p = new Project(/*id, */act, com, cost, mdf, eQ, end, start, obj, pOE);
 //        System.out.println(p);
+//-----------------------------
+       
 
+        //---------------------------
         //Forwards to view:
+        request.setAttribute("RPV", p);
         RequestDispatcher dispatcher = request.getRequestDispatcher("RequestProjectView.jsp");
         dispatcher.forward(request, response);
 

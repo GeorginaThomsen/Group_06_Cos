@@ -31,18 +31,23 @@ public class FinanceInputServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        String projectId = request.getParameter("ProjectId");
+        int fundAllocation = request.getIntHeader("FundAllocation");
+
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+//            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet FinanceInputServlet</title>");            
+            out.println("<title>Servlet FinanceInputServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet FinanceInputServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
+
         }
     }
 
