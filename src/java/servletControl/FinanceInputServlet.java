@@ -33,6 +33,7 @@ public class FinanceInputServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String projectId = request.getParameter("ProjectId");
+        int fundAllocation = request.getIntHeader("FundAllocation");
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
