@@ -44,7 +44,7 @@ public class FinanceInputServlet extends HttpServlet {
             out.println("<title>Servlet FinanceInputServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet FinanceInputServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet FinanceInputServlet test checkup" + "</h1>");
             out.println("</body>");
             out.println("</html>");
 

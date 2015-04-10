@@ -12,7 +12,7 @@
         <title>Finance</title>
     </head>
     <body style="text-align:center">
-        <h1>Finance</h1>
+        <h1>Finance, click for test <a href="FinanceInputServlet">page</a></h1>
         <form >
             Project id:  <br><input type="text" name="ProjectId"><br>
             <input type="submit" value="Search project"><br><br><br>
