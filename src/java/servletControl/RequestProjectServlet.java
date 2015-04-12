@@ -37,7 +37,7 @@ public class RequestProjectServlet extends HttpServlet {
         SimpleDateFormat parserSDF = new SimpleDateFormat("yyyy");//Change at a later time to mm dd yyyy
 
         //Get the info from the RequestProject form:
-//        int id = Integer.parseInt(request.getParameter("ProjectID"))
+        int id = Integer.parseInt(request.getParameter("ProjectID"));
         String act = request.getParameter("ActivityDescription");
         String com = request.getParameter("Comments");
         Float cost = Float.parseFloat(request.getParameter("Cost"));
@@ -56,7 +56,7 @@ public class RequestProjectServlet extends HttpServlet {
         String pOE = request.getParameter("RequiredPOE");
 
         // Makes a new Project object:
-        Project p = new Project(/*id, */act, com, cost, mdf, eQ, end, start, obj, pOE);
+        Project p = new Project(id, act, com, cost, mdf, eQ, end, start, obj, pOE);
 //        System.out.println(p);
 //-----------------------------
        

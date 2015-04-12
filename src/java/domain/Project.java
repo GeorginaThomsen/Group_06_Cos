@@ -7,7 +7,7 @@ import java.util.Date;
  * @author Cookie
  */
 public class Project {
-//    private int ProjectID;//Id have to be generated so I commented it out for now
+    private int ProjectID;//Id have to be generated so I commented it out for now//   Created by Yagiz for getting project
     
     //Attributes:
     private String ActivityDescription;
@@ -21,7 +21,7 @@ public class Project {
     private String RequiredPOE;
 
     //Made a constructor:
-    public Project(/*int ProjectID, */String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, Date StartDate, Date EndDate, String ObjAndResult, String RequiredPOE) {
+    public Project(int ProjectID, String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, Date StartDate, Date EndDate, String ObjAndResult, String RequiredPOE) {
 //        this.ProjectID = ProjectID;
         this.ActivityDescription = ActivityDescription;
         this.Comments = Comments;
@@ -34,6 +34,10 @@ public class Project {
         this.RequiredPOE = RequiredPOE;
     }
     //And getters and setters:
+
+    public Project(int pno, String string, String string0, int aInt, java.sql.Date date) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 //    public int getProjectID() {
 //        return ProjectID;
@@ -116,7 +120,7 @@ public class Project {
 
     @Override
     public String toString() {
-        return "Project{" + "ProjectID=" + /*ProjectID +*/ ", ActivityDescription=" + ActivityDescription + ", Comments=" + Comments + ", Cost=" + Cost + ", MDFBudget=" + MDFBudget + ", ExecutionQuarter=" + ExecutionQuarter + ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", ObjAndResult=" + ObjAndResult + ", RequiredPOE=" + RequiredPOE + '}';
+        return "Project{" + "ProjectID=" + ProjectID + ", ActivityDescription=" + ActivityDescription + ", Comments=" + Comments + ", Cost=" + Cost + ", MDFBudget=" + MDFBudget + ", ExecutionQuarter=" + ExecutionQuarter + ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", ObjAndResult=" + ObjAndResult + ", RequiredPOE=" + RequiredPOE + '}';
     }
 
 }

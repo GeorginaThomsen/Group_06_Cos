@@ -48,4 +48,56 @@ public class ProjectMapper {
         }
         return TuplesInserted == pr.size();
     }
+    
+     public Project getProject(int pno, Connection con) throws SQLException 
+    {
+        Project p = null;
+        
+        String SQLProject =       //Getting project
+          "select * " +
+          "from project " +
+          "where projectid = ?"; 
+        PreparedStatement preStatement=null;      
+        preStatement = con.prepareStatement(SQLProject);
+         try{
+         //=== Get project
+          
+          preStatement = con.prepareStatement(SQLProject);
+          
+          preStatement.setInt(1,pno);     // primary key value
+          ResultSet rs  = preStatement.executeQuery();
+          if (rs.next())
+          {
+            p = new Project(pno, 
+                    rs.getString(2), 
+                    rs.getString(3), 
+                    rs.getFloat(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    rs.getDate(7),
+                    rs.getDate(8),
+                    rs.getString(9),
+                    rs.getString(10));
+          }         
+         
+         }
+         catch (Exception e)
+      {   
+          System.out.println("Fail 1 in ProjectMapper - getProject");
+          System.out.println(e.getMessage());
+      }
+        finally														// must close statement
+      {
+    	  try {
+			preStatement.close();
+		} catch (SQLException e) {
+			System.out.println("Fail 2 in ProjectMapper - getProject");
+			System.out.println(e.getMessage());
+		}  
+      }
+        return p; 
+    }
+       
+    
+     
 }

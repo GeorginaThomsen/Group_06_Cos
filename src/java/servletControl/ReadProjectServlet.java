@@ -5,13 +5,17 @@
  */
 package servletControl;
 
+import domain.Controller;
+import domain.Project;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,21 +35,57 @@ public class ReadProjectServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ReadProjectServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ReadProjectServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        {
+        //-- Establish or reestablish application context
+            HttpSession sessionObj = request.getSession();
+            Controller con = (Controller) sessionObj.getAttribute("Controller");
+            if (con == null)
+            {
+                // Session starts
+                con = Controller.getInstance();
+                sessionObj.setAttribute("Controller", con);
+            } else
+            {
+                con = (Controller) sessionObj.getAttribute("Controller");
+            }
+            
+            String command = request.getParameter("command");
+             switch (command)
+            {
+                case "ReadProjectID":
+                    getProject(request, response, con);
+                    break;
+                case "ReadPartnerID":
+                    getProject2(request, response, con);
+                    break;
+                                 
+            }
+            }
+    }
+    
+    private void getProject(HttpServletRequest request, HttpServletResponse response, Controller con) throws ServletException, IOException
+    {
+        // get input
+        int pno = Integer.parseInt(request.getParameter("ReadProjectID"));
+
+        // do work and get data to output
+        Project project = con.getProject(pno);
+        request.setAttribute("Project", project);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("ReadProjectView.jsp");
+        dispatcher.forward(request, response);
     }
 
+      private void getProject2(HttpServletRequest request, HttpServletResponse response, Controller con) throws ServletException, IOException
+    {
+        // get input
+        int pno = Integer.parseInt(request.getParameter("ReadPartnerID"));
+
+        // do work and get data to output
+        Project project = con.getProject(pno);
+        request.setAttribute("Project", project);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("ReadProjectView.jsp");
+        dispatcher.forward(request, response);
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
