@@ -16,7 +16,8 @@
         <form >
             Project id:  <br><input type="text" name="ProjectId"><br>
             <input type="submit" value="Search project"><br><br><br>
-            Fund allocation:   <br><input type="text" name="FundAllocation">€<!--Current balance - difference. Needs to be thought out--><br>
+            Fund allocation:   <br>
+            <input type="text" name="FundAllocation">€<!--Current balance - difference. Needs to be thought out--><br>
             <input type="submit" value="Edit">     
             <input type="submit" value="Delete"><br><br>
             <h4>Claim: </h4><br>
@@ -24,7 +25,7 @@
             <input type="radio" name="status" value="not approved">Not approved<br>
             <input type="radio" name="status" value="waiting approval" checked>Waiting approval<br><br>
             Current status: <br>
-            <input type="submit" value="Reimburse"></button>
+            <input type="submit" value="Reimburse">
         </form>
     </body>
 </html>
