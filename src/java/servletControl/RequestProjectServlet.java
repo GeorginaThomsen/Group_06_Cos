@@ -33,9 +33,7 @@ public class RequestProjectServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        SimpleDateFormat parserSDF = new SimpleDateFormat("yyyy");//Change at a later time to mm dd yyyy
-
+        
         //Get the info from the RequestProject form:
         int id = Integer.parseInt(request.getParameter("ProjectID"));
         String act = request.getParameter("ActivityDescription");

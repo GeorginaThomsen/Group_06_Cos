@@ -7,9 +7,7 @@ import java.util.Date;
  * @author Cookie
  */
 public class Project {
-    private int ProjectID;//Id have to be generated so I commented it out for now//   Created by Yagiz for getting project
-    
-    //Attributes:
+    private int ProjectID;
     private String ActivityDescription;
     private String Comments;
     private float Cost;
@@ -34,10 +32,6 @@ public class Project {
         this.RequiredPOE = RequiredPOE;
     }
     //And getters and setters:
-
-    public Project(int pno, String string, String string0, int aInt, java.sql.Date date) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     public int getProjectID() {
         return ProjectID;

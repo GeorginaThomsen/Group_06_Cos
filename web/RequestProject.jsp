@@ -14,6 +14,8 @@
     <body>
         <h1>Request Project</h1>
         <form action="RequestProjectServlet" method="post">
+            
+            <input type="hidden" name="ProjectID" value="ProjectID">
             Activity Description:<br><input type="text" name="ActivityDescription"><br>
             Comments:<br><input type="text" name="Comments"><br>
             Cost:<br><input type="text" name="Cost"><br>

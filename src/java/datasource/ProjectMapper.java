@@ -30,6 +30,8 @@ public class ProjectMapper {
         String SQLProject = "insert into Project values(?,?,?,?,?,?,?,?,?)";
         PreparedStatement preStatement = null;
         con.prepareStatement(SQLProject);
+//        con.prepareStatement(SQLProject, preStatement.RETURN_GENERATED_KEYS);
+
 
         for (int i = 0; i < pr.size(); i++) {
             Project p = pr.get(i);
