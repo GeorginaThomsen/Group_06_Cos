@@ -39,8 +39,8 @@ public class ProjectMapper {
             preStatement.setFloat(3, p.getCost());
             preStatement.setString(4, p.getMDFBudget());
             preStatement.setString(5, p.getExecutionQuarter());
-            preStatement.setDate(6, (Date) p.getStartDate());//Check with teacher if this is okey
-            preStatement.setDate(7, (Date) p.getEndDate());
+            preStatement.setString(6,  p.getStartDate());//Check with teacher if this is okey
+            preStatement.setString(7, p.getEndDate());
             preStatement.setString(8, p.getObjAndResult());
             preStatement.setString(9, p.getRequiredPOE());
 
@@ -74,8 +74,8 @@ public class ProjectMapper {
                     rs.getFloat(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getDate(7),
-                    rs.getDate(8),
+                    rs.getString(7),
+                    rs.getString(8),
                     rs.getString(9),
                     rs.getString(10));
           }         

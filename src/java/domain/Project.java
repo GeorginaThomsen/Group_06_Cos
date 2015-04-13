@@ -15,13 +15,13 @@ public class Project {
     private float Cost;
     private String MDFBudget;
     private String ExecutionQuarter;
-    private Date StartDate;//changed it to date instead of string. Either change uml or change this back.
-    private Date EndDate;
+    private String StartDate;
+    private String EndDate;
     private String ObjAndResult;
     private String RequiredPOE;
 
     //Made a constructor:
-    public Project(int ProjectID, String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, Date StartDate, Date EndDate, String ObjAndResult, String RequiredPOE) {
+    public Project(int ProjectID, String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, String StartDate, String EndDate, String ObjAndResult, String RequiredPOE) {
 //        this.ProjectID = ProjectID;
         this.ActivityDescription = ActivityDescription;
         this.Comments = Comments;
@@ -86,19 +86,19 @@ public class Project {
         this.ExecutionQuarter = ExecutionQuarter;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return StartDate;
     }
 
-    public void setStartDate(Date StartDate) {
+    public void setStartDate(String StartDate) {
         this.StartDate = StartDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return EndDate;
     }
 
-    public void setEndDate(Date EndDate) {
+    public void setEndDate(String EndDate) {
         this.EndDate = EndDate;
     }
 

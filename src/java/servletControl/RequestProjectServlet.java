@@ -43,15 +43,8 @@ public class RequestProjectServlet extends HttpServlet {
         Float cost = Float.parseFloat(request.getParameter("Cost"));
         String mdf = request.getParameter("MDFBudget");
         String eQ = request.getParameter("ExecutionQuarter");
-        Date end = null;//Initialize
-        Date start = null;
-        //Added a try catch because of the Date format
-        try {
-            end = parserSDF.parse(request.getParameter("StartDate"));
-            start = parserSDF.parse(request.getParameter("EndDate"));
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-        }
+        String end = request.getParameter("StartDate");
+        String start = request.getParameter("EndDate");
         String obj = request.getParameter("ObjAndResult");
         String pOE = request.getParameter("RequiredPOE");
 
