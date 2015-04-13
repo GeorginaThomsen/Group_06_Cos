@@ -37,8 +37,13 @@ public class Controller {
     //== Getting project
     public Project getProject(int pno) 
     {
-        currentProject = dbf.getProject(pno);
-        return currentProject;
+        try{
+            currentProject = dbf.getProject(pno);}
+        catch (SQLException e){
+            e.getMessage();
+        }
+           return currentProject;
+        
     }
     //Getting project over
 }
