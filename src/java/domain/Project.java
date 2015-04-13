@@ -39,13 +39,13 @@ public class Project {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-//    public int getProjectID() {
-//        return ProjectID;
-//    }
+    public int getProjectID() {
+        return ProjectID;
+    }
 
-//    public void setProjectID(int ProjectID) {
-//        this.ProjectID = ProjectID;
-//    }
+    public void setProjectID(int ProjectID) {
+        this.ProjectID = ProjectID;
+    }
     public String getActivityDescription() {
         return ActivityDescription;
     }
