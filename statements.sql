@@ -1,7 +1,5 @@
 DROP SEQUENCE ProID;
 CREATE SEQUENCE ProID
-MINVALUE 1000
-MAXVALUE 9999
 START WITH 1000;
 
 DROP TABLE ProjectPartner;
@@ -18,8 +16,8 @@ Comments varchar(255),
 Cost float,
 MDFBudget char(9),
 ExecutionQuarter varchar(255),
-StartDate date,
-EndDate date,
+StartDate varchar(255),
+EndDate varchar(255),
 ObjAndResult varchar(255),
 RequiredPOE varchar(255),
 PRIMARY KEY (ProjectID)
@@ -42,3 +40,15 @@ FOREIGN KEY (PartnerID)REFERENCES Partner(PartnerID)
 );
 
 
+INSERT INTO project (
+ProjectID,
+ActivityDescription,
+Comments,
+Cost,
+MDFBudget ,
+ExecutionQuarter,
+StartDate ,
+EndDate ,
+ObjAndResult,
+RequiredPOE )VALUES
+(ProID.nextval ,'ac', 'com', 12, 'mdf', 'exe', 'startdate', 'enddate', 'obj', 'poe');

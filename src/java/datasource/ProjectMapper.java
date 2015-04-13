@@ -1,11 +1,13 @@
 package datasource;
 
 import domain.Project;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -26,23 +28,28 @@ public class ProjectMapper {
 //    }
     public boolean insertProjects(ArrayList<Project> pr, Connection con) throws SQLException {
         int TuplesInserted = 0;
-
-        String SQLProject = "insert into Project values(?,?,?,?,?,?,?,?,?)";
+        String sqlID = "select ProID.nextval AS id from dual";
+        String SQLProject = "insert into Project values(?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preStatement = null;
-        con.prepareStatement(SQLProject);
-//        con.prepareStatement(SQLProject, preStatement.RETURN_GENERATED_KEYS);
-
+        preStatement = con.prepareStatement(SQLProject);
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(sqlID);
+        Integer[] ar = (Integer[])rs.getArray("id").getArray();
+        int id = ar[0];
+        System.out.println("id: "+id);
+        
+        
 
         for (int i = 0; i < pr.size(); i++) {
             Project p = pr.get(i);
             //Remember project id!
-            preStatement.setInt(1, p.getProjectID());
+            preStatement.setInt(1, preStatement.RETURN_GENERATED_KEYS);
             preStatement.setString(2, p.getActivityDescription());
             preStatement.setString(3, p.getComments());
             preStatement.setFloat(4, p.getCost());
             preStatement.setString(5, p.getMDFBudget());
             preStatement.setString(6, p.getExecutionQuarter());
-            preStatement.setString(7,  p.getStartDate());//Check with teacher if this is okey
+            preStatement.setString(7,  p.getStartDate());
             preStatement.setString(8, p.getEndDate());
             preStatement.setString(9, p.getObjAndResult());
             preStatement.setString(10, p.getRequiredPOE());

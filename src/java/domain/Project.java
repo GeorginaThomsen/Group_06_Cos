@@ -7,6 +7,7 @@ import java.util.Date;
  * @author Cookie
  */
 public class Project {
+
     private int ProjectID;
     private String ActivityDescription;
     private String Comments;
@@ -20,7 +21,7 @@ public class Project {
 
     //Made a constructor:
     public Project(int ProjectID, String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, String StartDate, String EndDate, String ObjAndResult, String RequiredPOE) {
-//        this.ProjectID = ProjectID;
+        this.ProjectID = ProjectID;
         this.ActivityDescription = ActivityDescription;
         this.Comments = Comments;
         this.Cost = Cost;
@@ -31,8 +32,21 @@ public class Project {
         this.ObjAndResult = ObjAndResult;
         this.RequiredPOE = RequiredPOE;
     }
+
+    public Project(String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, String StartDate, String EndDate, String ObjAndResult, String RequiredPOE) {
+        ProjectID = 0;
+        this.ActivityDescription = ActivityDescription;
+        this.Comments = Comments;
+        this.Cost = Cost;
+        this.MDFBudget = MDFBudget;
+        this.ExecutionQuarter = ExecutionQuarter;
+        this.StartDate = StartDate;
+        this.EndDate = EndDate;
+        this.ObjAndResult = ObjAndResult;
+        this.RequiredPOE = RequiredPOE;
+    }
+
     //And getters and setters:
-    
     public int getProjectID() {
         return ProjectID;
     }
@@ -40,6 +54,7 @@ public class Project {
     public void setProjectID(int ProjectID) {
         this.ProjectID = ProjectID;
     }
+
     public String getActivityDescription() {
         return ActivityDescription;
     }

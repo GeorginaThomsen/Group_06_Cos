@@ -1,10 +1,13 @@
 package servletControl;
 
+import datasource.ProjectMapper;
 import domain.Project;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +38,7 @@ public class RequestProjectServlet extends HttpServlet {
             throws ServletException, IOException {
         
         //Get the info from the RequestProject form:
-        int id = Integer.parseInt(request.getParameter("ProjectID"));
+        //int id = Integer.parseInt(request.getParameter("ProjectID"));
         String act = request.getParameter("ActivityDescription");
         String com = request.getParameter("Comments");
         Float cost = Float.parseFloat(request.getParameter("Cost"));
@@ -47,11 +50,11 @@ public class RequestProjectServlet extends HttpServlet {
         String pOE = request.getParameter("RequiredPOE");
 
         // Makes a new Project object:
-        Project p = new Project(id, act, com, cost, mdf, eQ, end, start, obj, pOE);
+        Project p = new Project(act, com, cost, mdf, eQ, end, start, obj, pOE);
 //        System.out.println(p);
 //-----------------------------
-       
 
+       
         //---------------------------
         //Forwards to view:
         request.setAttribute("RPV", p);
