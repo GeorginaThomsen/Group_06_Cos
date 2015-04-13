@@ -7,6 +7,7 @@ package servletControl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,8 +33,7 @@ public class FinanceInputServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String projectId = request.getParameter("ProjectId");
-        int fundAllocation = request.getIntHeader("FundAllocation");
+        
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -47,6 +47,8 @@ public class FinanceInputServlet extends HttpServlet {
             out.println("<h1>Servlet FinanceInputServlet test checkup" + "</h1>");
             out.println("</body>");
             out.println("</html>");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("FinanceInput.jsp");
+        dispatcher.forward(request, response);
 
         }
     }
@@ -63,6 +65,8 @@ public class FinanceInputServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String projectId = request.getParameter("ProjectId");
+        int fundAllocation = request.getIntHeader("FundAllocation");
         processRequest(request, response);
     }
 

@@ -13,7 +13,7 @@
     </head>
     <body style="text-align:center">
         <h1>Finance</h1>
-        <form >
+        <form action="FinanceInputServlet" method="get">
             Project id:  <br><input type="text" name="ProjectId"><br>
             <input type="submit" value="Search project"><br><br><br>
             Fund allocation:   <br>
