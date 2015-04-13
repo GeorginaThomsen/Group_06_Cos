@@ -36,15 +36,16 @@ public class ProjectMapper {
         for (int i = 0; i < pr.size(); i++) {
             Project p = pr.get(i);
             //Remember project id!
-            preStatement.setString(1, p.getActivityDescription());
-            preStatement.setString(2, p.getComments());
-            preStatement.setFloat(3, p.getCost());
-            preStatement.setString(4, p.getMDFBudget());
-            preStatement.setString(5, p.getExecutionQuarter());
-            preStatement.setString(6,  p.getStartDate());//Check with teacher if this is okey
-            preStatement.setString(7, p.getEndDate());
-            preStatement.setString(8, p.getObjAndResult());
-            preStatement.setString(9, p.getRequiredPOE());
+            preStatement.setInt(1, p.getProjectID());
+            preStatement.setString(2, p.getActivityDescription());
+            preStatement.setString(3, p.getComments());
+            preStatement.setFloat(4, p.getCost());
+            preStatement.setString(5, p.getMDFBudget());
+            preStatement.setString(6, p.getExecutionQuarter());
+            preStatement.setString(7,  p.getStartDate());//Check with teacher if this is okey
+            preStatement.setString(8, p.getEndDate());
+            preStatement.setString(9, p.getObjAndResult());
+            preStatement.setString(10, p.getRequiredPOE());
 
             TuplesInserted += preStatement.executeUpdate();
         }
