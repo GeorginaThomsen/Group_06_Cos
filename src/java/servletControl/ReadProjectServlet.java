@@ -42,7 +42,7 @@ public class ReadProjectServlet extends HttpServlet {
             if (con == null)
             {
                 // Session starts
-                con = Controller.getInstance();
+                con = new Controller();
                 sessionObj.setAttribute("Controller", con);
             } else
             {

@@ -18,21 +18,14 @@ public class Controller {
 
     private Project currentProject;
     private DBFacade dbf;
-    private ArrayList<Project> newProject;
 
-    private static Controller instance;
+    
 
-    private Controller() {
+    public Controller() {
         currentProject = null;
         dbf = DBFacade.getInstance();
     }
 
-    public static Controller getInstance() {
-        if (instance == null) {
-            instance = new Controller();
-        }
-        return instance;
-    }
 
     //Singleton over
     //== Getting project

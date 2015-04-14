@@ -1,19 +1,13 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package servletControl;
 
-import datasource.ProjectMapper;
 import domain.Controller;
-import domain.Project;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,10 +17,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Georgina Thomsen
+ * @author Ben
  */
-@WebServlet(name = "RequestProjectServlet", urlPatterns = {"/RequestProjectServlet"})
-public class RequestProjectServlet extends HttpServlet {
+@WebServlet(name = "Dashboard", urlPatterns = {"/Dashboard"})
+public class DashboardServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,47 +32,28 @@ public class RequestProjectServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            {
-        
-        HttpSession sessionObj = request.getSession(true);
+            throws ServletException, IOException {
+       HttpSession sessionObj = request.getSession();
+       
         Controller con = (Controller) sessionObj.getAttribute("Controller");
-        if(con == null){
-            con = new Controller();
-            sessionObj.setAttribute("Controller", con);
-        } else{
-            con = (Controller) sessionObj.getAttribute("Controller");
-        }
-        String command = request.getParameter("command");
-        insertProject(request, response, con);
-        
+            if (con == null)
+            {
+                // Session starts
+                con = new Controller();
+                sessionObj.setAttribute("Controller", con);
+            } else
+            {
+                con = (Controller) sessionObj.getAttribute("Controller");
+            }
+             String command = request.getParameter("command");
+            switch (command)
+            {
+                case "getProject":
+                    getProject(request, response, con);
+                    break;
+            }
     }
-        private void insertProject(HttpServletRequest request, HttpServletResponse response, Controller con){
-        
-        
-        
-        //Get the info from the RequestProject form:
-        //int id = Integer.parseInt(request.getParameter("ProjectID"));
-        String act = request.getParameter("ActivityDescription");
-        String com = request.getParameter("Comments");
-        Float cost = Float.parseFloat(request.getParameter("Cost"));
-        String mdf = request.getParameter("MDFBudget");
-        String eQ = request.getParameter("ExecutionQuarter");
-        String end = request.getParameter("StartDate");
-        String start = request.getParameter("EndDate");
-        String obj = request.getParameter("ObjAndResult");
-        String pOE = request.getParameter("RequiredPOE");
-
-        
-        //Forwards to view:
-        request.setAttribute("RPV", con);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("RequestProjectView.jsp");
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException ex) {
-        } catch (IOException ex) {
-        }
-
-    }
+   
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -92,9 +67,7 @@ public class RequestProjectServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         processRequest(request, response);
-
     }
 
     /**
@@ -109,7 +82,6 @@ public class RequestProjectServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
     }
 
     /**
@@ -121,5 +93,13 @@ public class RequestProjectServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void getProject(HttpServletRequest request, HttpServletResponse response, Controller con) {
+        
+                int projectNo = Integer.parseInt(request.getParameter("ProjectNo"));
+                
+                
+
+    }
 
 }
