@@ -48,10 +48,11 @@ public class Controller {
     }
     //Getting project over
 
-    public Project insertProject(Connection conn) throws SQLException {
-        ProjectMapper pMap = new ProjectMapper();
-        pMap.insertProjects(newProject, conn);
-
-        return currentProject;
+    public Project insertProject(String act, String com, float cost, String mdf, String eQ, String end, String start, String obj, String pOE) throws SQLException {
+        Project p = new Project(act, com, cost, mdf, eQ, end, start, obj, pOE);
+        
+        dbf.insertProject(p);
+        
+        return currentProject;//This return is wrong I think
     }
 }

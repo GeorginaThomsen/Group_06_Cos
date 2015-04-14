@@ -26,7 +26,7 @@ public class ProjectMapper {
 //        Project p = 
 //        preparedStatement.setInt(i, );
 //    }
-    public boolean insertProjects(ArrayList<Project> pr, Connection con) throws SQLException {
+    public boolean insertProjects(Project p, Connection con) throws SQLException {
         int TuplesInserted = 0;
         String sqlID = "select ProID.nextval AS id from dual";
         String SQLProject = "insert into Project values(?,?,?,?,?,?,?,?,?,?)";
@@ -34,16 +34,15 @@ public class ProjectMapper {
         preStatement = con.prepareStatement(SQLProject);
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery(sqlID);
-        Integer[] ar = (Integer[])rs.getArray("id").getArray();
-        int id = ar[0];
+        int id = (int) rs.getInt("id");
+        
         System.out.println("id: "+id);
         
         
 
-        for (int i = 0; i < pr.size(); i++) {
-            Project p = pr.get(i);
+       
             //Remember project id!
-            preStatement.setInt(1, preStatement.RETURN_GENERATED_KEYS);
+            preStatement.setInt(1, id);
             preStatement.setString(2, p.getActivityDescription());
             preStatement.setString(3, p.getComments());
             preStatement.setFloat(4, p.getCost());
@@ -54,9 +53,9 @@ public class ProjectMapper {
             preStatement.setString(9, p.getObjAndResult());
             preStatement.setString(10, p.getRequiredPOE());
 
-            TuplesInserted += preStatement.executeUpdate();
-        }
-        return TuplesInserted == pr.size();
+            TuplesInserted = preStatement.executeUpdate();
+        
+        return TuplesInserted == 1;//If there is one tuple then it succeded and is true
     }
     
      public Project getProject(int pno, Connection con) throws SQLException 

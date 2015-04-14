@@ -39,4 +39,7 @@ public class DBFacade {
 		  return pm.getProject(pno, con);	      
 	  }
          //== Getting project over
+            public boolean insertProject(Project p)throws SQLException{
+                return pm.insertProjects(p, con);
+            }
 }

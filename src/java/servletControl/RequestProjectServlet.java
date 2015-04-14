@@ -1,10 +1,12 @@
 package servletControl;
 
 import datasource.ProjectMapper;
+import domain.Controller;
 import domain.Project;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,7 +38,23 @@ public class RequestProjectServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            {
+        
+        HttpSession sessionObj = request.getSession(true);
+        Controller con = (Controller) sessionObj.getAttribute("Controller");
+        if(con == null){
+            con = Controller.getInstance();
+            sessionObj.setAttribute("Controller", con);
+        } else{
+            con = (Controller) sessionObj.getAttribute("Controller");
+        }
+        String command = request.getParameter("command");
+        insertProject(request, response, con);
+        
+    }
+        private void insertProject(HttpServletRequest request, HttpServletResponse response, Controller con){
+        
+        
         
         //Get the info from the RequestProject form:
         //int id = Integer.parseInt(request.getParameter("ProjectID"));
@@ -49,17 +68,15 @@ public class RequestProjectServlet extends HttpServlet {
         String obj = request.getParameter("ObjAndResult");
         String pOE = request.getParameter("RequiredPOE");
 
-        // Makes a new Project object:
-        Project p = new Project(act, com, cost, mdf, eQ, end, start, obj, pOE);
-//        System.out.println(p);
-//-----------------------------
-
-       
-        //---------------------------
+        
         //Forwards to view:
-        request.setAttribute("RPV", p);
+        request.setAttribute("RPV", con);
         RequestDispatcher dispatcher = request.getRequestDispatcher("RequestProjectView.jsp");
-        dispatcher.forward(request, response);
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException ex) {
+        } catch (IOException ex) {
+        }
 
     }
 
