@@ -28,30 +28,26 @@ public class ProjectMapper {
 //    }
     public boolean insertProjects(Project p, Connection con) throws SQLException {
         int TuplesInserted = 0;
-        String sqlID = "select ProID.nextval AS id from dual";
-        String SQLProject = "insert into Project values(?,?,?,?,?,?,?,?,?,?)";
+        String SQLProject = "insert into Project values(ProID.nextval,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preStatement = null;
         preStatement = con.prepareStatement(SQLProject);
-        Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery(sqlID);
-        int id = (int) rs.getInt("id");
         
-        System.out.println("id: "+id);
         
         
 
        
             //Remember project id!
-            preStatement.setInt(1, id);
-            preStatement.setString(2, p.getActivityDescription());
-            preStatement.setString(3, p.getComments());
-            preStatement.setFloat(4, p.getCost());
-            preStatement.setString(5, p.getMDFBudget());
-            preStatement.setString(6, p.getExecutionQuarter());
-            preStatement.setString(7,  p.getStartDate());
-            preStatement.setString(8, p.getEndDate());
-            preStatement.setString(9, p.getObjAndResult());
-            preStatement.setString(10, p.getRequiredPOE());
+            preStatement = con.prepareStatement(SQLProject);
+            
+            preStatement.setString(1, p.getActivityDescription());
+            preStatement.setString(2, p.getComments());
+            preStatement.setFloat(3, p.getCost());
+            preStatement.setString(4, p.getMDFBudget());
+            preStatement.setString(5, p.getExecutionQuarter());
+            preStatement.setString(6,  p.getStartDate());
+            preStatement.setString(7, p.getEndDate());
+            preStatement.setString(8, p.getObjAndResult());
+            preStatement.setString(9, p.getRequiredPOE());
 
             TuplesInserted = preStatement.executeUpdate();
         

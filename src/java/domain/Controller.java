@@ -42,9 +42,12 @@ public class Controller {
     //Getting project over
 
     public Project insertProject(String act, String com, float cost, String mdf, String eQ, String end, String start, String obj, String pOE) throws SQLException {
-        Project p = new Project(act, com, cost, mdf, eQ, end, start, obj, pOE);
+        currentProject = new Project(act, com, cost, mdf, eQ, end, start, obj, pOE);
         
-        dbf.insertProject(p);
+        boolean status = dbf.insertProject(currentProject);
+        if(!status){//If dbf.insterProject does not return an insterted project
+            currentProject = null;
+        }
         
         return currentProject;//This return is wrong I think
     }

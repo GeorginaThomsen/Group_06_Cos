@@ -18,7 +18,7 @@
         <% Project newproject = (Project) request.getAttribute("RPV");%>
         <% if(newproject != null){    %>
         
-        Project id:               <%= newproject.getProjectID() %><br>
+        <%--Project id:               <%= newproject.getProjectID() %><br>--%>
         Activity Description:     <%= newproject.getActivityDescription()  %><br>
         Comments: <%= newproject.getComments() %><br>
         Cost: <%= newproject.getCost() %><br>

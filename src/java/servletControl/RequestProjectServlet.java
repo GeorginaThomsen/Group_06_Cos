@@ -37,7 +37,7 @@ public class RequestProjectServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException
             {
         
         HttpSession sessionObj = request.getSession(true);
@@ -45,17 +45,14 @@ public class RequestProjectServlet extends HttpServlet {
         if(con == null){
             con = new Controller();
             sessionObj.setAttribute("Controller", con);
-        } else{
-            con = (Controller) sessionObj.getAttribute("Controller");
-        }
-        String command = request.getParameter("command");
+        } 
         insertProject(request, response, con);
         
     }
-        private void insertProject(HttpServletRequest request, HttpServletResponse response, Controller con){
+        private void insertProject(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException{
         
         
-        
+        try{ 
         //Get the info from the RequestProject form:
         //int id = Integer.parseInt(request.getParameter("ProjectID"));
         String act = request.getParameter("ActivityDescription");
@@ -68,14 +65,20 @@ public class RequestProjectServlet extends HttpServlet {
         String obj = request.getParameter("ObjAndResult");
         String pOE = request.getParameter("RequiredPOE");
 
+        Project project = con.insertProject(act, com, cost, mdf, eQ, end, start, obj, pOE);
         
         //Forwards to view:
-        request.setAttribute("RPV", con);
+        request.setAttribute("RPV", project);
         RequestDispatcher dispatcher = request.getRequestDispatcher("RequestProjectView.jsp");
-        try {
+        
             dispatcher.forward(request, response);
-        } catch (ServletException ex) {
-        } catch (IOException ex) {
+        } catch(Exception e){
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
         }
 
     }
