@@ -18,6 +18,8 @@ public class Project {
     private String EndDate;
     private String ObjAndResult;
     private String RequiredPOE;
+    private String Status;
+    private int PaID;
 
     //Made a constructor:
     public Project(int ProjectID, String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, String StartDate, String EndDate, String ObjAndResult, String RequiredPOE) {
@@ -44,6 +46,20 @@ public class Project {
         this.EndDate = EndDate;
         this.ObjAndResult = ObjAndResult;
         this.RequiredPOE = RequiredPOE;
+    }
+     public Project(int ProjectID, String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, String StartDate, String EndDate, String ObjAndResult, String RequiredPOE, String Status, int PaID) {
+        this.ProjectID = ProjectID;
+        this.ActivityDescription = ActivityDescription;
+        this.Comments = Comments;
+        this.Cost = Cost;
+        this.MDFBudget = MDFBudget;
+        this.ExecutionQuarter = ExecutionQuarter;
+        this.StartDate = StartDate;
+        this.EndDate = EndDate;
+        this.ObjAndResult = ObjAndResult;
+        this.RequiredPOE = RequiredPOE;
+        this.Status = Status;
+        this.PaID = PaID;
     }
 
     //And getters and setters:
@@ -126,6 +142,23 @@ public class Project {
     public void setRequiredPOE(String RequiredPOE) {
         this.RequiredPOE = RequiredPOE;
     }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
+
+    public int getPaID() {
+        return PaID;
+    }
+
+    public void setPaID(int PaID) {
+        this.PaID = PaID;
+    }
+    
 
     @Override
     public String toString() {

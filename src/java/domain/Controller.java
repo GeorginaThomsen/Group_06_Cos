@@ -51,4 +51,13 @@ public class Controller {
         
         return currentProject;//This return is wrong I think
     }
+    //added by Ben
+    public ArrayList<Project> getAllPartnerProjects(int paID) throws SQLException{
+        
+        return dbf.getAllPartnerProjects(paID);
+    }
+    public ArrayList<Project> getAllProjects()throws SQLException
+    {
+        return dbf.getAllProjects();
+    }
 }

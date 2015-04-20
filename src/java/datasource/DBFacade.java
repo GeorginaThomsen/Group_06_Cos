@@ -42,4 +42,13 @@ public class DBFacade {
             public boolean insertProject(Project p)throws SQLException{
                 return pm.insertProjects(p, con);
             }
+            //added by ben
+            public ArrayList<Project> getAllPartnerProjects(int paID) throws SQLException
+            {
+                return pm.getAllPartnerProjects(paID, con);
+            }
+            public ArrayList<Project> getAllProjects()throws SQLException
+            {
+                return pm.getAllProjects(con);
+            }
 }

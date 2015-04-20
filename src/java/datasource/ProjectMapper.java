@@ -1,5 +1,6 @@
 package datasource;
 
+import domain.Partner;
 import domain.Project;
 import java.sql.Array;
 import java.sql.Connection;
@@ -9,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -102,6 +104,108 @@ public class ProjectMapper {
       }
         return p; 
     }
+//     added by Ben 
+     public ArrayList<Project> getAllPartnerProjects(int paID, Connection con) throws SQLException {
+         ArrayList<Project> details = new ArrayList();
+
+         String SQLProject1 =
+                 "select projectID " +
+                 "from project " +
+                 "where PaID = ?";
+
+         
+         
+          PreparedStatement preStatement=null;      
+        preStatement = con.prepareStatement(SQLProject1);
+         try{
+         //=== Get partner
+          
+          preStatement = con.prepareStatement(SQLProject1);
+         
+//              System.out.println("Got as far as this!!*********");
+           preStatement.setInt(1,paID);     
+          ResultSet rs  = preStatement.executeQuery();
+         List projects = new ArrayList();
+          while (rs.next())
+          {
+              projects.add(rs.getInt(1));
+
+              details.add(getProject(rs.getInt(1), con));
+          }
+
+          }
+         
+         catch (Exception e)
+      {   
+          System.out.println("Fail 1 in ProjectMapper - getAllPartnerProjects");
+          System.out.println(e.getMessage());
+      }
+        finally														// must close statement
+      {
+    	  try {
+			preStatement.close();
+		} catch (SQLException e) {
+			System.out.println("Fail 2 in ProjectMapper - getAllPartnerProjects");
+			System.out.println(e.getMessage());
+		}  
+      }
+         return(details);
+     }
+          
+      public ArrayList<Project> getAllProjects(Connection con) throws SQLException {
+         ArrayList<Project> details = new ArrayList();
+
+         String SQLProject1 =
+                 "select projectID " +
+                 "from project " ;
+                 
+
+         
+         
+          PreparedStatement preStatement=null;      
+        preStatement = con.prepareStatement(SQLProject1);
+         try{
+         //=== Get partner
+          
+          preStatement = con.prepareStatement(SQLProject1);
+         
+//              System.out.println("Got as far as this!!*********");
+          ResultSet rs  = preStatement.executeQuery();
+         List projects = new ArrayList();
+          while (rs.next())
+          {
+              projects.add(rs.getInt(1));
+
+              details.add(getProject(rs.getInt(1), con));
+          }
+
+          }
+         
+         catch (Exception e)
+      {   
+          System.out.println("Fail 1 in ProjectMapper - getAllPartnerProjects");
+          System.out.println(e.getMessage());
+      }
+        finally														// must close statement
+      {
+    	  try {
+			preStatement.close();
+		} catch (SQLException e) {
+			System.out.println("Fail 2 in ProjectMapper - getAllPartnerProjects");
+			System.out.println(e.getMessage());
+		}  
+      }
+         return(details);
+     }
+                         
+                    
+         
+                            
+         
+         
+         
+         
+         
        
     
      

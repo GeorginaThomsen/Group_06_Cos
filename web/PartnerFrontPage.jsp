@@ -12,7 +12,13 @@
         <title>Partner MDF Tool</title>
     </head>
     <body>
-        <h1>Front Page</h1>
+        <h1>Partner Front Page</h1>
+        <form action="DashboardServlet" method="post">
+            
+         Enter Partner Number:<input type="text" name="PartnerNo"  ><br><br>
+
+            <button name="PartnerLogInButton" value="">Partner log-in</button><br><br>
+        </form>
     </body>
 </html>
 

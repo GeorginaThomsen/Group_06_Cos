@@ -6,8 +6,12 @@
 package servletControl;
 
 import domain.Controller;
+import domain.Project;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Ben
  */
-@WebServlet(name = "Dashboard", urlPatterns = {"/Dashboard"})
+@WebServlet(name = "DashboardServlet", urlPatterns = {"/DashboardServlet"})
 public class DashboardServlet extends HttpServlet {
 
     /**
@@ -33,26 +37,46 @@ public class DashboardServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       HttpSession sessionObj = request.getSession();
-       
-        Controller con = (Controller) sessionObj.getAttribute("Controller");
+          
+    HttpSession sessionObj = request.getSession();
+            Controller con = (Controller) sessionObj.getAttribute("Controller");
             if (con == null)
             {
-                // Session starts
                 con = new Controller();
                 sessionObj.setAttribute("Controller", con);
-            } else
-            {
-                con = (Controller) sessionObj.getAttribute("Controller");
+
             }
-             String command = request.getParameter("command");
-            switch (command)
-            {
-                case "getProject":
-                    getProject(request, response, con);
-                    break;
-            }
+        readAllPartnerProjects(request, response, con );
+        
+        
+        
+        
     }
+    private void readAllPartnerProjects(HttpServletRequest request, HttpServletResponse response, Controller con) throws ServletException, IOException{
+        
+        try{ 
+        int partnerNo = Integer.parseInt(request.getParameter("PartnerNo"));
+        
+            ArrayList<Project> projects = con.getAllPartnerProjects(partnerNo);
+            
+        
+        request.setAttribute("partnerNo", partnerNo);
+        request.setAttribute("projects", projects);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("PartnerViewAllProjects.jsp");
+        dispatcher.forward(request, response);
+          } catch(Exception e){
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
+        }
+    
+       
+    }  
+        
+        
    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -94,12 +118,6 @@ public class DashboardServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void getProject(HttpServletRequest request, HttpServletResponse response, Controller con) {
-        
-                int projectNo = Integer.parseInt(request.getParameter("ProjectNo"));
-                
-                
-
-    }
+   
 
 }
