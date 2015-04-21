@@ -44,3 +44,5 @@ FOREIGN KEY (PartnerID)REFERENCES Partner(PartnerID)
 
 select projectID
 from project;
+
+select * from project;

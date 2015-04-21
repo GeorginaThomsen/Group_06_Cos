@@ -47,8 +47,11 @@ public class DBFacade {
             {
                 return pm.getAllPartnerProjects(paID, con);
             }
-            public ArrayList<Project> getAllProjects()throws SQLException
+            public ArrayList<Project> readAllProjects()throws SQLException
             {
-                return pm.getAllProjects(con);
+                return pm.readAllProjects(con);
+            }
+            public ArrayList<Project> getPendingProjects() throws SQLException {
+                return pm.getPendingProjects(con);
             }
 }

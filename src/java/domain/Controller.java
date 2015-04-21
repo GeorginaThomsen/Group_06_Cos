@@ -56,8 +56,11 @@ public class Controller {
         
         return dbf.getAllPartnerProjects(paID);
     }
-    public ArrayList<Project> getAllProjects()throws SQLException
+    public ArrayList<Project> readAllProjects()throws SQLException
     {
-        return dbf.getAllProjects();
+        return dbf.readAllProjects();
     }
+    public ArrayList<Project> getPendingProjects() throws SQLException{
+        return dbf.getPendingProjects();
+    } 
 }

@@ -12,6 +12,14 @@
         <title>Dell MDF Tool</title>
     </head>
     <body>
-        <h1>Front Page</h1>
+        <h1>See All Projects</h1>
+        <form action="ShowAllProjectsServlet" method="post">                      
+            <button name="DellLogInButton" value="">Dell log-in</button>
+        </form><br><br>
+         <h1>See Pending Projects</h1>
+        <form action="MarketingServlet" method="post">                      
+            <button name="DellLogInButton" value="">Get Pending Projects</button>
+        </form>
+    
     </body>
 </html>
