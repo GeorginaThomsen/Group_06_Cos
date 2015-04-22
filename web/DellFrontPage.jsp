@@ -19,7 +19,11 @@
          <h1>See Pending Projects</h1>
         <form action="MarketingServlet" method="post">                      
             <button name="DellLogInButton" value="">Get Pending Projects</button>
-        </form>
+        </form><br><br>
+         <h1>See finance pending projects</h1>
+         <form action="FinanceInputServlet" method="get">
+             <button name="DellLogInButton" value="">Get finance pending projects</button>
+         </form>
     
     </body>
 </html>
