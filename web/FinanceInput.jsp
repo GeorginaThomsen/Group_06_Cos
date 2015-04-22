@@ -14,8 +14,13 @@
         <title>Finance</title>
     </head>
     <body>
-        <h1>Finance view projects</h1><br><br>
+        <h1>Finance view projects</h1>
         
+        <form action="DellFrontPage.jsp" method="post">                      
+            <button name="DellBackButton" value="">Back</button>
+        </form>
+        
+        <br>
          <h2>Project Details</h2>
         <form>
             
@@ -67,16 +72,14 @@
         </table><br><br>
            
 
-        </form>
+       <!-- </form> -->
              
                
     
-        <form action="FinanceInputServlet" method="get" style="text-align: center">
-            Project id:  <br>"ProjectId"<br><br>
-            Fund allocation:   <br>
-            <input type="text" name="FundAllocation">€<br>
-            <input type="submit" value="Edit"><br><br>
-            <input type="submit" value="Reimburse">
-        </form> 
+     <!--   <form action="FinanceInputServlet" method="get" style="text-align: center"> -->
+     <input type="text" name="FundAllocation">€
+     <input type="submit" value="Submit">Edit
+     <input type="submit" value="Reimburse">
+      </form>
     </body>
 </html>
