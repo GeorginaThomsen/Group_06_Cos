@@ -29,42 +29,41 @@ public class RequestProjectServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException
-            {
-        
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
         HttpSession sessionObj = request.getSession(true);
         Controller con = (Controller) sessionObj.getAttribute("Controller");
-        if(con == null){
+        if (con == null) {
             con = new Controller();
             sessionObj.setAttribute("Controller", con);
-        } 
+        }
         insertProject(request, response, con);
-        
-    }
-        private void insertProject(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException{
-        
-        
-        try{ 
-        //Get the info from the RequestProject form:
-        //int id = Integer.parseInt(request.getParameter("ProjectID"));
-        String act = request.getParameter("ActivityDescription");
-        String com = request.getParameter("Comments");
-        Float cost = Float.parseFloat(request.getParameter("Cost"));
-        String mdf = request.getParameter("MDFBudget");
-        String eQ = request.getParameter("ExecutionQuarter");
-        String end = request.getParameter("StartDate");
-        String start = request.getParameter("EndDate");
-        String obj = request.getParameter("ObjAndResult");
-        String pOE = request.getParameter("RequiredPOE");
 
-        Project project = con.insertProject(act, com, cost, mdf, eQ, end, start, obj, pOE);
-        
-        //Forwards to view:
-        request.setAttribute("RPV", project);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("RequestProjectView.jsp");
-        
+    }
+  
+    private void insertProject(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+
+        try {
+        //Get the info from the RequestProject form:
+            //int id = Integer.parseInt(request.getParameter("ProjectID"));
+            String act = request.getParameter("ActivityDescription");
+            String com = request.getParameter("Comments");
+            Float cost = Float.parseFloat(request.getParameter("Cost"));
+            String mdf = request.getParameter("MDFBudget");
+            String eQ = request.getParameter("ExecutionQuarter");
+            String end = request.getParameter("StartDate");
+            String start = request.getParameter("EndDate");
+            String obj = request.getParameter("ObjAndResult");
+            String pOE = request.getParameter("RequiredPOE");
+
+            Project project = con.insertProject(act, com, cost, mdf, eQ, end, start, obj, pOE);
+
+            //Forwards to view:
+            request.setAttribute("RPV", project);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("RequestProjectView.jsp");
+
             dispatcher.forward(request, response);
-        } catch(Exception e){
+        } catch (Exception e) {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
             out.println("<h2>" + e + "</h2><hr>");

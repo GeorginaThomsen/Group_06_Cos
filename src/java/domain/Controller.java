@@ -18,18 +18,16 @@ public class Controller {
 
     private Project currentProject;
     private DBFacade dbf;
-
-    
+    private User currentLogin;
 
     public Controller() {
         currentProject = null;
         dbf = DBFacade.getInstance();
+        currentLogin = null;
     }
-
 
     //Singleton over
     //== Getting project
-
     public Project getProject(int pno) {
         try {
             currentProject = dbf.getProject(pno);
@@ -41,30 +39,39 @@ public class Controller {
     }
     //Getting project over
 
+    //Georgina:
     public Project insertProject(String act, String com, float cost, String mdf, String eQ, String end, String start, String obj, String pOE) throws SQLException {
         currentProject = new Project(act, com, cost, mdf, eQ, end, start, obj, pOE);
-        
+
         boolean status = dbf.insertProject(currentProject);
-        if(!status){//If dbf.insterProject does not return an insterted project
+        if (!status) {//If dbf.insterProject does not return an insterted project
             currentProject = null;
         }
-        
+
         return currentProject;//This return is wrong I think
     }
-    //added by Ben
-    public ArrayList<Project> getAllPartnerProjects(int paID) throws SQLException{
-        
+
+    //added by Ben:
+    public ArrayList<Project> getAllPartnerProjects(int paID) throws SQLException {
+
         return dbf.getAllPartnerProjects(paID);
     }
-    public ArrayList<Project> readAllProjects()throws SQLException
-    {
+
+    public ArrayList<Project> readAllProjects() throws SQLException {
         return dbf.readAllProjects();
     }
-    public ArrayList<Project> getPendingProjects() throws SQLException{
+
+    public ArrayList<Project> getPendingProjects() throws SQLException {
         return dbf.getPendingProjects();
-    } 
-    //added by Ben
-     public boolean updateApproveProject(int pno, String approve) throws SQLException{
-         return dbf.updateApproveProject(pno, approve);
-     }
+    }
+
+    //added by Ben:
+    public boolean updateApproveProject(int pno, String approve) throws SQLException {
+        return dbf.updateApproveProject(pno, approve);
+    }
+
+    //Georgina:
+    public User login(String username, String password, String userType/*, String userType*/) throws SQLException {
+        return currentLogin = dbf.login(username, password, userType);
+    }
 }

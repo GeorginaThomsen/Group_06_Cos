@@ -7,7 +7,7 @@ package domain;
 
 /**
  *
- * @author Cookie
+ * @author Georgina
  */
 public class POE {
     

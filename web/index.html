@@ -13,14 +13,13 @@ Author     : Georgina Thomsen
     </head>
     <body>
         <div></div>
-        <form action="DellFrontPage.jsp">                      
-            <button name="DellLogInButton" value="">Dell log-in</button>
+        <form action="LoginServlet" method="post">                      
+            <br>
+            Username:<input type="text" name="Username"  ><br><br>
+            Password: <input type=password name="Password" ><br>
+            <input type="submit" value="submit"><br>
+            <input type="hidden" name="Usertype">
         </form>
         <br>
-        <form action="PartnerFrontPage.jsp">                      
-            <button name="PartnerLogInButton" value="">Partner log-in</button>
-        </form>
-        <br>
-        
     </body>
 </html>

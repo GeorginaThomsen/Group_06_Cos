@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  *
- * @author Cookie
+ * @author Georgina
  */
 public class Project {
 
@@ -21,7 +21,7 @@ public class Project {
     private String Status;
     private int PaID;
 
-    //Made a constructor:
+    
     public Project(int ProjectID, String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, String StartDate, String EndDate, String ObjAndResult, String RequiredPOE) {
         this.ProjectID = ProjectID;
         this.ActivityDescription = ActivityDescription;
@@ -62,7 +62,6 @@ public class Project {
         this.PaID = PaID;
     }
 
-    //And getters and setters:
     public int getProjectID() {
         return ProjectID;
     }

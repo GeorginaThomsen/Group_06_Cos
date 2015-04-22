@@ -14,7 +14,7 @@
     <body>
         <h1>Request Project</h1>
         <form action="RequestProjectServlet" method="post">
-            
+
             <!--<input type="hidden" name="ProjectID" value="ProjectID">-->
             Activity Description:<br><input type="text" name="ActivityDescription"><br>
             Comments:<br><input type="text" name="Comments"><br>
@@ -25,10 +25,12 @@
             End Date:<br><input type="text" name="EndDate"><br>
             Objective & Result:<br><input type="text" name="ObjAndResult"><br>
             Required POE:<br><input type="text" name="RequiredPOE"><br>
+            
+            <!--Status: <br><input type="text" name="Status"><br>-->
             <!--POE:<br><input type="text" name="POE"><br>    hidden, needs to be filled after the event has taken place  -->
             <input type="hidden" name="command" value="RequestProject">
-            
+
             <br><button name="RequestProjectButton" value="" >Request Project</Button>
-            </form>
+        </form>
     </body>
 </html>
