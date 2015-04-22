@@ -5,14 +5,18 @@
  */
 package servletControl;
 
+import domain.Controller;
+import domain.Project;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,14 +37,26 @@ public class FinanceInputServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-            RequestDispatcher dispatcher = request.getRequestDispatcher("FinanceInput.jsp");
-            dispatcher.forward(request, response);
+        HttpSession sessionObj = request.getSession();
+            Controller con = (Controller) sessionObj.getAttribute("Controller");
+            if (con == null)
+            {
+                con = new Controller();
+                sessionObj.setAttribute("Controller", con);
 
-        }
+            }
+        getPendingProjects(request, response, con );
     }
+        
+        
+//        response.setContentType("text/html;charset=UTF-8");
+//        try (PrintWriter out = response.getWriter()) {
+////            /* TODO output your page here. You may use following sample code. */
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("FinanceInput.jsp");
+//            dispatcher.forward(request, response);
+
+        
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -54,8 +70,6 @@ public class FinanceInputServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String projectId = request.getParameter("ProjectId");
-        int fundAllocation = request.getIntHeader("FundAllocation");
         processRequest(request, response);
     }
 
@@ -82,5 +96,24 @@ public class FinanceInputServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    private void getPendingProjects(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+             try{ 
+        ArrayList<Project> projects = con.getPendingProjects();
+        
+                    request.setAttribute("projects", projects);
+
+             RequestDispatcher dispatcher = request.getRequestDispatcher("FinanceInput.jsp");
+        dispatcher.forward(request, response);
+          } catch(Exception e){
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
+
+    }
+    }
 
 }
