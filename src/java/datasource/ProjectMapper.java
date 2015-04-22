@@ -30,7 +30,7 @@ public class ProjectMapper {
 //    }
     public boolean insertProjects(Project p, Connection con) throws SQLException {
         int TuplesInserted = 0;
-        String SQLProject = "insert into Project values(ProID.nextval,?,?,?,?,?,?,?,?,?)";
+        String SQLProject = "insert into Project values(ProID.nextval,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preStatement = null;
         preStatement = con.prepareStatement(SQLProject);
         
@@ -50,6 +50,8 @@ public class ProjectMapper {
             preStatement.setString(7, p.getEndDate());
             preStatement.setString(8, p.getObjAndResult());
             preStatement.setString(9, p.getRequiredPOE());
+            preStatement.setString(10, "Pending");
+//            preStatement.setInt(11, 1000);
 
             TuplesInserted = preStatement.executeUpdate();
         
@@ -302,8 +304,30 @@ public class ProjectMapper {
       }
          return(details);
      }
-                    
-         
+   //added by ben                 
+    public boolean updateApproveProject(int pno, String approve, Connection con) throws SQLException {
+
+        int TuplesUpdated = 0;
+        System.out.println(pno);
+        System.out.println(approve);
+
+        String SQLProject = "update project set Status = ? where ProjectID = ? " ;
+                //updating project
+
+        PreparedStatement preStatement = null;
+
+        System.out.println("about to execute");
+        preStatement = con.prepareStatement(SQLProject);
+        System.out.println("executed");
+          preStatement.setString(1, approve);
+          preStatement.setInt(2,pno);     // primary key value
+
+        TuplesUpdated = preStatement.executeUpdate();
+
+//          getPendingProjects(con);
+        return TuplesUpdated == 1;
+    }
+            
                             
          
          
