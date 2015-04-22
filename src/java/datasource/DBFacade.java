@@ -54,4 +54,8 @@ public class DBFacade {
             public ArrayList<Project> getPendingProjects() throws SQLException {
                 return pm.getPendingProjects(con);
             }
+            //added by Ben
+             public boolean updateApproveProject(int pno, String approve) throws SQLException{
+                 return pm.updateApproveProject(pno, approve, con);
+             }
 }

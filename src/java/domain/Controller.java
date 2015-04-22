@@ -63,4 +63,8 @@ public class Controller {
     public ArrayList<Project> getPendingProjects() throws SQLException{
         return dbf.getPendingProjects();
     } 
+    //added by Ben
+     public boolean updateApproveProject(int pno, String approve) throws SQLException{
+         return dbf.updateApproveProject(pno, approve);
+     }
 }

@@ -17,7 +17,9 @@
             <button name="DellLogInButton" value="">Dell log-in</button>
         </form><br><br>
          <h1>See Pending Projects</h1>
-        <form action="MarketingServlet" method="post">                      
+        <form action="MarketingServlet" method="post"> 
+                                <input type="hidden" name="command" value="getPendingProjects">
+
             <button name="DellLogInButton" value="">Get Pending Projects</button>
         </form>
     

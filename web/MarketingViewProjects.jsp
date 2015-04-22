@@ -17,7 +17,7 @@
         <h1>Marketing View Projects</h1><br><br>
         
          <h2>Project Details</h2>
-        <form>
+        <form action="MarketingServlet" method="post">
             
         <%
         ArrayList<Project> projects = (ArrayList<Project>)request.getAttribute("projects");
@@ -45,9 +45,10 @@
                 for(int i = 0; i < projects.size(); i++)
                 {
             %>
-            <!--       <%= projects.get(i).getProjectID()%> -->
+            <      <%= projects.get(i).getProjectID()%> >
             <tr>
-                <td><input type="checkbox" name="project" value="Pro"></td>
+                <td><input type="checkbox" name="projectToUpdate" value="<%= projects.get(i).getProjectID()%>"></td>
+            <inptu type="submit">
                 <td><%= projects.get(i).getActivityDescription()%></td>
                 <td><%= projects.get(i).getComments()%></td>
                 <td><%= projects.get(i).getCost()%></td>
@@ -65,8 +66,18 @@
              
         <%}%>
         </table><br><br>
+       
+        <select name="approval">
+  <option  value="approved">Approved</option>
+  <option value="unapproved">UnApproved</option>
+  <option value="review">Review</option>
+  
+        </select><br><br>
+                    <input type="hidden" name="command" value="upDateApprove">
+
+            <button name="ChangeApprovalStatus" value="">Update Approval Status</button>
+        </form>
            
 
-        </form>
     </body>
 </html>
