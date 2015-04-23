@@ -69,6 +69,10 @@ public class Controller {
     public boolean updateApproveProject(int pno, String approve) throws SQLException {
         return dbf.updateApproveProject(pno, approve);
     }
+    
+    public boolean updateCostProject(int pno, float cost) throws SQLException{
+        return dbf.updateCostProject(pno, cost);
+    }
 
     //Georgina:
     public User login(String username, String password, String userType/*, String userType*/) throws SQLException {

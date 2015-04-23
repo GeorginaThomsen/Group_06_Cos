@@ -45,10 +45,48 @@ public class FinanceInputServlet extends HttpServlet {
                 sessionObj.setAttribute("Controller", con);
 
             }
+            String command = request.getParameter("command");
+            switch(command){
+                case "getPendingProjects":
+                    getPendingProjects(request, response, con);
+                    break;
+                case "upDateCost":
+                    upDateCost(request, response, con);
+                    break;
+            }
         getPendingProjects(request, response, con );
     }
+    
+    
+    
         
+    
+    private void upDateCost(HttpServletRequest request, HttpServletResponse response, Controller con) throws ServletException, IOException{
         
+        try{
+            int getCost = Integer.parseInt(request.getParameter("GetCost"));
+            int pro = Integer.parseInt(request.getParameter("projectToEdit"));
+            String cost = request.getParameter("CostUpdate");
+            System.out.println(pro);
+            System.out.println(cost);
+            System.out.println(getCost);
+            System.out.println("Read me-------------------------------------------------");
+            con.updateCostProject(pro, getCost);
+            getPendingProjects(request, response, con);
+            
+        } catch(Exception e){
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();
+            out.println("<h2>" + e + "</h2><hr>");
+            out.println("<pre>");
+            e.printStackTrace(out);
+            out.println("<pre>");
+        }
+        
+    }
+    
+    
+    
 //        response.setContentType("text/html;charset=UTF-8");
 //        try (PrintWriter out = response.getWriter()) {
 ////            /* TODO output your page here. You may use following sample code. */
@@ -115,5 +153,8 @@ public class FinanceInputServlet extends HttpServlet {
 
     }
     }
+    
+    
+    
 
 }

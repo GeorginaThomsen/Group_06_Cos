@@ -66,6 +66,10 @@ public class DBFacade {
         return pm.updateApproveProject(pno, approve, con);
     }
     
+    public boolean updateCostProject(int pno, float cost) throws SQLException{
+        return pm.updateCostProject(pno, cost, con);
+    }
+    
     //Georgina:
     public User login(String username, String password, String userType){
         return pm.login(username, password, userType, con);

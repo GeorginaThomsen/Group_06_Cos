@@ -22,9 +22,11 @@
 
             <button name="DellLogInButton" value="">Get Pending Projects</button>
         </form><br><br>
+        
          <h1>See finance pending projects</h1>
          <form action="FinanceInputServlet" method="get">
              <button name="DellLogInButton" value="">Get finance pending projects</button>
+              <input type="hidden" name="command" value="getPendingProjects">
          </form>
     
     </body>

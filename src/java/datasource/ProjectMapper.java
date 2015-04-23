@@ -54,7 +54,7 @@ public class ProjectMapper {
         PreparedStatement preStatement = null;
         preStatement = con.prepareStatement(SQLProject);
         try {
-         //=== Get project
+            //=== Get project
 
             preStatement = con.prepareStatement(SQLProject);
 
@@ -100,7 +100,7 @@ public class ProjectMapper {
         PreparedStatement preStatement = null;
         preStatement = con.prepareStatement(SQLProject1);
         try {
-         //=== Get partner
+            //=== Get partner
 
             preStatement = con.prepareStatement(SQLProject1);
 
@@ -142,14 +142,13 @@ public class ProjectMapper {
         PreparedStatement preStatement = null;
         preStatement = con.prepareStatement(SQLProject);
         try {
-         //=== Get project
+            //=== Get project
 
             preStatement = con.prepareStatement(SQLProject);
 
             preStatement.setInt(1, pno);     // primary key value
             ResultSet rs = preStatement.executeQuery();
             if (rs.next()) {
-                System.out.println("filling projects");
                 p = new Project(pno,
                         rs.getString(2),
                         rs.getString(3),
@@ -192,7 +191,7 @@ public class ProjectMapper {
 
             preStatement = con.prepareStatement(SQLProject1);
 
-            System.out.println("Got as far as this!!*********");
+           
             ResultSet rs = preStatement.executeQuery();
             List projects = new ArrayList();
             while (rs.next()) {
@@ -228,7 +227,7 @@ public class ProjectMapper {
         PreparedStatement preStatement = null;
         preStatement = con.prepareStatement(SQLProject1);
         try {
-         //=== Get partner
+            //=== Get partner
 
             preStatement = con.prepareStatement(SQLProject1);
 
@@ -260,7 +259,6 @@ public class ProjectMapper {
     }
 
     //added by ben:                 
-
     public boolean updateApproveProject(int pno, String approve, Connection con) throws SQLException {
 
         int TuplesUpdated = 0;
@@ -281,6 +279,22 @@ public class ProjectMapper {
         TuplesUpdated = preStatement.executeUpdate();
 
 //          getPendingProjects(con);
+        return TuplesUpdated == 1;
+    }
+
+    public boolean updateCostProject(int pno, float cost, Connection con) throws SQLException {
+        
+        int TuplesUpdated = 0;
+        
+        String SQLCost = "update project set cost = ? where ProjectID = ?";
+        PreparedStatement preStatement = null;
+        
+        preStatement = con.prepareStatement(SQLCost);
+        preStatement.setFloat(1, cost);
+        preStatement.setInt(2, pno);
+        
+        TuplesUpdated = preStatement.executeUpdate();
+        
         return TuplesUpdated == 1;
     }
 

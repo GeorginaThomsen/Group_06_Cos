@@ -22,7 +22,7 @@
         
         <br>
          <h2>Project Details</h2>
-        <form>
+        <form action="FinanceInputServlet" method="get">
             
         <%
         ArrayList<Project> projects = (ArrayList<Project>)request.getAttribute("projects");
@@ -52,7 +52,7 @@
             %>
             <!--       <%= projects.get(i).getProjectID()%> -->
             <tr>
-                <td><input type="checkbox" name="project" value="Pro"></td>
+                <td><input type="checkbox" name="projectToEdit" value="<%= projects.get(i).getProjectID()%>"></td>  
                 <td><%= projects.get(i).getActivityDescription()%></td>
                 <td><%= projects.get(i).getComments()%></td>
                 <td><%= projects.get(i).getCost()%></td>
@@ -64,7 +64,7 @@
                 <td><%= projects.get(i).getRequiredPOE()%></td>
                 <td><%= projects.get(i).getStatus()%></td>
                 <td><%= projects.get(i).getPaID()%></td>
-                 
+            <input type="hidden" name="CostUpdate" value="<%= projects.get(i).getCost()%>"
             </tr>
             
              
@@ -77,9 +77,10 @@
                
     
      <!--   <form action="FinanceInputServlet" method="get" style="text-align: center"> -->
-     <input type="text" name="FundAllocation">€
-     <input type="submit" value="Submit">Edit
+     New cost<input type="text" name="GetCost">€
+     <input type="submit" value="Submit">
      <input type="submit" value="Reimburse">
+     <input type="hidden" name="command" value="upDateCost">
       </form>
     </body>
 </html>
