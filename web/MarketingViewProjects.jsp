@@ -14,7 +14,12 @@
         <title>Marketing View Projects</title>
     </head>
     <body>
-        <h1>Marketing View Projects</h1><br><br>
+        <h1>Marketing View Projects</h1><br>
+        
+        <form action="DellFrontPage.jsp" method="post">                      
+            <button name="DellBackButton" value="">Back</button>
+        </form><br>
+        
         
          <h2>Project Details</h2>
         <form action="MarketingServlet" method="post">

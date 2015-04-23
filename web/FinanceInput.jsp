@@ -14,7 +14,7 @@
         <title>Finance</title>
     </head>
     <body>
-        <h1>Finance view projects</h1>
+        <h1>Finance view projects</h1><br>
         
         <form action="DellFrontPage.jsp" method="post">                      
             <button name="DellBackButton" value="">Back</button>
