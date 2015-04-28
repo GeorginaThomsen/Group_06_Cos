@@ -54,6 +54,9 @@ public class MarketingServlet extends HttpServlet {
                 case "upDateApprove":
                     upDateApprove(request, response, con);
                     break;
+                     case "viewComments":
+                viewComments(request, response, con);
+                break;
                 
 //        getPendingProjects(request, response, con );
 //        upDateApprove(request, response, con );
@@ -141,4 +144,24 @@ public class MarketingServlet extends HttpServlet {
     }
 
 }
+    private void viewComments(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+        try {
+            int pro = Integer.parseInt(request.getParameter("projectToUpdate"));
+            
+            Project project = con.getCompleteProject(pro);
+            String comments = con.getComments(pro);
+            request.setAttribute("project", project);
+            request.setAttribute("comments", comments);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ViewComments.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
+
+        }
+    }
 }

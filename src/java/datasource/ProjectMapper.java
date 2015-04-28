@@ -323,5 +323,64 @@ public class ProjectMapper {
         }
 
     }
+     //Ben:
+    public boolean insertComments(int projectID, String comments, Connection con) throws SQLException {
+        int TuplesInserted = 0;
+        String SQLProject = "insert into Comments values(?,?)";
+        PreparedStatement preStatement = null;
 
+        preStatement = con.prepareStatement(SQLProject);
+
+        preStatement.setInt(1, projectID);
+        preStatement.setString(2, comments);
+
+        TuplesInserted = preStatement.executeUpdate();
+
+        return TuplesInserted == 1;//If there is one tuple then it succeded and is true
+    }
+     //Ben:
+    public boolean upDateComments(int projectID, String comments, Connection con) throws SQLException {
+        int TuplesInserted = 0;
+        String SQLProject = "update  Comments set comments = ? where projectID = ? ";
+        PreparedStatement preStatement = null;
+        String previous = getComments(projectID, con);
+        preStatement = con.prepareStatement(SQLProject);
+
+        preStatement.setString(1, previous + " ::: " +comments);
+        preStatement.setInt(2, projectID);
+
+        TuplesInserted = preStatement.executeUpdate();
+
+        return TuplesInserted == 1;//If there is one tuple then it succeded and is true
+    }
+      public boolean checkForComments(int projectID, Connection con) throws SQLException {
+        int comments = 0;
+        String SQL = "select * from comments where projectid = ?  ";
+        PreparedStatement preStatement = null;
+        preStatement = con.prepareStatement(SQL);
+        preStatement.setInt(1, projectID);
+
+        comments = preStatement.executeUpdate();
+
+        return comments == 1;
+    }
+
+    public String getComments(int projectID, Connection con) throws SQLException {
+        String comments = "";
+        try {
+            String SQL = "select comments from comments where projectID = ? ";
+            PreparedStatement preStatement = null;
+            preStatement = con.prepareStatement(SQL);
+            preStatement.setInt(1, projectID);
+            ResultSet rs = preStatement.executeQuery();
+            if (rs.next()) {
+                comments = rs.getString("COMMENTS");
+            }
+
+            return comments;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

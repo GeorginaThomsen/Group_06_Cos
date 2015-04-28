@@ -78,4 +78,25 @@ public class Controller {
     public User login(String username, String password, String userType/*, String userType*/) throws SQLException {
         return currentLogin = dbf.login(username, password, userType);
     }
+     //Ben:
+    public boolean insertComments(int projectID, String comments) throws SQLException{
+        return dbf.insertComments(projectID, comments);
+    }
+    //Ben:
+    public boolean checkForComments(int projectID) throws SQLException{
+        return dbf.checkForComments(projectID);
+    }
+    //Ben:
+    public String getComments(int projectID) throws SQLException{
+        return dbf.getComments(projectID);
+    }
+    //Ben:
+     public boolean upDateComments(int projectID, String comments) throws SQLException{
+         return dbf.upDateComments(projectID, comments);
+     }
+      //Getting project over
+     public Project getCompleteProject(int pno) throws SQLException{
+         return dbf.getCompleteProject(pno);
+     }
+    
 }

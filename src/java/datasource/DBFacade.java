@@ -74,4 +74,24 @@ public class DBFacade {
     public User login(String username, String password, String userType){
         return pm.login(username, password, userType, con);
     }
+     //Ben:
+    public boolean insertComments(int projectID, String comments) throws SQLException {
+        return pm.insertComments(projectID, comments, con);
+    }
+    //Ben:
+     public boolean upDateComments(int projectID, String comments) throws SQLException{
+         return pm.upDateComments(projectID, comments, con);
+     }
+      //Ben:
+    public boolean checkForComments(int projectID) throws SQLException{
+        return pm.checkForComments(projectID,  con);
+    }
+    //Ben:
+    public String getComments(int projectID) throws SQLException{
+        return pm.getComments(projectID,  con);
+    }
+    //Ben:
+     public Project getCompleteProject(int pno) throws SQLException{
+          return pm.getCompleteProject(pno, con);
+     }
 }

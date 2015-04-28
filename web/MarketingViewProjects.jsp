@@ -50,7 +50,7 @@
                 for(int i = 0; i < projects.size(); i++)
                 {
             %>
-            <      <%= projects.get(i).getProjectID()%> >
+            <!--     <%= projects.get(i).getProjectID()%> -->
             <tr>
                 <td><input type="checkbox" name="projectToUpdate" value="<%= projects.get(i).getProjectID()%>"></td>
             <inptu type="submit">
@@ -71,6 +71,9 @@
              
         <%}%>
         </table><br><br>
+        
+                    <button type="submit" name="command" value="viewComments">View Comments</button><br><br>
+
        
         <select name="approval">
   <option  value="approved">Approved</option>
@@ -81,8 +84,13 @@
                     <input type="hidden" name="command" value="upDateApprove">
 
             <button name="ChangeApprovalStatus" value="">Update Approval Status</button>
-        </form>
-           
+        </form><br><br>
+            <br><br>
+        <form action="ShowAllProjectsServlet" method="post">
+            <input type="hidden" name="command" value="viewAllProjects">
+
+            <button name="viewAllProjects" value="">View All Projects</button>
+        </form><br><br>
 
     </body>
 </html>
