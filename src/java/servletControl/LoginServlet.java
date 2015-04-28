@@ -48,27 +48,32 @@ public class LoginServlet extends HttpServlet {
             ex.getStackTrace();
         }
     }
-     private void LoginCheck(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException, SQLException {
+
+    private void LoginCheck(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException, SQLException {
         try {
-            String userName = request.getParameter("Username");//Get the username that someone just entered.
+            String userName = request.getParameter("Username");
             String password = request.getParameter("Password");
             String userType = request.getParameter("Usertype");
 
             User user = con.login(userName, password, userType);
-//            User newUser = (User) request.getAttribute("username");
-//          String newU = user.getUserName();
-            if (user != null && user.getUserType().equalsIgnoreCase("Top-manager")) {
-                System.out.println("UserType: " + userType);
-                System.out.println(user.getUserType());
-
+            if (user == null) {
+                System.out.println("WUT!");
+                //Possible change to come back to login page
+                response.sendError(response.SC_BAD_REQUEST, "Username or Password is wrong");
+            } else if (user.getUserType().equalsIgnoreCase("Partner")) {
                 request.setAttribute("username", user);
-                response.sendRedirect("PartnerFrontPage.jsp");
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("PartnerFrontPage.jsp");
-//            dispatcher.forward(request, response);
-            } else {
+                response.sendRedirect("PartnerFrontPage.jsp");//Change to right jsp
+            } else if (user.getUserType().equalsIgnoreCase("Top-manager")) {
                 request.setAttribute("username", user);
-                response.sendRedirect("DellFrontPage.jsp");
+                response.sendRedirect("DellFrontPage.jsp");//Change to right jsp
+            } else if (user.getUserType().equalsIgnoreCase("DellFinaceDept")) {
+                request.setAttribute("username", user);
+                response.sendRedirect("FinanceInput.jsp");//Change to right jsp
+            } else if (user.getUserType().equalsIgnoreCase("DellMarketingDept")) {
+                request.setAttribute("username", user);
+                response.sendRedirect("MarketingViewProjects.jsp");//Change to right jsp
             }
+
         } catch (Exception e) {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
@@ -83,18 +88,17 @@ public class LoginServlet extends HttpServlet {
 
     }
 
-
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-/**
- * Handles the HTTP <code>GET</code> method.
- *
- * @param request servlet request
- * @param response servlet response
- * @throws ServletException if a servlet-specific error occurs
- * @throws IOException if an I/O error occurs
- */
-@Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -108,7 +112,7 @@ public class LoginServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -119,7 +123,7 @@ public class LoginServlet extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-        public String getServletInfo() {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 

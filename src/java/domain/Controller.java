@@ -74,7 +74,7 @@ public class Controller {
         return dbf.updateCostProject(pno, cost);
     }
 
-    //Georgina:
+     //Georgina:
     public User login(String username, String password, String userType/*, String userType*/) throws SQLException {
         return currentLogin = dbf.login(username, password, userType);
     }

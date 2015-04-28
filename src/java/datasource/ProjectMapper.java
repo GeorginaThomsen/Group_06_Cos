@@ -191,7 +191,6 @@ public class ProjectMapper {
 
             preStatement = con.prepareStatement(SQLProject1);
 
-           
             ResultSet rs = preStatement.executeQuery();
             List projects = new ArrayList();
             while (rs.next()) {
@@ -283,37 +282,32 @@ public class ProjectMapper {
     }
 
     public boolean updateCostProject(int pno, float cost, Connection con) throws SQLException {
-        
+
         int TuplesUpdated = 0;
-        
+
         String SQLCost = "update project set cost = ? where ProjectID = ?";
         PreparedStatement preStatement = null;
-        
+
         preStatement = con.prepareStatement(SQLCost);
         preStatement.setFloat(1, cost);
         preStatement.setInt(2, pno);
-        
+
         TuplesUpdated = preStatement.executeUpdate();
-        
+
         return TuplesUpdated == 1;
     }
 
+    //When we change/update our DB we should also change this accordingly.
     //Georgina:
     public User login(String username, String password, String userType, Connection con) {
         User user = null;
         try {
             String sql = "SELECT * FROM UserTable WHERE Username = ? AND Password = ?";
-//            String sql = "SELECT * FROM Partner WHERE PartnerName = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, username);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
-//            if (rs.next()) {
-//                int id = rs.getInt("PARTNERID");
-//                String name = rs.getString("PARTNERNAME");
-//                String country = rs.getString("COUNTRY");
-//                user = new User(id, name, country);
-//            }
+
             if (rs.next()) {
                 String usern = rs.getString("USERNAME");
                 String pass = rs.getString("PASSWORD");
@@ -321,7 +315,7 @@ public class ProjectMapper {
                 user = new User(usern, pass, userTyp);
 
             }
-
+            System.out.println(user);
             return user;
         } catch (Exception e) {
             e.printStackTrace();
