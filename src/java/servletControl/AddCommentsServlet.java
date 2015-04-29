@@ -54,6 +54,13 @@ public class AddCommentsServlet extends HttpServlet {
             case "getComments":
                 getComments(request, response, con);
                 break;
+            case "addFinanceComments":
+                addComments(request, response, con);
+                break;
+
+            case "getFinanceComments":
+                getComments(request, response, con);
+                break;
 
         }
     }
@@ -145,12 +152,75 @@ public class AddCommentsServlet extends HttpServlet {
 
         }
     }
+    private void addFinanceComments(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+
+        try {
+            int pro = Integer.parseInt(request.getParameter("projectID"));
+           
+            String comments = request.getParameter("newComments");
+            if (!checkForComments(pro, con)) {
+                con.insertComments(pro, comments);
+
+            } else {
+                con.upDateComments(pro, comments);
+                String projectID = Integer.toString(pro);
+                String comment = "Your Comments have been added to Project No: " + projectID;
+                request.setAttribute("projectID", projectID);
+                request.setAttribute("comment", comment);
+                request.setAttribute("comments", comments);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("ConfirmComments.jsp");
+                dispatcher.forward(request, response);
+
+            }
+
+            String projectID = Integer.toString(pro);
+            String comment = "Your Comments have been added to Project No: " + projectID;
+                request.setAttribute("comments", comments);
+            request.setAttribute("comment", comment);
+            request.setAttribute("projectID", projectID);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ConfirmComments.jsp");
+
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
+
+        }
+    }
 
     private boolean checkForComments(int projectID, Controller con) throws SQLException {
         return con.checkForComments(projectID);
     }
 
     private void getComments(HttpServletRequest request, HttpServletResponse response, Controller con) throws SQLException, IOException {
+        try {
+            int pro = Integer.parseInt(request.getParameter("projectID"));
+            String projectID = Integer.toString(pro);
+
+            String comments = con.getComments(pro);
+            String comment = "Your Comments have been added to Project No: " + projectID;
+            request.setAttribute("comment", comment);
+            request.setAttribute("comments", comments);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ConfirmComments.jsp");
+
+            dispatcher.forward(request, response);
+
+        } catch (Exception e) {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
+
+        }
+
+    }
+    private void getFinanceComments(HttpServletRequest request, HttpServletResponse response, Controller con) throws SQLException, IOException {
         try {
             int pro = Integer.parseInt(request.getParameter("projectID"));
             String projectID = Integer.toString(pro);

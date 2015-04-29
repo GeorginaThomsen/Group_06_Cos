@@ -46,7 +46,17 @@ public class DashboardServlet extends HttpServlet {
                 sessionObj.setAttribute("Controller", con);
 
             }
-        readAllPartnerProjects(request, response, con );
+            String command = request.getParameter("command");
+        switch (command) {
+            
+            case "viewComments":
+                viewComments(request, response, con);
+                break;
+            case "readAllPartnerProjects":
+                readAllPartnerProjects(request, response, con);
+                break;
+        }
+//        readAllPartnerProjects(request, response, con );
         
         
         
@@ -75,6 +85,26 @@ public class DashboardServlet extends HttpServlet {
     
        
     }  
+     private void viewComments(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+        try {
+            int pro = Integer.parseInt(request.getParameter("project"));
+                        Project project = con.getCompleteProject(pro);
+            String comments = con.getComments(pro);
+
+            request.setAttribute("project", project);
+            request.setAttribute("comments", comments);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("PartnerViewComments.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
+
+        }
+    }
         
         
    

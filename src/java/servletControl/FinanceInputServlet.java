@@ -55,6 +55,9 @@ public class FinanceInputServlet extends HttpServlet {
             case "upDateApprove":
                 upDateApprove(request, response, con);
                 break;
+            case "viewComments":
+                viewComments(request, response, con);
+                break;
         }
         getPendingProjects(request, response, con);
     }
@@ -154,6 +157,29 @@ public class FinanceInputServlet extends HttpServlet {
             request.setAttribute("projects", projects);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("FinanceInput.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
+
+        }
+    }
+
+    //Ben:
+
+    private void viewComments(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+        try {
+            int pro = Integer.parseInt(request.getParameter("projectToEdit"));
+            System.out.println("finance project for comments" + pro);
+            Project project = con.getCompleteProject(pro);
+            String comments = con.getComments(pro);
+            request.setAttribute("project", project);
+            request.setAttribute("comments", comments);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("FinanceViewComments.jsp");
             dispatcher.forward(request, response);
         } catch (Exception e) {
             response.setContentType("text/html");

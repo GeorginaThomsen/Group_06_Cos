@@ -14,6 +14,7 @@
         <title>View All Projects</title>
     </head>
     <body>
+        <form action="DashboardServlet" method="post">
         <h1>View All Projects</h1>
            
 
@@ -45,7 +46,7 @@
             %>
             <!--       <%= projects.get(i).getProjectID()%> -->
             <tr>
-                <td><input type="checkbox" name="project" value="Pro"></td>
+                <td><input type="radio" name="project" value="<%= projects.get(i).getProjectID()%>"></td>
                 <td><%= projects.get(i).getActivityDescription()%></td>
                 <td><%= projects.get(i).getComments()%></td>
                 <td><%= projects.get(i).getCost()%></td>
@@ -58,7 +59,11 @@
             </tr>
              
         <%}%>
-        </table>
+        </table><br><br>
             
+                            <button type="submit" name="command" value="viewComments">View Comments</button><br><br>
+                                         Previous Comments: <input type="text" name="comments" value="<%= request.getAttribute("comments")%>" size="200" readonly><br><br>
+
+        </form>
     </body>
 </html>

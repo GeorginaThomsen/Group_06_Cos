@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AddComments
-    Created on : Apr 24, 2015, 11:49:13 AM
+    Document   : PartnerViewComments
+    Created on : Apr 29, 2015, 10:56:04 AM
     Author     : Ben
 --%>
 
@@ -10,21 +10,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>View Comments JSP</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <h1>View Comments Page</h1>
-        <form action="AddCommentsServlet" method="post">
-            
-        
-        <%
+        <h1>Hello World!</h1>
+        <form action="DahboardServlet" method="post">
+
+
+            <%
                 Project project = (Project) request.getAttribute("project");
             %>
-    
-    
+
+
             <table border="1" style="width:100%">
                 <tr>
-                    
+
                     <th> Activity Description  </th>     
                     <th> Comments  </th> 
                     <th> Cost  </th> 
@@ -38,7 +38,7 @@
                     <th> PartnerID  </th> 
 
                 </tr>
-                       
+
                 <tr>
 
                     <td><%= project.getActivityDescription()%></td>
@@ -53,21 +53,23 @@
                     <td><%= project.getStatus()%></td>
                     <td><%= project.getPaID()%></td>
 
-                    </tr>
+                </tr>
 
 
-                    
+
             </table><br><br>
-                    <input type="hidden" name="projectID"  value="<%= project.getProjectID()%>">
-                    Previous Comments: <input type="text" name="comments" value="<%= request.getAttribute("comments")%>" size="150" readonly><br><br>
-            New Comments: <input type="text" name="newComments" value="" size="100">
-            <button name="command" value="addComments">Add Comments To Project</button>
-        </form><br><br>
-         <form action="ShowAllProjectsServlet" method="post">
-            <input type="hidden" name="command" value="viewAllProjects">
+            <input type="hidden" name="projectID"  value="<%= project.getProjectID()%>">
+            Comments: <br><br>
+            <textarea rows="10" cols="150">
+                <%= request.getAttribute("comments")%>
+            </textarea><br><br>
+            
+                
 
-            <button name="viewAllProjects" value="">View All Projects</button>
+
         </form><br><br>
         
+        
+
     </body>
 </html>

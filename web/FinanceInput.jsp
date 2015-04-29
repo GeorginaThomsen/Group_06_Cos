@@ -22,7 +22,7 @@
 
         <br>
         <h2>Project Details</h2>
-        <form action="FinanceInputServlet" method="get">
+        <form action="FinanceInputServlet" method="post">
 
             <%
                 ArrayList<Project> projects = (ArrayList<Project>) request.getAttribute("projects");
@@ -63,7 +63,8 @@
                     <td><%= projects.get(i).getRequiredPOE()%></td>
                     <td><%= projects.get(i).getStatus()%></td>
                     <td><%= projects.get(i).getPaID()%></td>
-                <input type="hidden" name="CostUpdate" value="<%= projects.get(i).getCost()%>"
+                    
+                    <input type="hidden" name="CostUpdate" value="<%= projects.get(i).getCost()%>"
                        <input type="hidden" name="StatusUpdate" value="<%= projects.get(i).getStatus()%>"
                        </tr>
 
@@ -71,11 +72,12 @@
                 <%}%>
             </table><br><br>
 
+                  <button type="submit" name="command" value="viewComments">View Comments</button><br><br>
 
            
 
             <button name="command" value="upDateApprove">Reimburse</button>
-            <input type="hidden"name="approval"value="Completed">
+            <input type="hidden" name="approval" value="Completed">
 
             <!--   <form action="FinanceInputServlet" method="get" style="text-align: center"> -->
             New cost<input type="text" name="GetCost">€

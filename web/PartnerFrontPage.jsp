@@ -17,7 +17,7 @@
             
          Enter Partner Number:<input type="text" name="PartnerNo"  ><br><br>
 
-            <button name="PartnerLogInButton" value="">Partner log-in</button><br><br>
+            <button type="submit" name="command" value="readAllPartnerProjects">Partner log-in</button><br><br>
         </form>
     </body>
 </html>
