@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AddComments
-    Created on : Apr 24, 2015, 11:49:13 AM
+    Document   : FinanceViewComments
+    Created on : Apr 29, 2015, 9:21:10 AM
     Author     : Ben
 --%>
 
@@ -10,10 +10,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>View Comments JSP</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <h1>View Comments Page</h1>
+          <h1>View Comments Page</h1>
         <form action="AddCommentsServlet" method="post">
             
         
@@ -59,8 +59,11 @@
                     
             </table><br><br>
                     <input type="hidden" name="projectID"  value="<%= project.getProjectID()%>">
-                    Previous Comments: <input type="text" name="comments" value="<%= request.getAttribute("comments")%>" size="150" readonly><br><br>
-            New Comments: <input type="text" name="newComments" value="" size="100">
+                    Previous Comments: <!--input type="text" name="comments" value="<%= request.getAttribute("comments")%>" size="150" readonly--><br><br>
+                     <textarea rows="10" cols="200">
+                <%= request.getAttribute("comments")%>
+            </textarea>
+            New Comments: <input type="text" name="newFinanceComments" value="" size="100">
             <button name="command" value="addComments">Add Comments To Project</button>
         </form><br><br>
          <form action="ShowAllProjectsServlet" method="post">
