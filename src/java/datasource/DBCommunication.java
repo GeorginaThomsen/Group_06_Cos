@@ -12,8 +12,8 @@ public class DBCommunication {
     
     private static String JDBC_Driver = "oracle.jdbc.driver.OracleDriver";//Can I make this final?
     private static String URL = "jdbc:oracle:thin:@datdb.cphbusiness.dk:1521:dat";//Can I make this final?
-    private static String user = "cphbj120";//Put in your Oracle username.
-    private static String pass = "cphbj120";//Put in your Oracle password.
+    private static String user = "cphgt44";//Put in your Oracle username.
+    private static String pass = "cphgt44";//Put in your Oracle password.
     
     private Connection conn;//Can I make this non-private
     
