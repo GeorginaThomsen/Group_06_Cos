@@ -14,18 +14,18 @@
     <body>
         <h1>See All Projects</h1>
         <form action="ShowAllProjectsServlet" method="post">                      
-            <button name="DellLogInButton" value="">Dell log-in</button>
+            <button name="DellLogInButton" value="">See All Projects</button>
         </form><br><br>
-         <h1>See Pending Projects</h1>
+         <h1>See Marketing Pending Projects</h1>
         <form action="MarketingServlet" method="post"> 
                                 <input type="hidden" name="command" value="getPendingProjects">
 
-            <button name="DellLogInButton" value="">Get Pending Projects</button>
+            <button name="DellLogInButton" value="">Get Marketing Pending Projects</button>
         </form><br><br>
         
-         <h1>See finance pending projects</h1>
+         <h1>See Finance Pending Projects</h1>
          <form action="FinanceInputServlet" method="get">
-             <button name="DellLogInButton" value="">Get finance pending projects</button>
+             <button name="DellLogInButton" value="">Get Finance Pending projects</button>
               <input type="hidden" name="command" value="getPendingProjects">
          </form>
     

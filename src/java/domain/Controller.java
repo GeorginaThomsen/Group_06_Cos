@@ -98,5 +98,11 @@ public class Controller {
      public Project getCompleteProject(int pno) throws SQLException{
          return dbf.getCompleteProject(pno);
      }
+     public boolean editProject(int pno,  String column, String edit) throws SQLException{
+         return dbf.editProject(pno, column, edit);
+     }
+     public boolean editCost(int pno,  String column, float edit) throws SQLException{
+         return dbf.editCost(pno, column, edit);
+     }
     
 }

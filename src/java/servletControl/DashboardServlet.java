@@ -37,44 +37,57 @@ public class DashboardServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          
-    HttpSession sessionObj = request.getSession();
-            Controller con = (Controller) sessionObj.getAttribute("Controller");
-            if (con == null)
-            {
-                con = new Controller();
-                sessionObj.setAttribute("Controller", con);
 
-            }
-            String command = request.getParameter("command");
+        HttpSession sessionObj = request.getSession();
+        Controller con = (Controller) sessionObj.getAttribute("Controller");
+        if (con == null) {
+            con = new Controller();
+            sessionObj.setAttribute("Controller", con);
+
+        }
+        String command = request.getParameter("command");
         switch (command) {
-            
+
             case "viewComments":
                 viewComments(request, response, con);
                 break;
             case "readAllPartnerProjects":
                 readAllPartnerProjects(request, response, con);
                 break;
+            case "editProject":
+                editProject(request, response, con);
+                break;
+            case "updateAct":
+                updateAct(request, response, con);
+                break;
+            case "updateCom":
+                updateCom(request, response, con);
+                break;
+            case "updateCost":
+                updateCost(request, response, con);
+                break;
+            case "updatePoe":
+                updatePoe(request, response, con);
+                break;
+            case "updateObj":
+                updateObj(request, response, con);
+                break;
         }
 //        readAllPartnerProjects(request, response, con );
-        
-        
-        
-        
+
     }
-    private void readAllPartnerProjects(HttpServletRequest request, HttpServletResponse response, Controller con) throws ServletException, IOException{
-        
-        try{ 
-        int partnerNo = Integer.parseInt(request.getParameter("PartnerNo"));
-        
+
+    private void readAllPartnerProjects(HttpServletRequest request, HttpServletResponse response, Controller con) throws ServletException, IOException {
+
+        try {
+            int partnerNo = Integer.parseInt(request.getParameter("PartnerNo"));
             ArrayList<Project> projects = con.getAllPartnerProjects(partnerNo);
-            
-        
-        request.setAttribute("partnerNo", partnerNo);
-        request.setAttribute("projects", projects);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("PartnerViewAllProjects.jsp");
-        dispatcher.forward(request, response);
-          } catch(Exception e){
+
+            request.setAttribute("partnerNo", partnerNo);
+            request.setAttribute("projects", projects);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("PartnerViewAllProjects.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
             out.println("<h2>" + e + "</h2><hr>");
@@ -82,16 +95,18 @@ public class DashboardServlet extends HttpServlet {
             e.printStackTrace(out);
             out.println("</pre>");
         }
-    
-       
-    }  
-     private void viewComments(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+
+    }
+
+    private void viewComments(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
         try {
             int pro = Integer.parseInt(request.getParameter("project"));
-                        Project project = con.getCompleteProject(pro);
+            Project project = con.getCompleteProject(pro);
+            String partner = request.getParameter("partner");
             String comments = con.getComments(pro);
 
             request.setAttribute("project", project);
+            request.setAttribute("partner", partner);
             request.setAttribute("comments", comments);
             RequestDispatcher dispatcher = request.getRequestDispatcher("PartnerViewComments.jsp");
             dispatcher.forward(request, response);
@@ -105,9 +120,6 @@ public class DashboardServlet extends HttpServlet {
 
         }
     }
-        
-        
-   
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -148,6 +160,145 @@ public class DashboardServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-   
+    private void editProject(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+        try {
+            int pro = Integer.parseInt(request.getParameter("projectID"));
+            Project project = con.getCompleteProject(pro);
+            String partnerNo = request.getParameter("PartnerNo");
+            String comments = con.getComments(pro);
 
+            request.setAttribute("project", project);
+            request.setAttribute("partner", partnerNo);
+            request.setAttribute("comments", comments);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("PartnerEditProject.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
+
+        }
+    }
+
+    private void updateAct(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+        try {
+            int pro = Integer.parseInt(request.getParameter("projectID"));
+            String act = request.getParameter("newAct");
+            String partnerNo = request.getParameter("partnerNo");
+            String column = "activitydescription";
+            con.editProject(pro, column, act);
+            Project project = con.getCompleteProject(pro);
+            String comments = con.getComments(pro);
+
+            request.setAttribute("project", project);
+            request.setAttribute("partner", partnerNo);
+            request.setAttribute("comments", comments);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("PartnerEditProject.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
+
+        }
+    }
+    private void updateCom(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+        try {
+             int pro = Integer.parseInt(request.getParameter("projectID"));
+            String com = request.getParameter("newComments");
+            String column = "comments";
+            con.editProject(pro, column, com);
+            Project project = con.getCompleteProject(pro);
+            String comments = con.getComments(pro);
+
+            request.setAttribute("project", project);
+            request.setAttribute("comments", comments);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("PartnerEditProject.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
+
+        }
+    }
+    private void updateCost(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+        try {
+            int pro = Integer.parseInt(request.getParameter("projectID"));
+            float cos = Float.parseFloat(request.getParameter("newCost"));
+            String column = "cost";
+            con.editCost(pro, column, cos);
+            Project project = con.getCompleteProject(pro);
+            String comments = con.getComments(pro);
+
+            request.setAttribute("project", project);
+            request.setAttribute("comments", comments);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("PartnerEditProject.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
+
+        }
+    }
+
+    private void updatePoe(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+        try {
+            int pro = Integer.parseInt(request.getParameter("projectID"));
+            String poe = request.getParameter("newPOE");
+            String column = "poe";
+            con.editProject(pro, column, poe);
+            Project project = con.getCompleteProject(pro);
+            String comments = con.getComments(pro);
+            
+            request.setAttribute("project", project);
+            request.setAttribute("comments", comments);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("PartnerEditProject.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
+
+        }
+    }
+    private void updateObj(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+        try {
+            int pro = Integer.parseInt(request.getParameter("projectID"));
+            String obj = request.getParameter("newObj");
+            String column = "objandresult";
+            con.editProject(pro, column, obj);
+            Project project = con.getCompleteProject(pro);
+            String comments = con.getComments(pro);
+
+            request.setAttribute("project", project);
+            request.setAttribute("comments", comments);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("PartnerEditProject.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
+
+        }
+    }
 }

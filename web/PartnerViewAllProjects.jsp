@@ -9,7 +9,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
     <head>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View All Projects</title>
     </head>
@@ -27,6 +29,8 @@
         
      
         <table border="1" style="width:100%">
+        <table >
+        
             <tr>
                 <th>Select</th>
             <th> Activity Description  </th>     
@@ -60,9 +64,8 @@
              
         <%}%>
         </table><br><br>
-            
+            <input type="hidden" name="partner" value="<%= request.getAttribute("partnerNo")%>">
                             <button type="submit" name="command" value="viewComments">View Comments</button><br><br>
-                                         Previous Comments: <input type="text" name="comments" value="<%= request.getAttribute("comments")%>" size="200" readonly><br><br>
 
         </form>
     </body>

@@ -94,4 +94,10 @@ public class DBFacade {
      public Project getCompleteProject(int pno) throws SQLException{
           return pm.getCompleteProject(pno, con);
      }
+     public boolean editProject(int pno,  String column, String edit) throws SQLException{
+         return pm.editProject(pno, column, edit, con);
+     }
+     public boolean editCost(int pno,  String column, float edit) throws SQLException{
+         return pm.editCost(pno, column, edit, con);
+     }
 }

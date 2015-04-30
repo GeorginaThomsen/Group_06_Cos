@@ -261,8 +261,6 @@ public class ProjectMapper {
     public boolean updateApproveProject(int pno, String approve, Connection con) throws SQLException {
 
         int TuplesUpdated = 0;
-        System.out.println(pno);
-        System.out.println(approve);
 
         String SQLProject = "update project set Status = ? where ProjectID = ? ";
         //updating project
@@ -382,5 +380,48 @@ public class ProjectMapper {
             e.printStackTrace();
             return null;
         }
+    }
+     //added by ben:                 
+    public boolean editProject(int pno,  String column, String edit, Connection con) throws SQLException {
+
+        int TuplesUpdated = 0;
+        
+
+        String SQLProject = "update project set "+ column + " = ? where ProjectID = ? ";
+        //updating project
+
+        PreparedStatement preStatement = null;
+
+        System.out.println("about to execute");
+        preStatement = con.prepareStatement(SQLProject);
+        System.out.println("executed");
+        preStatement.setString(1, edit);
+        preStatement.setInt(2, pno);     // primary key value
+
+        TuplesUpdated = preStatement.executeUpdate();
+
+//          getPendingProjects(con);
+        return TuplesUpdated == 1;
+    }
+    public boolean editCost(int pno,  String column, float edit, Connection con) throws SQLException {
+
+        int TuplesUpdated = 0;
+        
+
+        String SQLProject = "update project set "+ column + " = ? where ProjectID = ? ";
+        //updating project
+
+        PreparedStatement preStatement = null;
+
+        System.out.println("about to execute");
+        preStatement = con.prepareStatement(SQLProject);
+        System.out.println("executed");
+        preStatement.setFloat(1, edit);
+        preStatement.setInt(2, pno);     // primary key value
+
+        TuplesUpdated = preStatement.executeUpdate();
+
+//          getPendingProjects(con);
+        return TuplesUpdated == 1;
     }
 }

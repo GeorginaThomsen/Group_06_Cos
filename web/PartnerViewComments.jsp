@@ -13,8 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <form action="DahboardServlet" method="post">
+        <h1>Partner View Comments</h1>
+        <form action="DashboardServlet" method="post">
 
 
             <%
@@ -58,13 +58,20 @@
 
 
             </table><br><br>
+                        <input type="hidden" name="PartnerNo" value="<%= request.getAttribute("partner")%>">
+
             <input type="hidden" name="projectID"  value="<%= project.getProjectID()%>">
+            <input type="hidden" name="comments"  value="<%= request.getAttribute("comments")%>">
             Comments: <br><br>
             <textarea rows="10" cols="150">
                 <%= request.getAttribute("comments")%>
             </textarea><br><br>
             
-                
+                                     
+            <button type="submit" name="command" value="editProject">Edit Project</button><br><br>
+            <button type="submit" name="command" value="readAllPartnerProjects">Back</button>
+       
+        
 
 
         </form><br><br>
