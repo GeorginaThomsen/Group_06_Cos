@@ -11,17 +11,40 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Marketing View Projects</title>
+        <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+        <title>Marketing View Projects | Dell MDF Tool</title>
     </head>
     <body>
-        <h1>Marketing View Projects</h1><br>
+         <div class="container">
+         <div class="menuwrap">
+                <nav>
+                    <ul>
+                        <li> <img src="images/logo2.png"> </li>
+                        
+                        <li>  <form action="ShowAllProjectsServlet" method="post">                      
+                              <button name="DellLogInButton" value="">All Projects</button>
+                              </form>
+                        </li>
+                        <li> <form action="MarketingServlet" method="post"> 
+                                <input type="hidden" name="command" value="getPendingProjects">
+
+            <button name="DellLogInButton" value="">Marketing Pending Projects</button>
+        </form>
+                        </li>
+                        <li> <form action="FinanceInputServlet" method="get">
+             <button name="DellLogInButton" value="">Finance Pending Projects</button>
+              <input type="hidden" name="command" value="getPendingProjects">
+         </form> </li>
+                     </ul>
+                </nav>           
+            </div>
+             <div class="contentwrap">
+             <header><h1>Marketing View Projects</h1></header>
         
-        <form action="DellFrontPage.jsp" method="post">                      
-            <button name="DellBackButton" value="">Back</button>
-        </form><br>
         
         
-         <h2>Project Details</h2>
+        
+         
         <form action="MarketingServlet" method="post">
             
         <%
@@ -32,7 +55,6 @@
      
         <table border="1" style="width:100%">
             <tr>
-            <th>Select</th>
             <th> Activity Description  </th>     
             <th> Comments  </th> 
             <th> Cost  </th> 
@@ -52,8 +74,8 @@
             %>
             <!--     <%= projects.get(i).getProjectID()%> -->
             <tr>
-                <td><input type="checkbox" name="projectToUpdate" value="<%= projects.get(i).getProjectID()%>"></td>
-            <inptu type="submit">
+               
+            
                 <td><%= projects.get(i).getActivityDescription()%></td>
                 <td><%= projects.get(i).getComments()%></td>
                 <td><%= projects.get(i).getCost()%></td>
@@ -65,32 +87,31 @@
                 <td><%= projects.get(i).getRequiredPOE()%></td>
                 <td><%= projects.get(i).getStatus()%></td>
                 <td><%= projects.get(i).getPaID()%></td>
-                 
+                 <td><input type="checkbox" name="projectToUpdate" value="<%= projects.get(i).getProjectID()%>"></td> 
             </tr>
             
              
         <%}%>
-        </table><br><br>
+        </table>
         
-                    <button type="submit" name="command" value="viewComments">View Comments</button><br><br>
+                    
 
        
         <select name="approval">
-  <option  value="approved">Approved</option>
-  <option value="unapproved">UnApproved</option>
+  <option value="approved">Approved</option>
+  <option value="unapproved">Unapproved</option>
   <option value="review">Review</option>
-  
-        </select><br><br>
+         </select>
                     <input type="hidden" name="command" value="upDateApprove">
 
             <button name="ChangeApprovalStatus" value="">Update Approval Status</button>
-        </form><br><br>
-            <br><br>
-        <form action="ShowAllProjectsServlet" method="post">
-            <input type="hidden" name="command" value="viewAllProjects">
-
-            <button name="viewAllProjects" value="">View All Projects</button>
-        </form><br><br>
-
+            <button type="submit" name="command" value="viewComments">View Comments</button>
+        </form>
+        
+    
+                 
+             </div>
+         </div>
+        
     </body>
 </html>

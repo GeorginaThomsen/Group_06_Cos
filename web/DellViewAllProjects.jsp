@@ -11,16 +11,37 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>View all projects</title>
+        <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+        <title>View all projects | Dell MDF Tool</title>
     </head>
     <body>
-        <h1>View All Projects</h1><br>
+        <div class="container">
+         <div class="menuwrap">
+                <nav>
+                    <ul>
+                        <li> <img src="images/logo2.png"> </li>
+                        
+                        <li>  <form action="ShowAllProjectsServlet" method="post">                      
+                              <button name="DellLogInButton" value="">All Projects</button>
+                              </form>
+                        </li>
+                        <li> <form action="MarketingServlet" method="post"> 
+                                <input type="hidden" name="command" value="getPendingProjects">
 
-        <form action="DellFrontPage.jsp" method="post">                      
-            <button name="DellBackButton" value="">Back</button>
-        </form><br>
+            <button name="DellLogInButton" value="">Marketing Pending Projects</button>
+        </form>
+                        </li>
+                        <li> <form action="FinanceInputServlet" method="get">
+             <button name="DellLogInButton" value="">Finance Pending Projects</button>
+              <input type="hidden" name="command" value="getPendingProjects">
+         </form> </li>
+                     </ul>
+                </nav>           
+            </div>
+            <div class="contentwrap">
+        <header><h1>View All Projects</h1></header>
 
-        <h2>Project Details</h2>
+        
         <form>
 
             <%
@@ -31,7 +52,7 @@
 
             <table border="1" style="width:100%">
                 <tr>
-                    <th>Select</th>
+                    
                     <th> Activity Description  </th>     
                     <th> Comments  </th> 
                     <th> Cost  </th> 
@@ -42,7 +63,8 @@
                     <th> Objective & Result  </th> 
                     <th>Required POE  </th> 
                     <th>Status </th> 
-                    <th>PartnerID  </th> 
+                    <th>PartnerID  </th>
+                    
 
                 </tr>
                 <%
@@ -50,7 +72,7 @@
                 %>
                 <!--       <%= projects.get(i).getProjectID()%> -->
                 <tr>
-                    <td><input type="checkbox" name="project" value="Pro"></td>
+                    
                     <td><%= projects.get(i).getActivityDescription()%></td>
                     <td><%= projects.get(i).getComments()%></td>
                     <td><%= projects.get(i).getCost()%></td>
@@ -62,6 +84,7 @@
                     <td><%= projects.get(i).getRequiredPOE()%></td>
                     <td><%= projects.get(i).getStatus()%></td>
                     <td><%= projects.get(i).getPaID()%></td>
+                    <td><input type="checkbox" name="project" value="Pro"></td>
 
                 </tr>
 
@@ -71,5 +94,7 @@
 
 
         </form>
+            </div>
+        </div>
     </body>
 </html>

@@ -9,25 +9,37 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Dell MDF Tool</title>
+        <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+        <title>Home | Dell MDF Tool</title>
     </head>
     <body>
-        <h1>See All Projects</h1>
-        <form action="ShowAllProjectsServlet" method="post">                      
-            <button name="DellLogInButton" value="">See All Projects</button>
-        </form><br><br>
-         <h1>See Marketing Pending Projects</h1>
-        <form action="MarketingServlet" method="post"> 
+        <div class="container">
+         <div class="menuwrap">
+                <nav>
+                    <ul>
+                        <li> <img src="images/logo2.png"> </li>
+                        
+                        <li>  <form action="ShowAllProjectsServlet" method="post">                      
+                              <button name="DellLogInButton" value="">All Projects</button>
+                              </form>
+                        </li>
+                        <li> <form action="MarketingServlet" method="post"> 
                                 <input type="hidden" name="command" value="getPendingProjects">
 
-            <button name="DellLogInButton" value="">Get Marketing Pending Projects</button>
-        </form><br><br>
-        
-         <h1>See Finance Pending Projects</h1>
-         <form action="FinanceInputServlet" method="get">
-             <button name="DellLogInButton" value="">Get Finance Pending projects</button>
+            <button name="DellLogInButton" value="">Marketing Pending Projects</button>
+        </form>
+                        </li>
+                        <li> <form action="FinanceInputServlet" method="get">
+             <button name="DellLogInButton" value="">Finance Pending Projects</button>
               <input type="hidden" name="command" value="getPendingProjects">
-         </form>
-    
+         </form> </li>
+                     </ul>
+                </nav>           
+            </div>
+            <div class="contentwrap">
+                <header><h1>Home</h1></header>
+            
+            </div>
+           </div>
     </body>
 </html>

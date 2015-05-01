@@ -11,17 +11,37 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Finance</title>
+        <title>Finance View Projects | Dell MDF Tool</title>
+        <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h1>Finance view projects</h1><br>
+          <div class="container">
+         <div class="menuwrap">
+                <nav>
+                    <ul>
+                        <li> <img src="images/logo2.png"> </li>
+                        
+                        <li>  <form action="ShowAllProjectsServlet" method="post">                      
+                              <button name="DellLogInButton" value="">All Projects</button>
+                              </form>
+                        </li>
+                        <li> <form action="MarketingServlet" method="post"> 
+                                <input type="hidden" name="command" value="getPendingProjects">
 
-        <form action="DellFrontPage.jsp" method="post">                      
-            <button name="DellBackButton" value="">Back</button>
+            <button name="DellLogInButton" value="">Marketing Pending Projects</button>
         </form>
+                        </li>
+                        <li> <form action="FinanceInputServlet" method="get">
+             <button name="DellLogInButton" value="">Finance Pending Projects</button>
+              <input type="hidden" name="command" value="getPendingProjects">
+         </form> </li>
+                     </ul>
+                </nav>           
+            </div>
+             <div class="contentwrap">
+                 <header><h1>Finance view projects</h1></header>
 
-        <br>
-        <h2>Project Details</h2>
+       
         <form action="FinanceInputServlet" method="post">
 
             <%
@@ -32,7 +52,7 @@
 
             <table border="1" style="width:100%">
                 <tr>
-                    <th>Select</th>
+                    
                     <th> Activity Description  </th>     
                     <th> Comments  </th> 
                     <th> Cost  </th> 
@@ -51,8 +71,7 @@
                 %>
                 <!--       <%= projects.get(i).getProjectID()%> -->
                 <tr>
-                    <td><input type="radio" name="projectToEdit" value="<%= projects.get(i).getProjectID()%>"></td>  
-                    <td><%= projects.get(i).getActivityDescription()%></td>
+                   <td><%= projects.get(i).getActivityDescription()%></td>
                     <td><%= projects.get(i).getComments()%></td>
                     <td><%= projects.get(i).getCost()%></td>
                     <td><%= projects.get(i).getMDFBudget()%></td>
@@ -63,6 +82,8 @@
                     <td><%= projects.get(i).getRequiredPOE()%></td>
                     <td><%= projects.get(i).getStatus()%></td>
                     <td><%= projects.get(i).getPaID()%></td>
+                     <td><input type="checkbox" name="projectToEdit" value="<%= projects.get(i).getProjectID()%>"></td>  
+                    
                     
                     <input type="hidden" name="CostUpdate" value="<%= projects.get(i).getCost()%>"
                        <input type="hidden" name="StatusUpdate" value="<%= projects.get(i).getStatus()%>"
@@ -70,21 +91,21 @@
 
 
                 <%}%>
-            </table><br><br>
+            </table>
 
-                  <button type="submit" name="command" value="viewComments">View Comments</button><br><br>
+                
+
+            <!--   <form action="FinanceInputServlet" method="get" style="text-align: center"> -->
+            <input type="text" name="GetCost" placeholder="New Cost / €">
+            <input type="submit" value="Change price">
+            <input type="hidden" name="command" value="upDateCost">
+              <button type="submit" name="command" value="viewComments">View Comments</button>
 
            
 
             <button name="command" value="upDateApprove">Reimburse</button>
             <input type="hidden" name="approval" value="Completed">
-
-            <!--   <form action="FinanceInputServlet" method="get" style="text-align: center"> -->
-            New cost<input type="text" name="GetCost">€
-            <input type="submit" value="Change price">
-            <input type="hidden" name="command" value="upDateCost">
-        </form><br>
-        
+        </form>
         
         <!-- <input type="submit" value="Reimburse"> -->
     </body>

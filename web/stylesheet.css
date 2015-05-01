@@ -11,6 +11,10 @@ and open the template in the editor.
 @import url("reset.css");
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300);
 
+html, body {
+   height: 100%;
+}
+
 body{
         color: #424242;
         font-family: 'Open Sans', sans-serif;
@@ -100,3 +104,136 @@ body{
         border-bottom: 4px solid #000;
 }
 
+.container{
+    width: 1200px; 
+}
+
+.menuwrap{
+    float: left;
+    height: 100%;
+    position: fixed;
+    width: 250px;
+    background: #424242;
+   
+}
+
+nav{
+    margin: 25px 25px 0 25px;
+    padding-bottom:25px;
+    border-bottom:1px #c0c0c0 solid;
+}
+
+nav img{
+    margin-bottom:25px;
+}
+li img{
+    padding-bottom:25px;
+    border-bottom:1px #c0c0c0 solid;
+}
+li, li button{
+    background: none;
+    border: none;
+    color: #c0c0c0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+li button:hover, li button:focus{
+    color: #fff;
+    cursor: pointer;
+}
+
+.contentwrap{
+    float:left;
+    margin: 25px 25px 0 255px;
+}
+
+header{
+    width: 900px;
+    margin:0 auto;
+    padding-bottom:15px;
+    margin-bottom:25px;
+    border-bottom:1px solid #424242;
+}
+
+h1{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 38px;
+    text-align: center;
+    
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom:10px;
+}
+
+table, td, th {
+    border: 1px solid black;
+    
+}
+
+td,th{
+      text-align: center;
+    width:0px;
+    padding: 10px;
+}
+
+th{
+    background:#424242;
+    color: #c0c0c0;
+}
+.contentwrap input[type="text"]{
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+        height:35px;
+    	border-radius: 5px;
+	background: #c0c0c0;
+	text-decoration: center;
+	border: none;
+	color: #424242;
+	outline: none;
+	font-size: 13px;	
+	border-bottom: 3px solid #424242;
+}
+
+.contentwrap ::-webkit-input-placeholder {
+   color: #424242;
+}
+
+.contentwrap :-moz-placeholder { /* Firefox 18- */
+   color: #424242;
+}
+
+.contentwrap ::-moz-placeholder {  /* Firefox 19+ */
+   color: #424242;  
+}
+
+.contentwrap :-ms-input-placeholder {  
+   color: #424242; 
+}
+
+.contentwrap button, .contentwrap select, .contentwrap input[type="submit"] {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+        height:40px;
+    	border-radius: 5px;
+	background: #c0c0c0;
+	text-decoration: center;
+	border: none;
+	color: #424242;
+        margin-top:-5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	outline: none;
+	font-size: 13px;	
+	border-bottom: 3px solid #424242;
+	cursor: pointer;
+}
+
+.contentwrap button:hover, .contentwrap select:hover, .contentwrap input[type="submit"]:hover {
+        color: #000;
+        border-bottom: 4px solid #000;
+}
