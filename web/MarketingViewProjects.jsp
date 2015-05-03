@@ -15,34 +15,31 @@
         <title>Marketing View Projects | Dell MDF Tool</title>
     </head>
     <body>
-         <div class="container">
-         <div class="menuwrap">
-                <nav>
-                    <ul>
-                        <li> <img src="images/logo2.png"> </li>
-                        
-                        <li>  <form action="ShowAllProjectsServlet" method="post">                      
-                              <button name="DellLogInButton" value="">All Projects</button>
-                              </form>
+         <header>
+            <div class="bottomcontainer">
+            <div class="logowrap"><img src="images/logo2.png"></div>    
+            <nav>
+                <ul>
+                   <li><form action="ShowAllProjectsServlet" method="post">                      
+                       <button name="DellLogInButton" value="">All Projects</button>
+                        </form>
+                   </li> 
+                   <li><form action="MarketingServlet" method="post"> 
+                       <input type="hidden" name="command" value="getPendingProjects">
+                       <button name="DellLogInButton" value="">Marketing Pending Projects</button>
+                       </form>  
+                   </li>
+                   <li><form action="FinanceInputServlet" method="get">
+                       <button name="DellLogInButton" value="">Finance Pending Projects</button>
+                       <input type="hidden" name="command" value="getPendingProjects">
+                       </form>
                         </li>
-                        <li> <form action="MarketingServlet" method="post"> 
-                                <input type="hidden" name="command" value="getPendingProjects">
-
-            <button name="DellLogInButton" value="">Marketing Pending Projects</button>
-        </form>
-                        </li>
-                        <li> <form action="FinanceInputServlet" method="get">
-             <button name="DellLogInButton" value="">Finance Pending Projects</button>
-              <input type="hidden" name="command" value="getPendingProjects">
-         </form> </li>
-                     </ul>
-                </nav>           
+                </ul> 
+            </nav>
             </div>
-             <div class="contentwrap">
-             <header><h1>Marketing View Projects</h1></header>
-        
-        
-        
+        </header>
+             <div class="container">
+            <h1>Marketing View Projects</h1>
         
          
         <form action="MarketingServlet" method="post">
@@ -96,16 +93,15 @@
         
                     
 
-       
+       <button type="submit" name="command" value="viewComments">View Comments</button>
         <select name="approval">
-  <option value="approved">Approved</option>
-  <option value="unapproved">Unapproved</option>
-  <option value="review">Review</option>
+            <option value="approved">Approved</option>
+            <option value="unapproved">Unapproved</option>
+            <option value="review">Review</option>
          </select>
-                    <input type="hidden" name="command" value="upDateApprove">
-
-            <button name="ChangeApprovalStatus" value="">Update Approval Status</button>
-            <button type="submit" name="command" value="viewComments">View Comments</button>
+         <input type="hidden" name="command" value="upDateApprove">
+         <button name="ChangeApprovalStatus" value="">Update Approval Status</button><br/>
+         
         </form>
         
     

@@ -15,31 +15,31 @@
         <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-          <div class="container">
-         <div class="menuwrap">
-                <nav>
-                    <ul>
-                        <li> <img src="images/logo2.png"> </li>
-                        
-                        <li>  <form action="ShowAllProjectsServlet" method="post">                      
-                              <button name="DellLogInButton" value="">All Projects</button>
-                              </form>
+         <header>
+            <div class="bottomcontainer">
+            <div class="logowrap"><img src="images/logo2.png"></div>    
+            <nav>
+                <ul>
+                   <li><form action="ShowAllProjectsServlet" method="post">                      
+                       <button name="DellLogInButton" value="">All Projects</button>
+                        </form>
+                   </li> 
+                   <li><form action="MarketingServlet" method="post"> 
+                       <input type="hidden" name="command" value="getPendingProjects">
+                       <button name="DellLogInButton" value="">Marketing Pending Projects</button>
+                       </form>  
+                   </li>
+                   <li><form action="FinanceInputServlet" method="get">
+                       <button name="DellLogInButton" value="">Finance Pending Projects</button>
+                       <input type="hidden" name="command" value="getPendingProjects">
+                       </form>
                         </li>
-                        <li> <form action="MarketingServlet" method="post"> 
-                                <input type="hidden" name="command" value="getPendingProjects">
-
-            <button name="DellLogInButton" value="">Marketing Pending Projects</button>
-        </form>
-                        </li>
-                        <li> <form action="FinanceInputServlet" method="get">
-             <button name="DellLogInButton" value="">Finance Pending Projects</button>
-              <input type="hidden" name="command" value="getPendingProjects">
-         </form> </li>
-                     </ul>
-                </nav>           
+                </ul> 
+            </nav>
             </div>
-             <div class="contentwrap">
-                 <header><h1>Finance view projects</h1></header>
+        </header>
+             <div class="container">
+                 <h1>Finance View Projects</h1>
 
        
         <form action="FinanceInputServlet" method="post">
@@ -96,10 +96,11 @@
                 
 
             <!--   <form action="FinanceInputServlet" method="get" style="text-align: center"> -->
+            <button type="submit" name="command" value="viewComments">View Comments</button>
             <input type="text" name="GetCost" placeholder="New Cost / €">
             <input type="submit" value="Change price">
             <input type="hidden" name="command" value="upDateCost">
-              <button type="submit" name="command" value="viewComments">View Comments</button>
+             
 
            
 

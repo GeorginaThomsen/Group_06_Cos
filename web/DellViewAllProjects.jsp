@@ -15,33 +15,33 @@
         <title>View all projects | Dell MDF Tool</title>
     </head>
     <body>
-        <div class="container">
-         <div class="menuwrap">
-                <nav>
-                    <ul>
-                        <li> <img src="images/logo2.png"> </li>
-                        
-                        <li>  <form action="ShowAllProjectsServlet" method="post">                      
-                              <button name="DellLogInButton" value="">All Projects</button>
-                              </form>
+        <header>
+            <div class="bottomcontainer">
+            <div class="logowrap"><img src="images/logo2.png"></div>    
+            <nav>
+                <ul>
+                   <li><form action="ShowAllProjectsServlet" method="post">                      
+                       <button name="DellLogInButton" value="">All Projects</button>
+                        </form>
+                   </li> 
+                   <li><form action="MarketingServlet" method="post"> 
+                       <input type="hidden" name="command" value="getPendingProjects">
+                       <button name="DellLogInButton" value="">Marketing Pending Projects</button>
+                       </form>  
+                   </li>
+                   <li><form action="FinanceInputServlet" method="get">
+                       <button name="DellLogInButton" value="">Finance Pending Projects</button>
+                       <input type="hidden" name="command" value="getPendingProjects">
+                       </form>
                         </li>
-                        <li> <form action="MarketingServlet" method="post"> 
-                                <input type="hidden" name="command" value="getPendingProjects">
-
-            <button name="DellLogInButton" value="">Marketing Pending Projects</button>
-        </form>
-                        </li>
-                        <li> <form action="FinanceInputServlet" method="get">
-             <button name="DellLogInButton" value="">Finance Pending Projects</button>
-              <input type="hidden" name="command" value="getPendingProjects">
-         </form> </li>
-                     </ul>
-                </nav>           
+                </ul> 
+            </nav>
             </div>
-            <div class="contentwrap">
-        <header><h1>View All Projects</h1></header>
-
-        
+        </header>
+            
+            <div class="container">
+                <h1> View All Projects </h1>
+            
         <form>
 
             <%
@@ -90,11 +90,11 @@
 
 
                 <%}%>
-            </table><br><br>
+            </table>
 
 
         </form>
             </div>
-        </div>
+        
     </body>
 </html>
