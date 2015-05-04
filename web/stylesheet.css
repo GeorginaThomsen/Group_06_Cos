@@ -13,7 +13,6 @@ and open the template in the editor.
 
 html, body {
    weight: 100%;
-   height: 100%;
 }
 
 body{
@@ -108,7 +107,7 @@ body{
 header{
     height: 55px;   
     width: 100%;
-    bottom: 0;
+    top: 0;
     position: fixed; 
     background: #424242; 
 }
@@ -139,6 +138,7 @@ nav{
 
 ul{
     display: inline; 
+    width: 100%;
 }
 
 li, li button{
@@ -164,7 +164,7 @@ li button:hover, li button:focus{
 
 .container{
     margin:0 auto;
-    padding-top:30px;
+    padding-top:70px;
     width: 1000px;
 }
 
@@ -177,9 +177,20 @@ h1{
     margin-bottom:10px;
 }
 
+h2{
+    text-align:center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    padding-bottom:10px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
 table {
     border-collapse: collapse;
     margin-bottom:10px;
+    width: 1000px;
 }
 
 table, td, th {
@@ -188,7 +199,8 @@ table, td, th {
 }
 
 td,th{
-      text-align: center;
+    font-size:12px;
+    text-align: center;
     width:0px;
     padding: 10px;
 }
@@ -197,7 +209,7 @@ th{
     background:#424242;
     color: #c0c0c0;
 }
-.container input[type="text"]{
+.container input[type="text"],.container input[type="textfield"]{
         font-family: 'Open Sans', sans-serif;
         font-weight: 300;
         height:35px;
@@ -248,4 +260,21 @@ th{
 .container button:hover, .container select:hover, .container input[type="submit"]:hover {
         color: #000;
         border-bottom: 4px solid #000;
+}
+
+.comments input[type="text"]{
+	width: 1000px;
+        height: 50px;
+        border:0;
+}
+.comments input[type="textfield"]{
+	width: 1000px;
+        height: 50px;
+        border:0;
+}
+.comments button{
+	width: 250px;
+        height: 50px;
+        margin-top: 10px;
+        float: right;
 }

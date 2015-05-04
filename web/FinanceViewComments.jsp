@@ -11,9 +11,34 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-          <h1>View Comments Page</h1>
+        <header>
+            <div class="bottomcontainer">
+            <div class="logowrap"><img src="images/logo2.png"></div>    
+            <nav>
+                <ul>
+                   <li><form action="ShowAllProjectsServlet" method="post">                      
+                       <button name="DellLogInButton" value="">All Projects</button>
+                        </form>
+                   </li> 
+                   <li><form action="MarketingServlet" method="post"> 
+                       <input type="hidden" name="command" value="getPendingProjects">
+                       <button name="DellLogInButton" value="">Marketing Pending Projects</button>
+                       </form>  
+                   </li>
+                   <li><form action="FinanceInputServlet" method="get">
+                       <button name="DellLogInButton" value="">Finance Pending Projects</button>
+                       <input type="hidden" name="command" value="getPendingProjects">
+                       </form>
+                        </li>
+                </ul> 
+            </nav>
+            </div>
+        </header>
+        <div class="container">
+          <h1>View Comments | Dell MDF Tool</h1>
         <form action="AddCommentsServlet" method="post">
             
         
@@ -58,19 +83,12 @@
 
                     
             </table><br><br>
+                 <div class="comments">
                     <input type="hidden" name="projectID"  value="<%= project.getProjectID()%>">
-                    Previous Comments: <!--input type="text" name="comments" value="<%= request.getAttribute("comments")%>" size="150" readonly--><br><br>
-                     <textarea rows="10" cols="200">
-                <%= request.getAttribute("comments")%>
-            </textarea>
-            New Comments: <input type="text" name="newFinanceComments" value="" size="100">
-            <button name="command" value="addComments">Add Comments To Project</button>
-        </form><br><br>
-         <form action="ShowAllProjectsServlet" method="post">
-            <input type="hidden" name="command" value="viewAllProjects">
-
-            <button name="viewAllProjects" value="">View All Projects</button>
-        </form><br><br>
-        
+                    <h2>Previous Comment</h2> <input type="text" name="comments" id="comments" value="<%= request.getAttribute("comments")%>" readonly><br><br>
+                    <h2>Add New Comment</h2> <input type="textfield" name="newComments" id="newcomments" value="">
+                    <button name="command" value="addComments">Comment</button>
+        </form></div>
+        </div>
     </body>
 </html>

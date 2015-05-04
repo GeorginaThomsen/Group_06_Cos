@@ -96,6 +96,8 @@
                 
 
             <!--   <form action="FinanceInputServlet" method="get" style="text-align: center"> -->
+            <button name="command" value="upDateApprove">Reimburse</button>
+            <input type="hidden" name="approval" value="Completed">
             <button type="submit" name="command" value="viewComments">View Comments</button>
             <input type="text" name="GetCost" placeholder="New Cost / €">
             <input type="submit" value="Change price">
@@ -104,8 +106,7 @@
 
            
 
-            <button name="command" value="upDateApprove">Reimburse</button>
-            <input type="hidden" name="approval" value="Completed">
+            
         </form>
         
         <!-- <input type="submit" value="Reimburse"> -->
