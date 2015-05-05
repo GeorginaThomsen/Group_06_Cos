@@ -36,7 +36,7 @@ public class ProjectMapper {
         preStatement.setString(7, p.getEndDate());
         preStatement.setString(8, p.getObjAndResult());
         preStatement.setString(9, p.getRequiredPOE());
-        preStatement.setString(10, "Pending");
+        preStatement.setString(10, p.getStatus());
         preStatement.setInt(11, p.getPaID());
 
         TuplesInserted = preStatement.executeUpdate();
