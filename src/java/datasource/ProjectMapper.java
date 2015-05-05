@@ -95,7 +95,7 @@ public class ProjectMapper {
         String SQLProject1
                 = "select projectID "
                 + "from project "
-                + "where PartnerID = ?";
+                + "where paid = ?";
 
         PreparedStatement preStatement = null;
         preStatement = con.prepareStatement(SQLProject1);
@@ -413,9 +413,7 @@ public class ProjectMapper {
 
         PreparedStatement preStatement = null;
 
-        System.out.println("about to execute");
         preStatement = con.prepareStatement(SQLProject);
-        System.out.println("executed");
         preStatement.setFloat(1, edit);
         preStatement.setInt(2, pno);     // primary key value
 
@@ -423,5 +421,26 @@ public class ProjectMapper {
 
 //          getPendingProjects(con);
         return TuplesUpdated == 1;
+    }
+    //Ben:
+    public int getPartnerID(String partnerName, Connection con)throws SQLException{
+        int partnerID = 0;
+        try {
+            String SQL = "select PartnerID from PartnerEmployee where username = ? ";
+            PreparedStatement preStatement = null;
+            preStatement = con.prepareStatement(SQL);
+            preStatement.setString(1, partnerName);
+            ResultSet rs = preStatement.executeQuery();
+            if (rs.next()) {
+                partnerID = rs.getInt("PartnerID");
+                System.out.println("got to project mapper"+partnerID);
+            }
+
+            return partnerID;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+       
     }
 }

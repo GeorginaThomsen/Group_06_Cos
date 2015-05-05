@@ -44,6 +44,8 @@ public class RequestProjectServlet extends HttpServlet {
     private void insertProject(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
 
         try {
+        String username = request.getParameter("username");
+            String partnerID = request.getParameter("partnerID");
         //Get the info from the RequestProject form:
             //int id = Integer.parseInt(request.getParameter("ProjectID"));
             String act = request.getParameter("ActivityDescription");
@@ -55,11 +57,14 @@ public class RequestProjectServlet extends HttpServlet {
             String start = request.getParameter("EndDate");
             String obj = request.getParameter("ObjAndResult");
             String pOE = request.getParameter("RequiredPOE");
-
-            Project project = con.insertProject(act, com, cost, mdf, eQ, end, start, obj, pOE);
+            String stat = "Pending";
+            int paid = Integer.parseInt(request.getParameter("partnerID"));
+            Project project = con.insertProject(act, com, cost, mdf, eQ, end, start, obj, pOE, stat, paid);
 
             //Forwards to view:
             request.setAttribute("RPV", project);
+            request.setAttribute("partnerID", partnerID);
+            request.setAttribute("username", username);
             RequestDispatcher dispatcher = request.getRequestDispatcher("RequestProjectView.jsp");
 
             dispatcher.forward(request, response);

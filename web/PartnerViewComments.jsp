@@ -58,7 +58,7 @@
 
 
             </table><br><br>
-                        <input type="hidden" name="PartnerNo" value="<%= request.getAttribute("partner")%>">
+                        <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
 
             <input type="hidden" name="projectID"  value="<%= project.getProjectID()%>">
             <input type="hidden" name="comments"  value="<%= request.getAttribute("comments")%>">

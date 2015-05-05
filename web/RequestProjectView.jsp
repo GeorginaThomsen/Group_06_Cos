@@ -13,7 +13,10 @@
         <title>Partner MDF Tool</title>
     </head>
     <body>
-        <h1>Request Project</h1>
+        <form action="DashboardServlet" method="post">
+               <input type="hidden" name="username" value="<%= request.getAttribute("username")%>"><br>
+            <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>"><br>
+        <h1>New Project Created By:<%= request.getAttribute("username")%></h1>
         <br>
         <% Project newproject = (Project) request.getAttribute("RPV");%>
         <% if (newproject != null) {%>
@@ -36,5 +39,8 @@
         <%--
         Have to display the info from RequestProject
         --%>
+                            <button type="submit" name="command" value="readAllPartnerProjects">View All Projects</button><br><br>
+        </form>
+
     </body>
 </html>

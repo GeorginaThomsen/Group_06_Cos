@@ -100,4 +100,8 @@ public class DBFacade {
      public boolean editCost(int pno,  String column, float edit) throws SQLException{
          return pm.editCost(pno, column, edit, con);
      }
+      //Ben:
+     public int getPartnerID(String partnerName) throws SQLException{
+         return pm.getPartnerID(partnerName, con);
+     }
 }

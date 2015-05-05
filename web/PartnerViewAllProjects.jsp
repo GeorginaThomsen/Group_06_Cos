@@ -19,8 +19,12 @@
         <form action="DashboardServlet" method="post">
         <h1>View All Projects</h1>
            
+          Projects For Partner :<%= request.getAttribute("username")%>
+            <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" >
+            <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
 
-        Projects For Partner :<%= request.getAttribute("partnerNo")%>
+            <!-- <%= request.getAttribute("partnerID")%> -->
+        
         <h2>Project Details</h2>
         <%
         ArrayList<Project> projects = (ArrayList<Project>)request.getAttribute("projects");
@@ -66,6 +70,7 @@
         </table><br><br>
             <input type="hidden" name="partner" value="<%= request.getAttribute("partnerNo")%>">
                             <button type="submit" name="command" value="viewComments">View Comments</button><br><br>
+                                                <button type="submit" name="command" value="requestProject">Request New Project</button><br><br>
 
         </form>
     </body>

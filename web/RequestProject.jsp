@@ -13,12 +13,15 @@
     </head>
     <body>
         <h1>Request Project</h1>
+        
         <form action="RequestProjectServlet" method="post">
+           <input type="hidden" name="username" value="<%= request.getAttribute("username")%>"><br>
+            <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>"><br>
 
             <!--<input type="hidden" name="ProjectID" value="ProjectID">-->
             Activity Description:<br><input type="text" name="ActivityDescription"><br>
             Comments:<br><input type="text" name="Comments"><br>
-            Cost:<br><input type="text" name="Cost"><br>
+            Cost:<br><input type="number" step="any" name="Cost"><br>
             MDF Budget:<br><input type="text" name="MDFBudget"><br>
             Execution Quarter:<br><input type="text" name="ExecutionQuarter"><br>
             Start Date:<br><input type="text" name="StartDate"><br>

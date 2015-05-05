@@ -10,6 +10,7 @@ import domain.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -61,8 +62,12 @@ public class LoginServlet extends HttpServlet {
                 //Possible change to come back to login page
                 response.sendError(response.SC_BAD_REQUEST, "Username or Password is wrong");
             } else if (user.getUserType().equalsIgnoreCase("Partner")) {
-                request.setAttribute("username", user);
-                response.sendRedirect("PartnerFrontPage.jsp");//Change to right jsp
+                int partnerID = con.getPartnerID(userName);
+                
+                request.setAttribute("partnerID", partnerID);
+                request.setAttribute("username", user.getName());
+                RequestDispatcher rd = request.getRequestDispatcher("PartnerFrontPage.jsp");
+                rd.forward(request, response);
             } else if (user.getUserType().equalsIgnoreCase("Top-manager")) {
                 request.setAttribute("username", user);
                 response.sendRedirect("DellFrontPage.jsp");//Change to right jsp

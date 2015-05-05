@@ -40,8 +40,8 @@ public class Controller {
     //Getting project over
 
     //Georgina:
-    public Project insertProject(String act, String com, float cost, String mdf, String eQ, String end, String start, String obj, String pOE) throws SQLException {
-        currentProject = new Project(act, com, cost, mdf, eQ, end, start, obj, pOE);
+    public Project insertProject(String act, String com, float cost, String mdf, String eQ, String end, String start, String obj, String pOE, String stat, int paid) throws SQLException {
+        currentProject = new Project(act, com, cost, mdf, eQ, end, start, obj, pOE, stat, paid);
 
         boolean status = dbf.insertProject(currentProject);
         if (!status) {//If dbf.insterProject does not return an insterted project
@@ -103,6 +103,10 @@ public class Controller {
      }
      public boolean editCost(int pno,  String column, float edit) throws SQLException{
          return dbf.editCost(pno, column, edit);
+     }
+     //Ben:
+     public int getPartnerID(String partnerName) throws SQLException{
+         return dbf.getPartnerID(partnerName);
      }
     
 }

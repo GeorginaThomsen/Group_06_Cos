@@ -15,9 +15,9 @@
         <h1>Partner Front Page</h1>
         <form action="DashboardServlet" method="post">
             
-         Enter Partner Number:<input type="text" name="PartnerNo"  ><br><br>
-
-            <button type="submit" name="command" value="readAllPartnerProjects">Partner log-in</button><br><br>
+        Welcome: <input type="text" name="username" value="<%= request.getAttribute("username")%>" readonly>
+         <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
+            <button type="submit" name="command" value="readAllPartnerProjects">View All Projects</button><br><br>
         </form>
     </body>
 </html>

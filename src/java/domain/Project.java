@@ -47,6 +47,20 @@ public class Project {
         this.ObjAndResult = ObjAndResult;
         this.RequiredPOE = RequiredPOE;
     }
+    public Project(String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, String StartDate, String EndDate, String ObjAndResult, String RequiredPOE, String Status, int Paid) {
+        ProjectID = 0;
+        this.ActivityDescription = ActivityDescription;
+        this.Comments = Comments;
+        this.Cost = Cost;
+        this.MDFBudget = MDFBudget;
+        this.ExecutionQuarter = ExecutionQuarter;
+        this.StartDate = StartDate;
+        this.EndDate = EndDate;
+        this.ObjAndResult = ObjAndResult;
+        this.RequiredPOE = RequiredPOE;
+        this.Status = Status;
+        this.PaID = Paid;
+    }
      public Project(int ProjectID, String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, String StartDate, String EndDate, String ObjAndResult, String RequiredPOE, String Status, int PaID) {
         this.ProjectID = ProjectID;
         this.ActivityDescription = ActivityDescription;
