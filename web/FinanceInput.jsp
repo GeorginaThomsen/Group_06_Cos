@@ -99,7 +99,7 @@
             <button name="command" value="upDateApprove">Reimburse</button>
             <input type="hidden" name="approval" value="Completed">
             <button type="submit" name="command" value="viewComments">View Comments</button>
-            <input type="text" name="GetCost" placeholder="New Cost / €">
+            <input type="number" step="any" name="GetCost" placeholder="New Cost / €">
             <input type="submit" value="Change price">
             <input type="hidden" name="command" value="upDateCost">
              

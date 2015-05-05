@@ -311,9 +311,12 @@ public class ProjectMapper {
                 String pass = rs.getString("PASSWORD");
                 String userTyp = rs.getString("USERTYPE");
                 user = new User(usern, pass, userTyp);
+                
 
             }
-            System.out.println(user);
+            System.out.println("user details" +user.getName());
+            System.out.println("user details" +user.getPassword());
+            System.out.println("user details" +user.getUserType());
             return user;
         } catch (Exception e) {
             e.printStackTrace();

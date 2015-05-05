@@ -71,12 +71,14 @@ public class LoginServlet extends HttpServlet {
             } else if (user.getUserType().equalsIgnoreCase("Top-manager")) {
                 request.setAttribute("username", user);
                 response.sendRedirect("DellFrontPage.jsp");//Change to right jsp
-            } else if (user.getUserType().equalsIgnoreCase("DellFinaceDept")) {
+            } else if (user.getUserType().equalsIgnoreCase("DellFinanceDept")) {
                 request.setAttribute("username", user);
-                response.sendRedirect("FinanceInput.jsp");//Change to right jsp
+                RequestDispatcher rd = request.getRequestDispatcher("FinanceFrontPage.jsp");
+                rd.forward(request, response);
             } else if (user.getUserType().equalsIgnoreCase("DellMarketingDept")) {
                 request.setAttribute("username", user);
-                response.sendRedirect("MarketingViewProjects.jsp");//Change to right jsp
+                RequestDispatcher rd = request.getRequestDispatcher("MarketingFrontPage.jsp");
+                rd.forward(request, response);
             }
 
         } catch (Exception e) {
