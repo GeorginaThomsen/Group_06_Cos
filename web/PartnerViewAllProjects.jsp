@@ -68,7 +68,7 @@
                     <%}%>
                 </table><br><br>
 
-                <input type="hidden" name="partner" value="<%= request.getAttribute("partnerNo")%>">
+                <input type="hidden" name="partner" value="<%= request.getAttribute("partner")%>">
                 <button type="submit" name="command" value="viewComments">View Comments</button><br><br>
                 <button type="submit" name="command" value="requestProject">Request New Project</button><br><br>
                 <button type="submit" name="command" value="SavePOE">Upload POE</button><br><br>

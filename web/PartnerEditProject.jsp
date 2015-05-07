@@ -23,9 +23,11 @@
         <% Project p = (Project) request.getAttribute("project");%>
         <%  if (p != null) {%>
         <h2>Project</h2>
+                    <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" >
+
                         <input type="hidden" name="comments" value=" <%= request.getAttribute("comments")%>" >
                         <input type="hidden" name="projectID" value="<%= p.getProjectID()%>"  >
-                        <input type="hidden" name="PartnerNo" value="<%= request.getAttribute("partner")%>"  >
+                        <input type="text" name="partnerID" value="<%= request.getAttribute("partnerID")%>"  >
         <table   border="1" style="width:100%">
             <tr>
 
