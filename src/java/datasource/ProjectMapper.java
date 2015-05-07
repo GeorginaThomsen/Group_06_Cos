@@ -1,8 +1,12 @@
 package datasource;
 
+import domain.POE;
 import domain.Partner;
 import domain.Project;
 import domain.User;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Array;
 import java.sql.Connection;
 import java.sql.Date;
@@ -12,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -95,7 +100,7 @@ public class ProjectMapper {
         String SQLProject1
                 = "select projectID "
                 + "from project "
-                + "where paid = ?";
+                + "where partnerID = ?";
 
         PreparedStatement preStatement = null;
         preStatement = con.prepareStatement(SQLProject1);
@@ -445,5 +450,43 @@ public class ProjectMapper {
             return 0;
         }
        
+    }
+    //Georgina:
+    public void savePOE(POE poe, Connection con) throws SQLException {
+        String sql = "INSERT INTO POETABLE(ProjectID, Type, POE) VALUES(?, ?, ?)";
+        PreparedStatement preStatement = null;
+        preStatement = con.prepareStatement(sql);
+
+        preStatement.setInt(1, poe.getProjectID());
+        preStatement.setString(2, poe.getType());
+        preStatement.setBlob(3, poe.getData());
+
+        preStatement.executeUpdate();
+    }
+//  Georgina:
+    public void getPOE(int projectID, Connection con, HttpServletResponse response) throws SQLException, IOException {
+        String sql = "SELECT * FROM POETABLE WHERE projectID  = ?";
+        PreparedStatement preStatement = null;
+        preStatement = con.prepareStatement(sql);
+        preStatement.setInt(1, projectID);
+
+        ResultSet rs = preStatement.executeQuery();
+        if (rs.next()) {
+            
+                          response.setContentType(rs.getString("TYPE"));
+                          try (OutputStream out = response.getOutputStream()) {
+                            InputStream in = rs.getBinaryStream("POE");
+                            int count = 0;
+                            byte[] buffer = new byte[1024];
+                            do {
+                                count = in.read(buffer);
+                                out.write(buffer, 0, count);
+                            }
+                            while (count == 1024);
+//                        rs.getString("type"),
+//                        rs.getBlob("data").getBinaryStream());
+                          }
+        }
+
     }
 }

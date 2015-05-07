@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>MDF Tool</title>
     </head>
     <body>
         <h1>Partner View Comments</h1>
@@ -58,7 +58,7 @@
 
 
             </table><br><br>
-                        <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
+            <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
 
             <input type="hidden" name="projectID"  value="<%= project.getProjectID()%>">
             <input type="hidden" name="comments"  value="<%= request.getAttribute("comments")%>">
@@ -66,17 +66,17 @@
             <textarea rows="10" cols="150">
                 <%= request.getAttribute("comments")%>
             </textarea><br><br>
-            
-                                     
+
+
             <button type="submit" name="command" value="editProject">Edit Project</button><br><br>
             <button type="submit" name="command" value="readAllPartnerProjects">Back</button>
-       
-        
+
+
 
 
         </form><br><br>
-        
-        
+
+
 
     </body>
 </html>

@@ -6,6 +6,7 @@
 package servletControl;
 
 import domain.Controller;
+import domain.POE;
 import domain.Project;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -75,6 +76,9 @@ public class DashboardServlet extends HttpServlet {
             case "updateObj":
                 updateObj(request, response, con);
                 break;
+            case "SavePOE":
+                SavePOE(request, response, con);
+                break;
         }
 //        readAllPartnerProjects(request, response, con );
 
@@ -108,7 +112,7 @@ public class DashboardServlet extends HttpServlet {
             int pro = Integer.parseInt(request.getParameter("project"));
             Project project = con.getCompleteProject(pro);
             String partnerID = request.getParameter("partnerID");
-            System.out.println("view comments"+partnerID);
+            System.out.println("view comments" + partnerID);
             String comments = con.getComments(pro);
 
             request.setAttribute("project", project);
@@ -310,14 +314,42 @@ public class DashboardServlet extends HttpServlet {
 
         }
     }
-     private void requestProject(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
-         try {
+
+    private void requestProject(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+        try {
             int partnerID = Integer.parseInt(request.getParameter("partnerID"));
             String username = request.getParameter("username");
 
             request.setAttribute("username", username);
             request.setAttribute("partnerID", partnerID);
             RequestDispatcher dispatcher = request.getRequestDispatcher("RequestProject.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
+            out.println("<h2>" + e + "</h2><hr>");
+            out.print("<pre>");
+            e.printStackTrace(out);
+            out.println("</pre>");
+        }
+    }
+
+    //Georgina:
+    private void SavePOE(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
+        try {
+            int partnerID = Integer.parseInt(request.getParameter("partnerID"));
+                        String project = request.getParameter("project");
+
+            String username = request.getParameter("username");
+//            int pro = Integer.parseInt(request.getParameter("projectID"));
+
+            request.setAttribute("project", project);
+            request.setAttribute("username", username);
+            request.setAttribute("partnerID", partnerID);
+//            request.setAttribute("projectID", pro);
+            
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("SavePOE.jsp");
             dispatcher.forward(request, response);
         } catch (Exception e) {
             response.setContentType("text/html");

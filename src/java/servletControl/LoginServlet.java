@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Georgina
+ * @author Georgina:
  */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
                 response.sendError(response.SC_BAD_REQUEST, "Username or Password is wrong");
             } else if (user.getUserType().equalsIgnoreCase("Partner")) {
                 int partnerID = con.getPartnerID(userName);
-                
+                System.out.println("paid" + partnerID);
                 request.setAttribute("partnerID", partnerID);
                 request.setAttribute("username", user.getName());
                 RequestDispatcher rd = request.getRequestDispatcher("PartnerFrontPage.jsp");

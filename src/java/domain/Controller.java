@@ -6,9 +6,11 @@
 package domain;
 
 import datasource.*;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -108,5 +110,12 @@ public class Controller {
      public int getPartnerID(String partnerName) throws SQLException{
          return dbf.getPartnerID(partnerName);
      }
-    
+    //Georgina:
+     public void savePOE(POE poe) throws SQLException{
+        dbf.savePOE(poe);
+    }
+     //Georgina:
+    public void getPOE(int projectID, HttpServletResponse response) throws SQLException, IOException{
+        dbf.getPOE(projectID, response);
+    }
 }
