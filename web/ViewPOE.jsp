@@ -15,7 +15,7 @@
     <body>
         <h1>POE</h1>
         <form action="GetPOEServlet" method="post">
-            Project ID: <input type="text" name="projectID"><br><br>
+            Project ID: <input type="text" name="projectID" value="<%= request.getParameter("project")%>"><br><br>
             <button> View POE </button>
             <% POE newPOE = (POE) request.getAttribute("POE");%>
         <% if (newPOE != null) {%>
@@ -23,6 +23,9 @@
         <% }%>
         <img src="POE" alt="image">
             
-       </form>
+        </form><br><br>
+        <form action="ShowAllProjectsServlet" method="post">                      
+                       <button name="DellLogInButton" value="">Back To All Projects</button>
+                        </form>
     </body>
 </html>

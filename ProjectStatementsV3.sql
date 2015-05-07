@@ -25,12 +25,7 @@ Country varchar(255),
 PRIMARY KEY (PartnerID)
 );
 
-CREATE TABLE Poe
-(
-ProjectID int,
-Poe varchar(255),
-PRIMARY KEY (ProjectID)
-);
+
 
 CREATE TABLE Dell
 (

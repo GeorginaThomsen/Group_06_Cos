@@ -22,10 +22,10 @@
             <button name="command" value="getComments" >See Complete Comments</button><br><br>
            
         </form>
-                     <form action="MarketingServlet" method="post"> 
+                     <form action="ShowAllProjectsServlet" method="post"> 
                                 <input type="hidden" name="command" value="getPendingProjects">
 
-            <button name="DellLogInButton" value="">Back To Pending Projects</button>
+            <button type="submit" name="command" value="">Back To Pending Projects</button>
         </form><br><br>
     </body>
 </html>

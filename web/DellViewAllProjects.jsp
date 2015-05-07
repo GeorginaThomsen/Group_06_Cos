@@ -4,6 +4,7 @@
     Author     : Ben
 --%>
 
+<%@page import="domain.POE"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.Project"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -42,7 +43,7 @@
             <div class="container">
                 <h1> View All Projects </h1>
             
-        <form>
+                <form action="ViewPOE.jsp">
 
             <%
                 ArrayList<Project> projects = (ArrayList<Project>) request.getAttribute("projects");
@@ -84,13 +85,18 @@
                     <td><%= projects.get(i).getRequiredPOE()%></td>
                     <td><%= projects.get(i).getStatus()%></td>
                     <td><%= projects.get(i).getPaID()%></td>
-                    <td><input type="checkbox" name="project" value="Pro"></td>
+                    <td><input type="radio" name="project" value="<%= projects.get(i).getProjectID()%>"></td>
 
                 </tr>
 
 
                 <%}%>
             </table>
+         
+            <button type="submit" name="viewPOE" value=""> View POE </button>
+         
+            
+       
 
 
         </form>
