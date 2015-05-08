@@ -13,31 +13,31 @@
         <title>Finance Front Page</title>
     </head>
     <body>
-       <header>
+        <header>
             <div class="bottomcontainer">
-            <div class="logowrap"><img src="images/logo2.png"></div>    
-            <nav>
-                <ul>
-                   <li><form action="ShowAllProjectsServlet" method="post">                      
-                       <button name="DellLogInButton" value="">All Projects</button>
-                        </form>
-                   </li> 
-                   
-                   <li><form action="FinanceInputServlet" method="get">
-                       <button name="DellLogInButton" value="">Finance Pending Projects</button>
-                       <input type="hidden" name="command" value="getPendingProjects">
-                       </form>
+                <div class="logowrap"><img src="images/logo2.png"></div>    
+                <nav>
+                    <ul>
+                        <li><form action="ShowAllProjectsServlet" method="post">                      
+                                <button name="DellLogInButton" value="">All Projects</button>
+                            </form>
+                        </li> 
+
+                        <li><form action="FinanceInputServlet" method="get">
+                                <button name="DellLogInButton" value="">Finance Pending Projects</button>
+                                <input type="hidden" name="command" value="getPendingProjects">
+                            </form>
                         </li>
-                </ul> 
-            </nav>
+                    </ul> 
+                </nav>
             </div>
         </header>
-        
-             <div class="container">
-                 <h1> Home </h1>  Welcome to Dell MDF Tool<br/><br/> 
-                 This project is created by Team Dell-icious: Peter Szkudlarek, Adam Palludan, Yağız Aydın Aksar, Georgina Thomsen, Ben Jones
-                 <br/><br/><br/> <div class="homephoto"><img src ="images/group.jpg" /></div>
-             </div>
-           
+
+        <div class="container">
+            <h1> Home </h1>  Welcome to Dell MDF Tool<br/><br/> 
+            This project is created by Team Dell-icious: Peter Szkudlarek, Adam Palludan, Yağız Aydın Aksar, Georgina Thomsen, Ben Jones
+            <br/><br/><br/> <div class="homephoto"><img src ="images/group.jpg" /></div>
+        </div>
+
     </body>
 </html>

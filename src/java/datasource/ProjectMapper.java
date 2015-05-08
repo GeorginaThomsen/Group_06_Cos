@@ -308,7 +308,6 @@ public class ProjectMapper {
                 String pass = rs.getString("PASSWORD");
                 String userTyp = rs.getString("USERTYPE");
                 user = new User(usern, pass, userTyp);
-                
 
             }
             return user;
@@ -318,7 +317,8 @@ public class ProjectMapper {
         }
 
     }
-     //Ben:
+
+    //Ben:
     public boolean insertComments(int projectID, String comments, Connection con) throws SQLException {
         int TuplesInserted = 0;
         String SQLProject = "insert into Comments values(?,?)";
@@ -333,7 +333,8 @@ public class ProjectMapper {
 
         return TuplesInserted == 1;//If there is one tuple then it succeded and is true
     }
-     //Ben:
+
+    //Ben:
     public boolean upDateComments(int projectID, String comments, Connection con) throws SQLException {
         int TuplesInserted = 0;
         String SQLProject = "update  Comments set comments = ? where projectID = ? ";
@@ -341,14 +342,15 @@ public class ProjectMapper {
         String previous = getComments(projectID, con);
         preStatement = con.prepareStatement(SQLProject);
 
-        preStatement.setString(1, previous + " ::: " +comments);
+        preStatement.setString(1, previous + " ::: " + comments);
         preStatement.setInt(2, projectID);
 
         TuplesInserted = preStatement.executeUpdate();
 
         return TuplesInserted == 1;//If there is one tuple then it succeded and is true
     }
-      public boolean checkForComments(int projectID, Connection con) throws SQLException {
+
+    public boolean checkForComments(int projectID, Connection con) throws SQLException {
         int comments = 0;
         String SQL = "select * from comments where projectid = ?  ";
         PreparedStatement preStatement = null;
@@ -378,13 +380,13 @@ public class ProjectMapper {
             return null;
         }
     }
-     //added by ben:                 
-    public boolean editProject(int pno,  String column, String edit, Connection con) throws SQLException {
+
+    //added by ben:                 
+    public boolean editProject(int pno, String column, String edit, Connection con) throws SQLException {
 
         int TuplesUpdated = 0;
-        
 
-        String SQLProject = "update project set "+ column + " = ? where ProjectID = ? ";
+        String SQLProject = "update project set " + column + " = ? where ProjectID = ? ";
         //updating project
 
         PreparedStatement preStatement = null;
@@ -398,12 +400,12 @@ public class ProjectMapper {
 //          getPendingProjects(con);
         return TuplesUpdated == 1;
     }
-    public boolean editCost(int pno,  String column, float edit, Connection con) throws SQLException {
+
+    public boolean editCost(int pno, String column, float edit, Connection con) throws SQLException {
 
         int TuplesUpdated = 0;
-        
 
-        String SQLProject = "update project set "+ column + " = ? where ProjectID = ? ";
+        String SQLProject = "update project set " + column + " = ? where ProjectID = ? ";
         //updating project
 
         PreparedStatement preStatement = null;
@@ -417,8 +419,9 @@ public class ProjectMapper {
 //          getPendingProjects(con);
         return TuplesUpdated == 1;
     }
+
     //Ben:
-    public int getPartnerID(String partnerName, Connection con)throws SQLException{
+    public int getPartnerID(String partnerName, Connection con) throws SQLException {
         int partnerID = 0;
         try {
             String SQL = "select PartnerID from PartnerEmployee where username = ? ";
@@ -435,8 +438,9 @@ public class ProjectMapper {
             e.printStackTrace();
             return 0;
         }
-       
+
     }
+
     //Georgina:
     public void savePOE(POE poe, Connection con) throws SQLException {
         String sql = "INSERT INTO POETABLE(ProjectID, Type, POE) VALUES(?, ?, ?)";
@@ -450,6 +454,7 @@ public class ProjectMapper {
         preStatement.executeUpdate();
     }
 //  Georgina:
+
     public void getPOE(int projectID, Connection con, HttpServletResponse response) throws SQLException, IOException {
         String sql = "SELECT * FROM POETABLE WHERE projectID  = ?";
         PreparedStatement preStatement = null;
@@ -458,20 +463,19 @@ public class ProjectMapper {
 
         ResultSet rs = preStatement.executeQuery();
         if (rs.next()) {
-            
-                          response.setContentType(rs.getString("TYPE"));
-                          try (OutputStream out = response.getOutputStream()) {
-                            InputStream in = rs.getBinaryStream("POE");
-                            int count = 0;
-                            byte[] buffer = new byte[1024];
-                            do {
-                                count = in.read(buffer);
-                                out.write(buffer, 0, count);
-                            }
-                            while (count == 1024);
+
+            response.setContentType(rs.getString("TYPE"));
+            try (OutputStream out = response.getOutputStream()) {
+                InputStream in = rs.getBinaryStream("POE");
+                int count = 0;
+                byte[] buffer = new byte[1024];
+                do {
+                    count = in.read(buffer);
+                    out.write(buffer, 0, count);
+                } while (count == 1024);
 //                        rs.getString("type"),
 //                        rs.getBlob("data").getBinaryStream());
-                          }
+            }
         }
 
     }

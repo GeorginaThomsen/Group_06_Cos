@@ -112,12 +112,11 @@ public class AddCommentsServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-
     private void addComments(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
 
         try {
             int pro = Integer.parseInt(request.getParameter("projectID"));
-           
+
             String comments = request.getParameter("newComments");
             if (!checkForComments(pro, con)) {
                 con.insertComments(pro, comments);
@@ -136,7 +135,7 @@ public class AddCommentsServlet extends HttpServlet {
 
             String projectID = Integer.toString(pro);
             String comment = "Your Comments have been added to Project No: " + projectID;
-                request.setAttribute("comments", comments);
+            request.setAttribute("comments", comments);
             request.setAttribute("comment", comment);
             request.setAttribute("projectID", projectID);
             RequestDispatcher dispatcher = request.getRequestDispatcher("ConfirmComments.jsp");
@@ -152,11 +151,12 @@ public class AddCommentsServlet extends HttpServlet {
 
         }
     }
+
     private void addFinanceComments(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
 
         try {
             int pro = Integer.parseInt(request.getParameter("projectID"));
-           
+
             String comments = request.getParameter("newComments");
             if (!checkForComments(pro, con)) {
                 con.insertComments(pro, comments);
@@ -175,7 +175,7 @@ public class AddCommentsServlet extends HttpServlet {
 
             String projectID = Integer.toString(pro);
             String comment = "Your Comments have been added to Project No: " + projectID;
-                request.setAttribute("comments", comments);
+            request.setAttribute("comments", comments);
             request.setAttribute("comment", comment);
             request.setAttribute("projectID", projectID);
             RequestDispatcher dispatcher = request.getRequestDispatcher("ConfirmComments.jsp");
@@ -220,6 +220,7 @@ public class AddCommentsServlet extends HttpServlet {
         }
 
     }
+
     private void getFinanceComments(HttpServletRequest request, HttpServletResponse response, Controller con) throws SQLException, IOException {
         try {
             int pro = Integer.parseInt(request.getParameter("projectID"));

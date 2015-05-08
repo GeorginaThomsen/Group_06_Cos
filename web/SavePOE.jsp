@@ -16,43 +16,43 @@
     <body>
         <header>
             <div class="bottomcontainer">
-            <div class="logowrap"><img src="images/logo2.png"></div>    
-            <nav>
-                <ul>
-                   <li><form action="DashboardServlet" method="post">  
-                       <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" >
-                       <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
-                       <button type="submit" name="command" value="readAllPartnerProjects">My Projects</button>
-                       </form>
-                   </li> 
-                   <li><form action="DashboardServlet" method="post">
-                       <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" >
-                       <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
-                       <input type="hidden" name="partner" value="<%= request.getAttribute("partner")%>">
-                       <button type="submit" name="command" value="requestProject">Request New Project</button>
-                       </form> 
-                   </li>
-                   
-                </ul> 
-            </nav>
+                <div class="logowrap"><img src="images/logo2.png"></div>    
+                <nav>
+                    <ul>
+                        <li><form action="DashboardServlet" method="post">  
+                                <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" >
+                                <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
+                                <button type="submit" name="command" value="readAllPartnerProjects">My Projects</button>
+                            </form>
+                        </li> 
+                        <li><form action="DashboardServlet" method="post">
+                                <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" >
+                                <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
+                                <input type="hidden" name="partner" value="<%= request.getAttribute("partner")%>">
+                                <button type="submit" name="command" value="requestProject">Request New Project</button>
+                            </form> 
+                        </li>
+
+                    </ul> 
+                </nav>
             </div>
         </header>
-            
-            <div class="container">
-        <h1>Upload POE</h1>
-        <form action="SavePOEServlet" method="post" enctype="multipart/form-data" >
-            
-            
-            
-            <input type="hidden" name="username" value="<%= request.getAttribute("username")%>"><br>
-            <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>"><br>
 
-            ProjectID: <input type="text" name="project" value="<%= request.getAttribute("project")%>"><br><br>
-            <input type="file" name="file"  ><%--Add multiple="multiple" if I have time --%>
-            <input type="hidden" name="command" value="SavePOE">
-            <br/><br/><br/>
-            <button> Submit POE </button>
-        </form>
-            </div>
+        <div class="container">
+            <h1>Upload POE</h1>
+            <form action="SavePOEServlet" method="post" enctype="multipart/form-data" >
+
+
+
+                <input type="hidden" name="username" value="<%= request.getAttribute("username")%>"><br>
+                <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>"><br>
+
+                ProjectID: <input type="text" name="project" value="<%= request.getAttribute("project")%>"><br><br>
+                <input type="file" name="file"  ><%--Add multiple="multiple" if I have time --%>
+                <input type="hidden" name="command" value="SavePOE">
+                <br/><br/><br/>
+                <button> Submit POE </button>
+            </form>
+        </div>
     </body>
 </html>

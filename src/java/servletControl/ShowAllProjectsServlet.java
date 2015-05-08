@@ -36,15 +36,14 @@ public class ShowAllProjectsServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       HttpSession sessionObj = request.getSession();
-            Controller con = (Controller) sessionObj.getAttribute("Controller");
-            if (con == null)
-            {
-                con = new Controller();
-                sessionObj.setAttribute("Controller", con);
+        HttpSession sessionObj = request.getSession();
+        Controller con = (Controller) sessionObj.getAttribute("Controller");
+        if (con == null) {
+            con = new Controller();
+            sessionObj.setAttribute("Controller", con);
 
-            }
-        readAllProjects(request, response, con );
+        }
+        readAllProjects(request, response, con);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -87,15 +86,15 @@ public class ShowAllProjectsServlet extends HttpServlet {
     }// </editor-fold>
 
     private void readAllProjects(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
-           
-         try{ 
-        ArrayList<Project> projects = con.readAllProjects();
-        
-                    request.setAttribute("projects", projects);
 
-             RequestDispatcher dispatcher = request.getRequestDispatcher("DellViewAllProjects.jsp");
-        dispatcher.forward(request, response);
-          } catch(Exception e){
+        try {
+            ArrayList<Project> projects = con.readAllProjects();
+
+            request.setAttribute("projects", projects);
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("DellViewAllProjects.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
             out.println("<h2>" + e + "</h2><hr>");
@@ -103,7 +102,7 @@ public class ShowAllProjectsServlet extends HttpServlet {
             e.printStackTrace(out);
             out.println("</pre>");
 
-    }
+        }
 
-}
+    }
 }

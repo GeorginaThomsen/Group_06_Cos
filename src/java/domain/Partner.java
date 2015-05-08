@@ -10,6 +10,7 @@ package domain;
  * @author Georgina
  */
 public class Partner {
+
     private int paID;
     private String partnerName;
     private String country;
@@ -46,8 +47,7 @@ public class Partner {
 
     @Override
     public String toString() {
-        return "Partner: " + "paID = " + paID + ", partnerName = " + partnerName + ", country = " + country ;
+        return "Partner: " + "paID = " + paID + ", partnerName = " + partnerName + ", country = " + country;
     }
-    
-    
+
 }

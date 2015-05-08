@@ -37,12 +37,11 @@ public class GetPOEServlet extends HttpServlet {
             }
             int projectID = Integer.parseInt(request.getParameter("projectID"));
             con.getPOE(projectID, response);
-    
-            
-        }   catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             Logger.getLogger(GetPOEServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
 }

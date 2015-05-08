@@ -101,7 +101,6 @@ public class FinanceInputServlet extends HttpServlet {
 
     }
 
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -161,7 +160,6 @@ public class FinanceInputServlet extends HttpServlet {
     }
 
     //Ben:
-
     private void viewComments(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
         try {
             int pro = Integer.parseInt(request.getParameter("projectToEdit"));

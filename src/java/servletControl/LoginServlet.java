@@ -58,7 +58,6 @@ public class LoginServlet extends HttpServlet {
 
             User user = con.login(userName, password, userType);
             if (user == null) {
-                System.out.println("WUT!");
                 //Possible change to come back to login page
                 response.sendError(response.SC_BAD_REQUEST, "Username or Password is wrong");
             } else if (user.getUserType().equalsIgnoreCase("Partner")) {
@@ -88,7 +87,6 @@ public class LoginServlet extends HttpServlet {
             e.printStackTrace(out);
             out.println("</pre>");
         }
-  
 
     }
 

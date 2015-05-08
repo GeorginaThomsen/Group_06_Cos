@@ -40,13 +40,13 @@ public class RequestProjectServlet extends HttpServlet {
         insertProject(request, response, con);
 
     }
-  
+
     private void insertProject(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
 
         try {
-        String username = request.getParameter("username");
+            String username = request.getParameter("username");
             String partnerID = request.getParameter("partnerID");
-        //Get the info from the RequestProject form:
+            //Get the info from the RequestProject form:
             //int id = Integer.parseInt(request.getParameter("ProjectID"));
             String act = request.getParameter("ActivityDescription");
             String com = request.getParameter("Comments");

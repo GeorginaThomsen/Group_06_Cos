@@ -13,15 +13,15 @@
     </head>
     <body>
         <h1>Read Project</h1>
-            <form action="ReadProjectServlet" method="post">
+        <form action="ReadProjectServlet" method="post">
             Project id:  <input type="text" name="ReadProjectID">
             <input type="hidden" name="command" value="ReadProjectID">
             <button name="ReadProjectIDButton" value="" >Find Project</button>
-            </form><br/>
-            <form action="ReadProjectServlet" method="post">
+        </form><br/>
+        <form action="ReadProjectServlet" method="post">
             Partner id:  <input type="text" name="ReadPartnerID">
             <input type="hidden" name="command" value="ReadPartnerID">
             <button name="ReadPartnerIDButton" value="" >Find Project</button>
-            </form>
+        </form>
     </body>
 </html>

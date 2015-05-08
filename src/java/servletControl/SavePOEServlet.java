@@ -29,39 +29,36 @@ import javax.servlet.http.Part;
 @WebServlet(name = "SavePOEServlet", urlPatterns = {"/SavePOEServlet"})
 @MultipartConfig
 public class SavePOEServlet extends HttpServlet {
-    
+
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-         HttpSession sessionObj = request.getSession(true);
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        HttpSession sessionObj = request.getSession(true);
         Controller con = (Controller) sessionObj.getAttribute("Controller");
         if (con == null) {
             con = new Controller();
             sessionObj.setAttribute("Controller", con);
         }
-        try{
-        Part part = request.getPart("file");
-        String partnerID = request.getParameter("partnerID");
-        int project = Integer.parseInt(request.getParameter("project"));
-        String type = part.getHeader("content-type");
-        InputStream data = part.getInputStream();
-       
-         
-        POE poe = new POE(project, type, data);
-        request.setAttribute("partnerID", partnerID);
-        request.setAttribute("message",
-                              "Upload has been done successfully!");
-        
+        try {
+            Part part = request.getPart("file");
+            String partnerID = request.getParameter("partnerID");
+            int project = Integer.parseInt(request.getParameter("project"));
+            String type = part.getHeader("content-type");
+            InputStream data = part.getInputStream();
+
+            POE poe = new POE(project, type, data);
+            request.setAttribute("partnerID", partnerID);
+            request.setAttribute("message",
+                    "Upload has been done successfully!");
+
             con.savePOE(poe);
         } catch (SQLException ex) {
-            
+
             Logger.getLogger(SavePOEServlet.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
         }
-         RequestDispatcher dispatcher = request.getRequestDispatcher("message.jsp");
-            dispatcher.forward(request, response);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("message.jsp");
+        dispatcher.forward(request, response);
 
     }
-    
-    
-    
+
 }

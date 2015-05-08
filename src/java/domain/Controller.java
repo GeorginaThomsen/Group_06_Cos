@@ -70,51 +70,69 @@ public class Controller {
     public boolean updateApproveProject(int pno, String approve) throws SQLException {
         return dbf.updateApproveProject(pno, approve);
     }
-    
-    public boolean updateCostProject(int pno, float cost) throws SQLException{
+
+    public boolean updateCostProject(int pno, float cost) throws SQLException {
         return dbf.updateCostProject(pno, cost);
     }
 
-     //Georgina:
+    //Georgina:
     public User login(String username, String password, String userType/*, String userType*/) throws SQLException {
         return currentLogin = dbf.login(username, password, userType);
     }
-     //Ben:
-    public boolean insertComments(int projectID, String comments) throws SQLException{
+
+    //Ben:
+
+    public boolean insertComments(int projectID, String comments) throws SQLException {
         return dbf.insertComments(projectID, comments);
     }
+
     //Ben:
-    public boolean checkForComments(int projectID) throws SQLException{
+
+    public boolean checkForComments(int projectID) throws SQLException {
         return dbf.checkForComments(projectID);
     }
+
     //Ben:
-    public String getComments(int projectID) throws SQLException{
+
+    public String getComments(int projectID) throws SQLException {
         return dbf.getComments(projectID);
     }
+
     //Ben:
-     public boolean upDateComments(int projectID, String comments) throws SQLException{
-         return dbf.upDateComments(projectID, comments);
-     }
-      //Getting project over
-     public Project getCompleteProject(int pno) throws SQLException{
-         return dbf.getCompleteProject(pno);
-     }
-     public boolean editProject(int pno,  String column, String edit) throws SQLException{
-         return dbf.editProject(pno, column, edit);
-     }
-     public boolean editCost(int pno,  String column, float edit) throws SQLException{
-         return dbf.editCost(pno, column, edit);
-     }
-     //Ben:
-     public int getPartnerID(String partnerName) throws SQLException{
-         return dbf.getPartnerID(partnerName);
-     }
+
+    public boolean upDateComments(int projectID, String comments) throws SQLException {
+        return dbf.upDateComments(projectID, comments);
+    }
+
+    //Getting project over
+
+    public Project getCompleteProject(int pno) throws SQLException {
+        return dbf.getCompleteProject(pno);
+    }
+
+    public boolean editProject(int pno, String column, String edit) throws SQLException {
+        return dbf.editProject(pno, column, edit);
+    }
+
+    public boolean editCost(int pno, String column, float edit) throws SQLException {
+        return dbf.editCost(pno, column, edit);
+    }
+
+    //Ben:
+
+    public int getPartnerID(String partnerName) throws SQLException {
+        return dbf.getPartnerID(partnerName);
+    }
+
     //Georgina:
-     public void savePOE(POE poe) throws SQLException{
+
+    public void savePOE(POE poe) throws SQLException {
         dbf.savePOE(poe);
     }
-     //Georgina:
-    public void getPOE(int projectID, HttpServletResponse response) throws SQLException, IOException{
+
+    //Georgina:
+
+    public void getPOE(int projectID, HttpServletResponse response) throws SQLException, IOException {
         dbf.getPOE(projectID, response);
     }
 }

@@ -1,6 +1,5 @@
 package domain;
 
-
 /**
  *
  * @author Georgina
@@ -20,7 +19,6 @@ public class Project {
     private String Status;
     private int PaID;
 
-    
     public Project(int ProjectID, String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, String StartDate, String EndDate, String ObjAndResult, String RequiredPOE) {
         this.ProjectID = ProjectID;
         this.ActivityDescription = ActivityDescription;
@@ -46,6 +44,7 @@ public class Project {
         this.ObjAndResult = ObjAndResult;
         this.RequiredPOE = RequiredPOE;
     }
+
     public Project(String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, String StartDate, String EndDate, String ObjAndResult, String RequiredPOE, String Status, int Paid) {
         ProjectID = 0;
         this.ActivityDescription = ActivityDescription;
@@ -60,7 +59,8 @@ public class Project {
         this.Status = Status;
         this.PaID = Paid;
     }
-     public Project(int ProjectID, String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, String StartDate, String EndDate, String ObjAndResult, String RequiredPOE, String Status, int PaID) {
+
+    public Project(int ProjectID, String ActivityDescription, String Comments, float Cost, String MDFBudget, String ExecutionQuarter, String StartDate, String EndDate, String ObjAndResult, String RequiredPOE, String Status, int PaID) {
         this.ProjectID = ProjectID;
         this.ActivityDescription = ActivityDescription;
         this.Comments = Comments;
@@ -170,7 +170,6 @@ public class Project {
     public void setPaID(int PaID) {
         this.PaID = PaID;
     }
-    
 
     @Override
     public String toString() {

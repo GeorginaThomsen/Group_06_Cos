@@ -44,7 +44,6 @@ public class DBFacade {
     }
 
     //== Getting project over
-    
     //Georgina:
     public boolean insertProject(Project p) throws SQLException {
         return pm.insertProjects(p, con);
@@ -67,51 +66,69 @@ public class DBFacade {
     public boolean updateApproveProject(int pno, String approve) throws SQLException {
         return pm.updateApproveProject(pno, approve, con);
     }
-    
-    public boolean updateCostProject(int pno, float cost) throws SQLException{
+
+    public boolean updateCostProject(int pno, float cost) throws SQLException {
         return pm.updateCostProject(pno, cost, con);
     }
-    
+
     //Georgina:
-    public User login(String username, String password, String userType){
+    public User login(String username, String password, String userType) {
         return pm.login(username, password, userType, con);
     }
-     //Ben:
+
+    //Ben:
+
     public boolean insertComments(int projectID, String comments) throws SQLException {
         return pm.insertComments(projectID, comments, con);
     }
+
     //Ben:
-     public boolean upDateComments(int projectID, String comments) throws SQLException{
-         return pm.upDateComments(projectID, comments, con);
-     }
-      //Ben:
-    public boolean checkForComments(int projectID) throws SQLException{
-        return pm.checkForComments(projectID,  con);
+
+    public boolean upDateComments(int projectID, String comments) throws SQLException {
+        return pm.upDateComments(projectID, comments, con);
     }
+
     //Ben:
-    public String getComments(int projectID) throws SQLException{
-        return pm.getComments(projectID,  con);
+
+    public boolean checkForComments(int projectID) throws SQLException {
+        return pm.checkForComments(projectID, con);
     }
+
     //Ben:
-     public Project getCompleteProject(int pno) throws SQLException{
-          return pm.getCompleteProject(pno, con);
-     }
-     public boolean editProject(int pno,  String column, String edit) throws SQLException{
-         return pm.editProject(pno, column, edit, con);
-     }
-     public boolean editCost(int pno,  String column, float edit) throws SQLException{
-         return pm.editCost(pno, column, edit, con);
-     }
-      //Ben:
-     public int getPartnerID(String partnerName) throws SQLException{
-         return pm.getPartnerID(partnerName, con);
-     }
-     //Georgina:
-     public void savePOE(POE poe ) throws SQLException{
+
+    public String getComments(int projectID) throws SQLException {
+        return pm.getComments(projectID, con);
+    }
+
+    //Ben:
+
+    public Project getCompleteProject(int pno) throws SQLException {
+        return pm.getCompleteProject(pno, con);
+    }
+
+    public boolean editProject(int pno, String column, String edit) throws SQLException {
+        return pm.editProject(pno, column, edit, con);
+    }
+
+    public boolean editCost(int pno, String column, float edit) throws SQLException {
+        return pm.editCost(pno, column, edit, con);
+    }
+
+    //Ben:
+
+    public int getPartnerID(String partnerName) throws SQLException {
+        return pm.getPartnerID(partnerName, con);
+    }
+
+    //Georgina:
+
+    public void savePOE(POE poe) throws SQLException {
         pm.savePOE(poe, con);
     }
-     //Georgina:
-    public void getPOE(int projectID, HttpServletResponse response) throws SQLException, IOException{
-        pm.getPOE(projectID, con,response);
+
+    //Georgina:
+
+    public void getPOE(int projectID, HttpServletResponse response) throws SQLException, IOException {
+        pm.getPOE(projectID, con, response);
     }
 }

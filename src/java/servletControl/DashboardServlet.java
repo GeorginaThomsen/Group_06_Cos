@@ -110,11 +110,11 @@ public class DashboardServlet extends HttpServlet {
             int pro = Integer.parseInt(request.getParameter("project"));
             Project project = con.getCompleteProject(pro);
             String partnerID = request.getParameter("partnerID");
-                        String username = request.getParameter("username");
+            String username = request.getParameter("username");
 
             String comments = con.getComments(pro);
 
-                        request.setAttribute("username", username);
+            request.setAttribute("username", username);
 
             request.setAttribute("project", project);
             request.setAttribute("partnerID", partnerID);
@@ -176,11 +176,11 @@ public class DashboardServlet extends HttpServlet {
             int pro = Integer.parseInt(request.getParameter("projectID"));
             Project project = con.getCompleteProject(pro);
             String partnerID = request.getParameter("partnerID");
-                        String username = request.getParameter("username");
+            String username = request.getParameter("username");
 
             String comments = con.getComments(pro);
 
-                        request.setAttribute("username", username);
+            request.setAttribute("username", username);
 
             request.setAttribute("project", project);
             request.setAttribute("partnerID", partnerID);
@@ -203,14 +203,14 @@ public class DashboardServlet extends HttpServlet {
             int pro = Integer.parseInt(request.getParameter("projectID"));
             String act = request.getParameter("newAct");
             String partnerID = request.getParameter("partnerID");
-                        String username = request.getParameter("username");
+            String username = request.getParameter("username");
 
             String column = "activitydescription";
             con.editProject(pro, column, act);
             Project project = con.getCompleteProject(pro);
             String comments = con.getComments(pro);
 
-                        request.setAttribute("username", username);
+            request.setAttribute("username", username);
 
             request.setAttribute("project", project);
             request.setAttribute("partnerID", partnerID);
@@ -233,8 +233,7 @@ public class DashboardServlet extends HttpServlet {
             int pro = Integer.parseInt(request.getParameter("projectID"));
             String com = request.getParameter("newComments");
             String partnerID = request.getParameter("partnerID");
-                        String username = request.getParameter("username");
-
+            String username = request.getParameter("username");
 
             String column = "comments";
             con.editProject(pro, column, com);
@@ -264,8 +263,7 @@ public class DashboardServlet extends HttpServlet {
             int pro = Integer.parseInt(request.getParameter("projectID"));
             float cos = Float.parseFloat(request.getParameter("newCost"));
             String partnerID = request.getParameter("partnerID");
-                        String username = request.getParameter("username");
-
+            String username = request.getParameter("username");
 
             String column = "cost";
             con.editCost(pro, column, cos);
@@ -294,8 +292,7 @@ public class DashboardServlet extends HttpServlet {
         try {
             int pro = Integer.parseInt(request.getParameter("projectID"));
             String partnerID = request.getParameter("partnerID");
-                        String username = request.getParameter("username");
-
+            String username = request.getParameter("username");
 
             String poe = request.getParameter("newPOE");
             String column = "poe";
@@ -325,8 +322,7 @@ public class DashboardServlet extends HttpServlet {
         try {
             int pro = Integer.parseInt(request.getParameter("projectID"));
             String partnerID = request.getParameter("partnerID");
-                        String username = request.getParameter("username");
-
+            String username = request.getParameter("username");
 
             String obj = request.getParameter("newObj");
             String column = "objandresult";

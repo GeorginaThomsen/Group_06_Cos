@@ -36,31 +36,29 @@ public class MarketingServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       HttpSession sessionObj = request.getSession();
-            Controller con = (Controller) sessionObj.getAttribute("Controller");
-            if (con == null)
-            {
-                con = new Controller();
-                sessionObj.setAttribute("Controller", con);
+        HttpSession sessionObj = request.getSession();
+        Controller con = (Controller) sessionObj.getAttribute("Controller");
+        if (con == null) {
+            con = new Controller();
+            sessionObj.setAttribute("Controller", con);
 
-            }
-            
-             String command = request.getParameter("command");
-            switch (command)
-            {
-                case "getPendingProjects":
-                    getPendingProjects(request, response, con);
-                    break;
-                case "upDateApprove":
-                    upDateApprove(request, response, con);
-                    break;
-                     case "viewComments":
+        }
+
+        String command = request.getParameter("command");
+        switch (command) {
+            case "getPendingProjects":
+                getPendingProjects(request, response, con);
+                break;
+            case "upDateApprove":
+                upDateApprove(request, response, con);
+                break;
+            case "viewComments":
                 viewComments(request, response, con);
                 break;
-                
+
 //        getPendingProjects(request, response, con );
 //        upDateApprove(request, response, con );
-    }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -103,14 +101,14 @@ public class MarketingServlet extends HttpServlet {
     }// </editor-fold>
 
     private void getPendingProjects(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
-             try{ 
-        ArrayList<Project> projects = con.getPendingProjects();
-        
-                    request.setAttribute("projects", projects);
+        try {
+            ArrayList<Project> projects = con.getPendingProjects();
 
-             RequestDispatcher dispatcher = request.getRequestDispatcher("MarketingViewProjects.jsp");
-        dispatcher.forward(request, response);
-          } catch(Exception e){
+            request.setAttribute("projects", projects);
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("MarketingViewProjects.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
             out.println("<h2>" + e + "</h2><hr>");
@@ -118,20 +116,20 @@ public class MarketingServlet extends HttpServlet {
             e.printStackTrace(out);
             out.println("</pre>");
 
-    }
+        }
     }
 //added by ben.
-    private void upDateApprove(HttpServletRequest request, HttpServletResponse response, Controller con) throws ServletException, IOException {
-        try{ 
-                int pro = Integer.parseInt(request.getParameter("projectToUpdate"));
-                String approval = request.getParameter("approval");
-                con.updateApproveProject(pro, approval);
-                getPendingProjects(request, response, con);
-                
 
-                 RequestDispatcher dispatcher = request.getRequestDispatcher("MarketingViewProjects.jsp");
-        dispatcher.forward(request, response);
-    } catch(Exception e){
+    private void upDateApprove(HttpServletRequest request, HttpServletResponse response, Controller con) throws ServletException, IOException {
+        try {
+            int pro = Integer.parseInt(request.getParameter("projectToUpdate"));
+            String approval = request.getParameter("approval");
+            con.updateApproveProject(pro, approval);
+            getPendingProjects(request, response, con);
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("MarketingViewProjects.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();//getWriter returns a PrintWriter object, that can send character tect to the client
             out.println("<h2>" + e + "</h2><hr>");
@@ -139,13 +137,14 @@ public class MarketingServlet extends HttpServlet {
             e.printStackTrace(out);
             out.println("</pre>");
 
+        }
+
     }
 
-}
     private void viewComments(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
         try {
             int pro = Integer.parseInt(request.getParameter("projectToUpdate"));
-            
+
             Project project = con.getCompleteProject(pro);
             String comments = con.getComments(pro);
             request.setAttribute("project", project);

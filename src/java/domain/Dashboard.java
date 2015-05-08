@@ -9,19 +9,20 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Ben & Peter 
+ * @author Ben & Peter
  */
 public class Dashboard {
-        private int prjNo;
-        private int partnerNo;
-    
-        private ArrayList<Project> projectDetails;
-        
-        public Dashboard(int pr, int pa){
-            prjNo  = pr;
-            partnerNo = pa;
-            projectDetails = new ArrayList<Project>();
-        }
+
+    private int prjNo;
+    private int partnerNo;
+
+    private ArrayList<Project> projectDetails;
+
+    public Dashboard(int pr, int pa) {
+        prjNo = pr;
+        partnerNo = pa;
+        projectDetails = new ArrayList<Project>();
+    }
 
     public int getPrjNo() {
         return prjNo;
@@ -39,23 +40,21 @@ public class Dashboard {
         this.partnerNo = partnerNo;
     }
 
-  public void addDetail(Project pd)
-    {
+    public void addDetail(Project pd) {
         projectDetails.add(pd);
     }
-    String detailsToString(){
-         String res = "";
-        for (int i = 0; i < projectDetails.size(); i++)
-        {
+
+    String detailsToString() {
+        String res = "";
+        for (int i = 0; i < projectDetails.size(); i++) {
             res += projectDetails.get(i).toString() + "\n";
         }
         return res;
-    }    
- public String[][] details()
-    {
+    }
+
+    public String[][] details() {
         String[][] res = new String[projectDetails.size()][9];
-        for (int i = 0; i < projectDetails.size(); i++)
-        {
+        for (int i = 0; i < projectDetails.size(); i++) {
             res[i][0] = projectDetails.get(i).getActivityDescription() + "";
             res[i][1] = projectDetails.get(i).getComments() + "";
             res[i][2] = projectDetails.get(i).getCost() + "";
@@ -69,8 +68,8 @@ public class Dashboard {
         }
         return res;
     }
- public String toString()
-    {
-        return "Project Number: " + prjNo +  "Partner Number: " +   partnerNo+ "" ;
+
+    public String toString() {
+        return "Project Number: " + prjNo + "Partner Number: " + partnerNo + "";
     }
 }

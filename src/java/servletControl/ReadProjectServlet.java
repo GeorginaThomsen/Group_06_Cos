@@ -35,35 +35,31 @@ public class ReadProjectServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         {
-        //-- Establish or reestablish application context
+            //-- Establish or reestablish application context
             HttpSession sessionObj = request.getSession();
             Controller con = (Controller) sessionObj.getAttribute("Controller");
-            if (con == null)
-            {
+            if (con == null) {
                 // Session starts
                 con = new Controller();
                 sessionObj.setAttribute("Controller", con);
-            } else
-            {
+            } else {
                 con = (Controller) sessionObj.getAttribute("Controller");
             }
-            
+
             String command = request.getParameter("command");
-             switch (command)
-            {
+            switch (command) {
                 case "ReadProjectID":
                     getProject(request, response, con);
                     break;
                 case "ReadPartnerID":
                     getProject2(request, response, con);
                     break;
-                                 
+
             }
-            }
+        }
     }
-    
-    private void getProject(HttpServletRequest request, HttpServletResponse response, Controller con) throws ServletException, IOException
-    {
+
+    private void getProject(HttpServletRequest request, HttpServletResponse response, Controller con) throws ServletException, IOException {
         // get input
         int pno = Integer.parseInt(request.getParameter("ReadProjectID"));
 
@@ -74,8 +70,7 @@ public class ReadProjectServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-      private void getProject2(HttpServletRequest request, HttpServletResponse response, Controller con) throws ServletException, IOException
-    {
+    private void getProject2(HttpServletRequest request, HttpServletResponse response, Controller con) throws ServletException, IOException {
         // get input
         int pno = Integer.parseInt(request.getParameter("ReadPartnerID"));
 
@@ -85,7 +80,9 @@ public class ReadProjectServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("ReadProjectView.jsp");
         dispatcher.forward(request, response);
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *

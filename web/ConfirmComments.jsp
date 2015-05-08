@@ -15,35 +15,35 @@
     <body>
         <header>
             <div class="bottomcontainer">
-            <div class="logowrap"><img src="images/logo2.png"></div>    
-            <nav>
-                <ul>
-                   <li> <form action="AddCommentsServlet" method="post">
-                        <input type="hidden" name="projectID" value="<%= request.getAttribute("projectID")%>">  
-                        <button name="command" value="getComments" >See Complete Comments</button>
-                        </form>
-                   </li> 
-                   <li><form action="ShowAllProjectsServlet" method="post"> 
+                <div class="logowrap"><img src="images/logo2.png"></div>    
+                <nav>
+                    <ul>
+                        <li> <form action="AddCommentsServlet" method="post">
+                                <input type="hidden" name="projectID" value="<%= request.getAttribute("projectID")%>">  
+                                <button name="command" value="getComments" >See Complete Comments</button>
+                            </form>
+                        </li> 
+                        <li><form action="ShowAllProjectsServlet" method="post"> 
                                 <input type="hidden" name="command" value="getPendingProjects">
 
-            <button type="submit" name="command" value="">Back To Pending Projects</button>
-                     </form> 
-                   </li>
-                   
-                </ul> 
-            </nav>
+                                <button type="submit" name="command" value="">Back To Pending Projects</button>
+                            </form> 
+                        </li>
+
+                    </ul> 
+                </nav>
             </div>
         </header>
-             <div class="container">
-        <h1>Comments</h1>
-        <form action="AddCommentsServlet" method="post">
-            <%= request.getAttribute("comment")%><br><br>
-            <input type="hidden" name="projectID" value="<%= request.getAttribute("projectID")%>"> <br/>
-              
-        
-            Comments:<br/><br/> <%= request.getAttribute("comments")%><br><br>
-            
-        </form>
-                     </div><br><br>
+        <div class="container">
+            <h1>Comments</h1>
+            <form action="AddCommentsServlet" method="post">
+                <%= request.getAttribute("comment")%><br><br>
+                <input type="hidden" name="projectID" value="<%= request.getAttribute("projectID")%>"> <br/>
+
+
+                Comments:<br/><br/> <%= request.getAttribute("comments")%><br><br>
+
+            </form>
+        </div><br><br>
     </body>
 </html>
