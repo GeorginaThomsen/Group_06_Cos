@@ -46,7 +46,7 @@
             <!--<input type="hidden" name="ProjectID" value="ProjectID">-->
             <input type="text" name="ActivityDescription" placeholder="Activity Description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Activity Description'"><br>
             <input type="text" name="Comments" placeholder="Comments" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Comments'"><br>
-            <input type="text" name="Cost" placeholder="Cost" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cost'"><br>
+            <input type="number" step="any" name="Cost" placeholder="Cost" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cost'"><br>
             <input type="text" name="MDFBudget" placeholder="MDF Budget" onfocus="this.placeholder = ''" onblur="this.placeholder = 'MDF Budget'"><br>
             <input type="text" name="ExecutionQuarter" placeholder="Execution Quarter" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Execution Quarter'"><br>
             <input type="text" name="StartDate" placeholder="Start Date" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Start Date'"><br>
