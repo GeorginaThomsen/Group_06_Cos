@@ -10,15 +10,38 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Partner MDF Tool</title>
+        <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h1>Partner Front Page</h1>
-        <form action="DashboardServlet" method="post">
+        <header>
+            <div class="bottomcontainer">
+            <div class="logowrap"><img src="images/logo2.png"></div>    
+            <nav>
+                <ul>
+                   <li><form action="DashboardServlet" method="post">  
+                       <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" readonly>
+                       <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
+                       <button type="submit" name="command" value="readAllPartnerProjects">My Projects</button>
+                       
+                   </li> 
+                   <li>
+                       <input type="hidden" name="partner" value="<%= request.getAttribute("partner")%>">
+                       <button type="submit" name="command" value="requestProject">Request New Project</button>
+                       </form> 
+                   </li>
+                   
+                </ul> 
+            </nav>
+            </div>
+        </header>
             
-        Welcome: <input type="text" name="username" value="<%= request.getAttribute("username")%>" readonly>
-         <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
-            <button type="submit" name="command" value="readAllPartnerProjects">View All Projects</button><br><br>
-        </form>
+            <div class="container">
+          <h1> Home </h1>  Welcome to Dell MDF Tool Project! <br/><br/> 
+            This project is created by Team Dell-icious: Georgina Thomsen, Ben Jones, Adam Palludan, Peter Szkudlarek and Yağız Aydın Aksar
+           
+         
+        
+            </div>
     </body>
 </html>
 

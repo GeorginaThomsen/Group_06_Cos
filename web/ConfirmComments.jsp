@@ -9,23 +9,41 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Confirm Comments JSP</title>
+        <title>Confirm Comments | Dell MDF Tool</title>
+        <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h1>Confirm Comments</h1>
-        <form action="AddCommentsServlet" method="post">
-            Message: <%= request.getAttribute("comment")%><br><br>
-            <input type="hidden" name="projectID" value="<%= request.getAttribute("projectID")%>">  
-              
-        
-             Comments: <%= request.getAttribute("comments")%><br><br>
-            <button name="command" value="getComments" >See Complete Comments</button><br><br>
-           
-        </form>
-                     <form action="ShowAllProjectsServlet" method="post"> 
+        <header>
+            <div class="bottomcontainer">
+            <div class="logowrap"><img src="images/logo2.png"></div>    
+            <nav>
+                <ul>
+                   <li> <form action="AddCommentsServlet" method="post">
+                        <input type="hidden" name="projectID" value="<%= request.getAttribute("projectID")%>">  
+                        <button name="command" value="getComments" >See Complete Comments</button>
+                        </form>
+                   </li> 
+                   <li><form action="ShowAllProjectsServlet" method="post"> 
                                 <input type="hidden" name="command" value="getPendingProjects">
 
             <button type="submit" name="command" value="">Back To Pending Projects</button>
-        </form><br><br>
+                     </form> 
+                   </li>
+                   
+                </ul> 
+            </nav>
+            </div>
+        </header>
+             <div class="container">
+        <h1>Comments</h1>
+        <form action="AddCommentsServlet" method="post">
+            <%= request.getAttribute("comment")%><br><br>
+            <input type="hidden" name="projectID" value="<%= request.getAttribute("projectID")%>"> <br/>
+              
+        
+            Comments:<br/><br/> <%= request.getAttribute("comments")%><br><br>
+            
+        </form>
+                     </div><br><br>
     </body>
 </html>

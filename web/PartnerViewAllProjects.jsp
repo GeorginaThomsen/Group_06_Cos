@@ -13,19 +13,41 @@
     <head>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>View All Projects</title>
+        <title>View All Projects | Partner MDF Tool</title>
+        <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <header>
+            <div class="bottomcontainer">
+            <div class="logowrap"><img src="images/logo2.png"></div>    
+            <nav>
+                <ul>
+                   <li><form action="DashboardServlet" method="post">  
+                       <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" readonly>
+                       <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
+                       <button type="submit" name="command" value="readAllPartnerProjects">My Projects</button>
+                       
+                   </li> 
+                   <li>
+                       <input type="hidden" name="partner" value="<%= request.getAttribute("partner")%>">
+                       <button type="submit" name="command" value="requestProject">Request New Project</button>
+                       </form> 
+                   </li>
+                   
+                </ul> 
+            </nav>
+            </div>
+        </header>
+            
+            <div class="container">
+          
         <form action="DashboardServlet" method="post">
-            <h1>View All Projects</h1>
-
-            Projects For Partner :<%= request.getAttribute("username")%>
+            <h1>My Projects</h1>
             <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" >
             <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
 
             <!-- <%= request.getAttribute("partnerID")%> -->
 
-            <h2>Project Details</h2>
             <%
                 ArrayList<Project> projects = (ArrayList<Project>) request.getAttribute("projects");
             %>
@@ -36,7 +58,6 @@
                 <table >
 
                     <tr>
-                        <th>Select</th>
                         <th> Activity Description  </th>     
                         <th> Comments  </th> 
                         <th> Cost  </th> 
@@ -53,7 +74,6 @@
                     %>
                     <!--       <%= projects.get(i).getProjectID()%> -->
                     <tr>
-                        <td><input type="radio" name="project" value="<%= projects.get(i).getProjectID()%>"></td>
                         <td><%= projects.get(i).getActivityDescription()%></td>
                         <td><%= projects.get(i).getComments()%></td>
                         <td><%= projects.get(i).getCost()%></td>
@@ -63,17 +83,17 @@
                         <td><%= projects.get(i).getEndDate()%></td>
                         <td><%= projects.get(i).getObjAndResult()%></td>
                         <td><%= projects.get(i).getRequiredPOE()%></td>
+                        <td><input type="radio" name="project" value="<%= projects.get(i).getProjectID()%>"></td>
                     </tr>
 
                     <%}%>
-                </table><br><br>
+                </table>
 
                 <input type="hidden" name="partner" value="<%= request.getAttribute("partner")%>">
-                <button type="submit" name="command" value="viewComments">View Comments</button><br><br>
-                <button type="submit" name="command" value="requestProject">Request New Project</button><br><br>
-                <button type="submit" name="command" value="SavePOE">Upload POE</button><br><br>
+                <button type="submit" name="command" value="viewComments">View Comments</button>
+                <button type="submit" name="command" value="SavePOE">Upload POE</button><br/>
 
-
+                </div>
                 </form>
                 </body>
                 </html>

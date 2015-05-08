@@ -165,9 +165,10 @@ li button:hover, li button:focus{
 .container{
     margin:0 auto;
     padding-top:70px;
+    padding-bottom:10px;
     width: 1000px;
 }
-
+    
 h1{
     text-align:center;
     font-family: 'Open Sans', sans-serif;
@@ -262,6 +263,23 @@ th{
         border-bottom: 4px solid #000;
 }
 
+.container input[type="number"] {
+    
+    font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+        height:35px;
+    	border-radius: 5px;
+	background: #c0c0c0;
+	text-decoration: center;
+	border: none;
+	color: #424242;
+        margin-top:-5px;
+	outline: none;
+	font-size: 13px;	
+	border-bottom: 3px solid #424242;
+	cursor: pointer;
+    
+}
 .comments input[type="text"]{
 	width: 1000px;
         height: 50px;
@@ -278,3 +296,29 @@ th{
         margin-top: 10px;
         float: right;
 }
+
+ .requestwrap{
+    margin:0 auto;
+    width: 500px;    
+}
+
+.requestwrap input[type="text"],.requestwrap input[type="number"], .requestwrap button{
+    width: 500px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.edit input[type="text"], .edit input[type="number"]{
+    width: 300px;
+    text-align: center;
+    margin-right: 10px;
+    }
+    
+.edit button{
+    width: 200px;
+}
+
+.edit table{
+    width:1000px;
+}
+

@@ -38,7 +38,8 @@
         </header>
         
              <div class="container">
-                <h1> Home </h1> <br/> Welcome to Dell MDF Tool Project!
+                 <h1> Home </h1>  Welcome to Dell MDF Tool<br/><br/> 
+                 This project is created by Team Dell-icious: Georgina Thomsen, Ben Jones, Adam Palludan, Peter Szkudlarek and Yağız Aydın Aksar
             </div>
            
     </body>

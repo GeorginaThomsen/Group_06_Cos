@@ -5,17 +5,40 @@
 <%--Georgina: --%>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Upload Result</title>
+    <title>Upload Result | Partner MDF Tool</title>
+    <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<center>
+    <header>
+            <div class="bottomcontainer">
+            <div class="logowrap"><img src="images/logo2.png"></div>    
+            <nav>
+                <ul>
+                   <li><form action="DashboardServlet" method="post">  
+                       <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" readonly>
+                       <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
+                       <button type="submit" name="command" value="readAllPartnerProjects">My Projects</button>
+                       
+                   </li> 
+                   <li>
+                       <input type="hidden" name="partner" value="<%= request.getAttribute("partner")%>">
+                       <button type="submit" name="command" value="requestProject">Request New Project</button>
+                       </form> 
+                   </li>
+                   
+                </ul> 
+            </nav>
+            </div>
+        </header>
+            
+                       <div class="container"><center>
     <form action="DashboardServlet" method="post">
         
-    <h2>Message</h2>
-    Information: <input type="text" name="message" value="<%= request.getAttribute("message")%>"><br>
-                <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
+    <h1>Result</h1>
+    <%= request.getAttribute("message")%><br>
+                <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>"><br/><br/>
 
-                <button type="submit" name="command" value="readAllPartnerProjects">View All Projects</button>
+               
 
     
     
@@ -26,6 +49,7 @@
 
 
     </form>
-</center>
+                           </center>
+    </div>
 </body>
 </html>

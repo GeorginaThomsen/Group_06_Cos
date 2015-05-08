@@ -34,7 +34,7 @@
         </header>
         
              <div class="container">
-                <h1> Home </h1> <br/> Welcome to Dell MDF Tool Project!
+                <h1> Home </h1> <br/> Welcome to Dell MDF Tool!
             </div>
            
     </body>

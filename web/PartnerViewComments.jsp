@@ -10,9 +10,33 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>MDF Tool</title>
+        <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+        <title>View Comments | Partner MDF Tool</title>
     </head>
     <body>
+        <header>
+            <div class="bottomcontainer">
+            <div class="logowrap"><img src="images/logo2.png"></div>    
+            <nav>
+                <ul>
+                   <li><form action="DashboardServlet" method="post">  
+                       <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" readonly>
+                       <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
+                       <button type="submit" name="command" value="readAllPartnerProjects">My Projects</button>
+                       
+                   </li> 
+                   <li>
+                       <input type="hidden" name="partner" value="<%= request.getAttribute("partner")%>">
+                       <button type="submit" name="command" value="requestProject">Request New Project</button>
+                       </form> 
+                   </li>
+                   
+                </ul> 
+            </nav>
+            </div>
+        </header>
+            
+            <div class="container">
         <h1>Partner View Comments</h1>
         <form action="DashboardServlet" method="post">
 
@@ -57,7 +81,7 @@
 
 
 
-            </table><br><br>
+            </table><br><br><div class="comments">
                         <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" >
 
             <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
@@ -65,13 +89,13 @@
             <input type="hidden" name="projectID"  value="<%= project.getProjectID()%>">
             <input type="hidden" name="comments"  value="<%= request.getAttribute("comments")%>">
             Comments: <br><br>
-            <textarea rows="10" cols="150">
+            
                 <%= request.getAttribute("comments")%>
-            </textarea><br><br>
+            </div><br><br>
 
 
             <button type="submit" name="command" value="editProject">Edit Project</button><br><br>
-            <button type="submit" name="command" value="readAllPartnerProjects">Back</button>
+         
 
 
 
@@ -79,6 +103,6 @@
         </form><br><br>
 
 
-
+            </div>
     </body>
 </html>
