@@ -1,43 +1,46 @@
-DROP SEQUENCE ProiD;
+DROP SEQUENCE ProID;
 CREATE SEQUENCE ProiD
 START WITH 1000;
-
 
 DROP SEQUENCE PaiD;
 CREATE SEQUENCE PaiD
 START WITH 1000;
 
-DROP TABLE Project;
-DROP TABLE Partner;
-DROP TABLE ProjectManager;
-DROP TABLE Dell;
-DROP TABLE Poe;
+DROP TABLE COMMENTS;
+DROP TABLE POETABLE;
+DROP TABLE PROJECT;
+DROP TABLE PARTNEREMPLOYEE;
+DROP TABLE USERTABLE;
+
+
+
+
 
 
 CREATE TABLE Partner
 (
 PartnerID int,
-PartnerName varchar(255),
+PartnerName_ varchar(255),
 Country varchar(255),
 PRIMARY KEY (PartnerID)
 );
 
 
-create table partneremployee
+CREATE TABLE Usertable
+(
+Username varchar(255),
+Usertype varchar(255),
+Password varchar(255),
+PRIMARY KEY (Username)
+);
+
+CREATE TABLE Partneremployee
 (
 Username varchar(255),
 PartnerID int,
 foreign key (Username) references usertable(Username),
 foreign key (PartnerID) references Partner(PartnerID),
 primary key(Username)
-);
-
-create table usertable
-(
-Username varchar(255),
-Password varchar(255),
-Usertype varchar(255),
-primary key (Username)
 );
 
 
@@ -59,13 +62,22 @@ FOREIGN KEY (PartnerID) REFERENCES Partner(PartnerID),
 PRIMARY KEY (ProjectID)
 );
 
-create table poetable
+CREATE TABLE Poetable
 (
 ProjectID int,
 Type_ varchar(255),
 POE blob,
 primary key (projectID)
 );
+
+CREATE TABLE Comments
+(
+ProjectID int,
+Comments varchar(500),
+primary key (projectID)
+);
+
+
 
 
 

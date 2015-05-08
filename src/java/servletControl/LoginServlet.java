@@ -63,7 +63,6 @@ public class LoginServlet extends HttpServlet {
                 response.sendError(response.SC_BAD_REQUEST, "Username or Password is wrong");
             } else if (user.getUserType().equalsIgnoreCase("Partner")) {
                 int partnerID = con.getPartnerID(userName);
-                System.out.println("paid" + partnerID);
                 request.setAttribute("partnerID", partnerID);
                 request.setAttribute("username", user.getName());
                 RequestDispatcher rd = request.getRequestDispatcher("PartnerFrontPage.jsp");
@@ -89,9 +88,7 @@ public class LoginServlet extends HttpServlet {
             e.printStackTrace(out);
             out.println("</pre>");
         }
-//        User user = con.login(userName);
-//        request.setAttribute("username", userName);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+  
 
     }
 

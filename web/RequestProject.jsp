@@ -19,12 +19,13 @@
             <nav>
                 <ul>
                    <li><form action="DashboardServlet" method="post">  
-                       <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" readonly>
+                       <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" >
                        <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
                        <button type="submit" name="command" value="readAllPartnerProjects">My Projects</button>
-                       
+                       </form>
                    </li> 
                    <li>
+                       <form action="DashboardServlet" method="post">
                        <input type="hidden" name="partner" value="<%= request.getAttribute("partner")%>">
                        <button type="submit" name="command" value="requestProject">Request New Project</button>
                        </form> 
@@ -45,7 +46,7 @@
             <!--<input type="hidden" name="ProjectID" value="ProjectID">-->
             <input type="text" name="ActivityDescription" placeholder="Activity Description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Activity Description'"><br>
             <input type="text" name="Comments" placeholder="Comments" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Comments'"><br>
-            <input type="text" step="any" name="Cost" placeholder="Cost" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cost'"><br>
+            <input type="text" name="Cost" placeholder="Cost" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cost'"><br>
             <input type="text" name="MDFBudget" placeholder="MDF Budget" onfocus="this.placeholder = ''" onblur="this.placeholder = 'MDF Budget'"><br>
             <input type="text" name="ExecutionQuarter" placeholder="Execution Quarter" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Execution Quarter'"><br>
             <input type="text" name="StartDate" placeholder="Start Date" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Start Date'"><br>
@@ -58,8 +59,8 @@
             <input type="hidden" name="command" value="RequestProject">
 
             <br><br><br><button name="RequestProjectButton" value="" >Request Project</Button>
-</div>
         </form>
+</div>
         
             </div>
     </body>

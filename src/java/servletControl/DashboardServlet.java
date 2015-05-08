@@ -6,11 +6,9 @@
 package servletControl;
 
 import domain.Controller;
-import domain.POE;
 import domain.Project;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -114,7 +112,6 @@ public class DashboardServlet extends HttpServlet {
             String partnerID = request.getParameter("partnerID");
                         String username = request.getParameter("username");
 
-            System.out.println("view comments" + partnerID);
             String comments = con.getComments(pro);
 
                         request.setAttribute("username", username);

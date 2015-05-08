@@ -68,9 +68,6 @@ public class FinanceInputServlet extends HttpServlet {
             int getCost = Integer.parseInt(request.getParameter("GetCost"));
             int pro = Integer.parseInt(request.getParameter("projectToEdit"));
             String cost = request.getParameter("CostUpdate");
-            System.out.println(pro);
-            System.out.println(cost);
-            System.out.println(getCost);
             con.updateCostProject(pro, getCost);
             getPendingProjects(request, response, con);
 
@@ -89,8 +86,6 @@ public class FinanceInputServlet extends HttpServlet {
         try {
             int pro = Integer.parseInt(request.getParameter("projectToEdit"));
             String approval = request.getParameter("approval");
-            System.out.println(pro);
-            System.out.println(approval);
             con.updateApproveProject(pro, approval);
             getPendingProjects(request, response, con);
 
@@ -106,11 +101,7 @@ public class FinanceInputServlet extends HttpServlet {
 
     }
 
-//        response.setContentType("text/html;charset=UTF-8");
-//        try (PrintWriter out = response.getWriter()) {
-////            /* TODO output your page here. You may use following sample code. */
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("FinanceInput.jsp");
-//            dispatcher.forward(request, response);
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -174,7 +165,6 @@ public class FinanceInputServlet extends HttpServlet {
     private void viewComments(HttpServletRequest request, HttpServletResponse response, Controller con) throws IOException {
         try {
             int pro = Integer.parseInt(request.getParameter("projectToEdit"));
-            System.out.println("finance project for comments" + pro);
             Project project = con.getCompleteProject(pro);
             String comments = con.getComments(pro);
             request.setAttribute("project", project);

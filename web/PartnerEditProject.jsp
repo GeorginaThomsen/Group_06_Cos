@@ -19,7 +19,7 @@
             <nav>
                 <ul>
                    <li><form action="DashboardServlet" method="post">  
-                       <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" readonly>
+                       <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" >
                        <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
                        <button type="submit" name="command" value="readAllPartnerProjects">My Projects</button>
                        

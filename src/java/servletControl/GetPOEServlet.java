@@ -6,15 +6,10 @@
 package servletControl;
 
 import domain.Controller;
-import domain.POE;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -42,18 +37,7 @@ public class GetPOEServlet extends HttpServlet {
             }
             int projectID = Integer.parseInt(request.getParameter("projectID"));
             con.getPOE(projectID, response);
-//            System.out.println(">>> "+poe);
-//            response.setContentType(poe.getType());
-//            try (OutputStream out = response.getOutputStream()){
-//                InputStream in = poe.getData();
-//                byte[] buffer = new byte[1024];
-//                int count = 0;
-//                
-//                do {
-//                    count = in.read(buffer);
-//                    out.write(buffer, 0, count);
-//                } while (count == 1024);
-//            }
+    
             
         }   catch (SQLException ex) {
             Logger.getLogger(GetPOEServlet.class.getName()).log(Level.SEVERE, null, ex);

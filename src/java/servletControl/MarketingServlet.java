@@ -125,8 +125,6 @@ public class MarketingServlet extends HttpServlet {
         try{ 
                 int pro = Integer.parseInt(request.getParameter("projectToUpdate"));
                 String approval = request.getParameter("approval");
-                System.out.println(pro);
-                System.out.println(approval);
                 con.updateApproveProject(pro, approval);
                 getPendingProjects(request, response, con);
                 

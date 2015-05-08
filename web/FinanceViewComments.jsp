@@ -86,7 +86,7 @@
                  <div class="comments">
                     <input type="hidden" name="projectID"  value="<%= project.getProjectID()%>">
                     <h2>Previous Comment</h2> <input type="text" name="comments" id="comments" value="<%= request.getAttribute("comments")%>" readonly><br><br>
-                    <h2>Add New Comment</h2> <input type="textfield" name="newComments" id="newcomments" value="">
+                    <h2>Add New Comment</h2> <input type="text" name="newComments" id="newcomments" value="">
                     <button name="command" value="addComments">Comment</button>
         </form></div>
         </div>

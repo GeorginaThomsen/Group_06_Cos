@@ -86,7 +86,7 @@
                     <td><%= projects.get(i).getRequiredPOE()%></td>
                     <td><%= projects.get(i).getStatus()%></td>
                     <td><%= projects.get(i).getPaID()%></td>
-                    <td><input type="radio" name="project" value="<%= projects.get(i).getProjectID()%>"></td>
+                    <td><input type="radio" name="project" value="<%= projects.get(i).getProjectID()%>" required></td>
 
                 </tr>
 

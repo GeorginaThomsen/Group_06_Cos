@@ -1,19 +1,15 @@
 package datasource;
 
 import domain.POE;
-import domain.Partner;
 import domain.Project;
 import domain.User;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.Array;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
@@ -109,7 +105,6 @@ public class ProjectMapper {
 
             preStatement = con.prepareStatement(SQLProject1);
 
-//              System.out.println("Got as far as this!!*********");
             preStatement.setInt(1, paID);
             ResultSet rs = preStatement.executeQuery();
             List projects = new ArrayList();
@@ -235,7 +230,6 @@ public class ProjectMapper {
 
             preStatement = con.prepareStatement(SQLProject1);
 
-//              System.out.println("Got as far as this!!*********");
             ResultSet rs = preStatement.executeQuery();
             List projects = new ArrayList();
             while (rs.next()) {
@@ -272,9 +266,7 @@ public class ProjectMapper {
 
         PreparedStatement preStatement = null;
 
-        System.out.println("about to execute");
         preStatement = con.prepareStatement(SQLProject);
-        System.out.println("executed");
         preStatement.setString(1, approve);
         preStatement.setInt(2, pno);     // primary key value
 
@@ -319,9 +311,6 @@ public class ProjectMapper {
                 
 
             }
-            System.out.println("user details" +user.getName());
-            System.out.println("user details" +user.getPassword());
-            System.out.println("user details" +user.getUserType());
             return user;
         } catch (Exception e) {
             e.printStackTrace();
@@ -400,9 +389,7 @@ public class ProjectMapper {
 
         PreparedStatement preStatement = null;
 
-        System.out.println("about to execute");
         preStatement = con.prepareStatement(SQLProject);
-        System.out.println("executed");
         preStatement.setString(1, edit);
         preStatement.setInt(2, pno);     // primary key value
 
@@ -441,7 +428,6 @@ public class ProjectMapper {
             ResultSet rs = preStatement.executeQuery();
             if (rs.next()) {
                 partnerID = rs.getInt("PartnerID");
-                System.out.println("got to project mapper"+partnerID);
             }
 
             return partnerID;

@@ -9,11 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Comments | Dell MDF Tool</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Finance Confirm Comments</h1>
          <form action="AddCommentsServlet" method="post">
+             
             Message: <%= request.getAttribute("comment")%><br><br>
             <input type="hidden" name="projectID" value="<%= request.getAttribute("projectID")%>">  
               

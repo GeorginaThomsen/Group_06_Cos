@@ -23,12 +23,14 @@
             <nav>
                 <ul>
                    <li><form action="DashboardServlet" method="post">  
-                       <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" readonly>
+                       <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" >
                        <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
                        <button type="submit" name="command" value="readAllPartnerProjects">My Projects</button>
-                       
+                                              </form> 
+
                    </li> 
                    <li>
+                       <form action="DashboardServlet" method="post">
                        <input type="hidden" name="partner" value="<%= request.getAttribute("partner")%>">
                        <button type="submit" name="command" value="requestProject">Request New Project</button>
                        </form> 
@@ -83,7 +85,7 @@
                         <td><%= projects.get(i).getEndDate()%></td>
                         <td><%= projects.get(i).getObjAndResult()%></td>
                         <td><%= projects.get(i).getRequiredPOE()%></td>
-                        <td><input type="radio" name="project" value="<%= projects.get(i).getProjectID()%>"></td>
+                        <td><input type="radio" name="project" value="<%= projects.get(i).getProjectID()%>" required></td>
                     </tr>
 
                     <%}%>
@@ -93,7 +95,7 @@
                 <button type="submit" name="command" value="viewComments">View Comments</button>
                 <button type="submit" name="command" value="SavePOE">Upload POE</button><br/>
 
-                </div>
                 </form>
+                </div>
                 </body>
                 </html>

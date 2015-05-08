@@ -1,7 +1,7 @@
 <%-- 
     Document   : GetPOE
     Created on : 30-04-2015, 17:08:49
-    Author     : Cookie
+    Author     : Georgina
 --%>
 
 <%@page import="domain.POE"%>
