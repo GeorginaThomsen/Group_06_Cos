@@ -35,13 +35,11 @@
             </div>
         </header>
             
-            <div class="container">
-          <h1> Home </h1>  Welcome to Dell MDF Tool Project! <br/><br/> 
-            This project is created by Team Dell-icious: Georgina Thomsen, Ben Jones, Adam Palludan, Peter Szkudlarek and Yağız Aydın Aksar
-           
-         
-        
-            </div>
+           <div class="container">
+                 <h1> Home </h1>  Welcome to Dell MDF Tool<br/><br/> 
+                 This project is created by Team Dell-icious: Peter Szkudlarek, Adam Palludan, Georgina Thomsen, Yağız Aydın Aksar, Ben Jones
+                 <br/><br/><br/> <div class="homephoto"><img src ="images/group.jpg" width="500px"/></div>
+             </div>
     </body>
 </html>
 

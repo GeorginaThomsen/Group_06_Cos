@@ -322,3 +322,15 @@ th{
     width:1000px;
 }
 
+.homephoto{
+    margin:0 auto;
+    padding:0;
+    width:500px;
+   
+}
+
+.homephoto img{
+    width:500px;
+    border:2px solid #000000;
+    border-radius: 10px;
+}
