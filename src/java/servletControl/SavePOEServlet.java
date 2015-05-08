@@ -41,14 +41,15 @@ public class SavePOEServlet extends HttpServlet {
         try {
             Part part = request.getPart("file");
             String partnerID = request.getParameter("partnerID");
+            String username = request.getParameter("username");
             int project = Integer.parseInt(request.getParameter("project"));
             String type = part.getHeader("content-type");
             InputStream data = part.getInputStream();
 
             POE poe = new POE(project, type, data);
             request.setAttribute("partnerID", partnerID);
-            request.setAttribute("message",
-                    "Upload has been done successfully!");
+            request.setAttribute("username", username);
+            request.setAttribute("message",  "Upload has been done successfully!");
 
             con.savePOE(poe);
         } catch (SQLException ex) {

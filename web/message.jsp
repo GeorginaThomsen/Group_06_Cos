@@ -15,12 +15,14 @@
             <nav>
                 <ul>
                     <li><form action="DashboardServlet" method="post">  
-                            <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" readonly>
+                            <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" >
                             <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
                             <button type="submit" name="command" value="readAllPartnerProjects">My Projects</button>
-
+                        </form>
                     </li> 
-                    <li>
+                    <li><form action="DashboardServlet" method="post">  
+                            <input type="hidden" name="username" value="<%= request.getAttribute("username")%>" >
+                            <input type="hidden" name="partnerID" value="<%= request.getAttribute("partnerID")%>">
                         <input type="hidden" name="partner" value="<%= request.getAttribute("partner")%>">
                         <button type="submit" name="command" value="requestProject">Request New Project</button>
                         </form> 
