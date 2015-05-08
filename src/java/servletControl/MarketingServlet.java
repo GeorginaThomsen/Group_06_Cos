@@ -56,8 +56,7 @@ public class MarketingServlet extends HttpServlet {
                 viewComments(request, response, con);
                 break;
 
-//        getPendingProjects(request, response, con );
-//        upDateApprove(request, response, con );
+
         }
     }
 

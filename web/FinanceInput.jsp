@@ -85,8 +85,8 @@
                         <td><input type="radio" name="projectToEdit" value="<%= projects.get(i).getProjectID()%>" required></td>  
 
 
-                    <input type="hidden" name="CostUpdate" value="<%= projects.get(i).getCost()%>"
-                           <input type="hidden" name="StatusUpdate" value="<%= projects.get(i).getStatus()%>"
+                        <td><input type="hidden" name="CostUpdate" value="<%= projects.get(i).getCost()%>"></td>
+                        <td> <input type="hidden" name="StatusUpdate" value="<%= projects.get(i).getStatus()%>"></td>
                            </tr>
 
 

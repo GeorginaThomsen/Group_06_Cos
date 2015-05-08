@@ -397,7 +397,6 @@ public class ProjectMapper {
 
         TuplesUpdated = preStatement.executeUpdate();
 
-//          getPendingProjects(con);
         return TuplesUpdated == 1;
     }
 
@@ -473,8 +472,6 @@ public class ProjectMapper {
                     count = in.read(buffer);
                     out.write(buffer, 0, count);
                 } while (count == 1024);
-//                        rs.getString("type"),
-//                        rs.getBlob("data").getBinaryStream());
             }
         }
 

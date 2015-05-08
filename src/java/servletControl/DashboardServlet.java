@@ -78,7 +78,6 @@ public class DashboardServlet extends HttpServlet {
                 SavePOE(request, response, con);
                 break;
         }
-//        readAllPartnerProjects(request, response, con );
 
     }
 
@@ -374,12 +373,10 @@ public class DashboardServlet extends HttpServlet {
             String project = request.getParameter("project");
 
             String username = request.getParameter("username");
-//            int pro = Integer.parseInt(request.getParameter("projectID"));
 
             request.setAttribute("project", project);
             request.setAttribute("username", username);
             request.setAttribute("partnerID", partnerID);
-//            request.setAttribute("projectID", pro);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("SavePOE.jsp");
             dispatcher.forward(request, response);

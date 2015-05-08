@@ -14,7 +14,6 @@ public class User {
     private int id;
     private String name;
     private String country;
-//    private String UserType;
     private String password;
     private String userType;
 
@@ -22,7 +21,6 @@ public class User {
         this.id = id;
         this.name = name;
         this.country = country;
-//        this.UserType = UserType;
     }
 
     public User(String name, String password, String userType) {

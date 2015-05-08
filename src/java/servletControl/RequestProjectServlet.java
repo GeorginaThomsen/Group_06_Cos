@@ -47,7 +47,6 @@ public class RequestProjectServlet extends HttpServlet {
             String username = request.getParameter("username");
             String partnerID = request.getParameter("partnerID");
             //Get the info from the RequestProject form:
-            //int id = Integer.parseInt(request.getParameter("ProjectID"));
             String act = request.getParameter("ActivityDescription");
             String com = request.getParameter("Comments");
             Float cost = Float.parseFloat(request.getParameter("Cost"));
